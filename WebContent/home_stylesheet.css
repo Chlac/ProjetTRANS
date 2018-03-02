@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family:Verdana;
+    height: 100vh;
+}
+
+#workspace {
+    height: 100%;
+    position: relative;
+    
+}
+
+#overlapping_stuff {
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    height: 92%;
+    z-index: 1;
+    display: inline-table
+    
+}
+
+#attributes_panel {
+    position: relative;
+    width: 250px;
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    vertical-align: bottom;
+    display: inline-block;
+}
+
+#result {
+    position: relative;
+    height: 150px;
+    padding: 20px;
+    background-color: white;
+    vertical-align: bottom;
+    display: inline-block;
+    
+}
+
+#header, #footer {
+    background-color:#070817;
+    color: azure;
+    padding:15px;
+    text-align:left;
+    z-index: 0;
+}
+
+#map {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+
+
+
+@media only screen and (max-width:620px) {
+    /* For mobile phones: */
+    .menu, .main, .right {
+        width:100%;
+    }
+}
