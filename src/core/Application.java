@@ -1,6 +1,9 @@
 package core;
 
-import request.RequestedCriterias;
+import java.util.ArrayList;
+
+import request.A;
+
 
 /**
  * This is the root of the database and logic side.
@@ -16,6 +19,11 @@ public class Application {
 	private static Application instance;
 	
 	/**
+	 * 
+	 */
+	public static Object monitor = new Object();
+	
+	/**
 	 * Creates an instance of Application the first time it is called.
 	 * calling this instance more than once is useless.
 	 * This methods is called at the server startup
@@ -28,14 +36,19 @@ public class Application {
 	 * Gets called by a servlet to pass the {@link RequestedCriterias} to {@link Inquisitor} 
 	 * 
 	 */
-	public static void passRequest(RequestedCriterias request) {
-		instance.inquisitor.addRequest(request);
+	public static void passRequest(ArrayList<A> criterias) {
+		instance.inquisitors.add(new Inquisitor(criterias));
 	}
 	
 	// Dynamic ---------------------------------------------------------------------------------------------------------
 	
-	private Inquisitor inquisitor;
 	
 	
+	private ArrayList<Inquisitor> inquisitors = new ArrayList<>();
+	
+	public static void main(String[] args) {
+		init();
+		Application.passRequest(new ArrayList<A>());
+	}
 	
 }
