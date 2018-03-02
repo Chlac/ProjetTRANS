@@ -26,7 +26,8 @@ public class Test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/home.jsp" ).forward( request, response );
+		System.out.println("OKOKOKOKOKOKOKOOK");
+		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
 	}
 
 	/**
