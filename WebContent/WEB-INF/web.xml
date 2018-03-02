@@ -16,7 +16,7 @@
 	</servlet-mapping>
 
 	<listener>
-		<listener-class>Init</listener-class>
+		<listener-class>web.Init</listener-class>
 	</listener>
 
 

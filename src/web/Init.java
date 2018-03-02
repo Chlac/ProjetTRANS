@@ -1,13 +1,23 @@
-import javax.servlet.ServletContext;
+package web;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import core.Application;
 
+/**
+ * 
+ *
+ */
 public class Init implements ServletContextListener {
 
-    @Override
+    
+    /**
+     * Gets called at the server initialization, this is the entry point of the project
+     */
+	@Override
     public void contextInitialized( ServletContextEvent event ) {
-        System.out.println("QSDOIHQSDOIHQOISDHQSDQSDQSD");
+        Application.init();
     }
 
     @Override
