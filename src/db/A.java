@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class A {
-	String url = "jdbc:mysql://127.0.0.1:3306/test";
-	String user = "root";
+	String url = "jdbc:mysql://localhost:3306/test";
+	String user = "baya";
 	String password = "root";
 
 	// Load the Connector/J driver
