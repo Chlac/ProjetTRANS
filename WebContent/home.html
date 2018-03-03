@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" type="text/css" href="css/home_stylesheet.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home_stylesheet.css">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
@@ -352,10 +352,6 @@
             function showFilters() {
                 $("#attributes_panel").animate({ left: "0" });
             }
-            
-            function checkInputFields() {
-                
-            }
         </script>
         
 
@@ -392,7 +388,7 @@
                         <br>
                         <input type="checkbox" name="vehicle1" value="Bike"> Agriculture importante
                         <br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> Variété de commerces
+                        <input type="checkbox" name="vehicle1" value="Bike"> Variété de commerces / magasins
                         <br>
                         <h4>Population</h4>
                         <input type="checkbox" name="vehicle1" value="Bike"> Aisée
@@ -411,15 +407,15 @@
                         <input type="checkbox" name="vehicle1" value="Bike"> Hôpitaux / médecins
                         <br>
                         <h4>Taille et localisation</h4>
-                        <input type="checkbox" name="vehicle1" value="Bike"> Village (-2000)
+                        <input type="checkbox" name="vehicle1" value="Bike"> Village (-2000 habitants)
                         <br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> Petite ville (2000 - 50 000)
+                        <input type="checkbox" name="vehicle1" value="Bike"> Petite ville (2000 - 50 000 habitants)
                         <br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> Moyenne ville (50 000-200 000)
+                        <input type="checkbox" name="vehicle1" value="Bike"> Moyenne ville ( 50 000-200 000 habitants)
                         <br>
-                        <input type="checkbox" name="vehicle1" value="Bike"> Grande ville (+200 000)
+                        <input type="checkbox" name="vehicle1" value="Bike"> Grande ville (+200 000 habitants)
                         <br>
-                        <input type="checkbox" name="vehicle1" value="Bike" onclick="checkInputFields()"> Près de <input type="text" class="distanceInput" id="cityDistance"> https://maps.googleapis.com/maps/api/place/autocomplete/json?input=Vict&types=(cities)&key=YOUR_API_KEY
+                        <input type="checkbox" name="vehicle1" value="Bike"> À moins de _____km de _____
                         <br>
                     </form> 
                 </div>

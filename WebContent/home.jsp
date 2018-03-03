@@ -376,7 +376,7 @@
 
                 <div id="attributes_panel">
                     <form id="attributes_form" 
-                          action="/html.jsp" 
+                          action="${pageContext.request.contextPath}/index" 
                           onchange="updateResults">
                         <h4>Culture</h4>
                         <input type="checkbox" name="culture1" value="animation"> Beaucoup d’animation
