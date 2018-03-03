@@ -6,17 +6,17 @@
 	<display-name>ProjetTRANS</display-name>
 
 	<servlet>
-		<servlet-name>Test</servlet-name>
-		<servlet-class>Test</servlet-class>
+		<servlet-name>IndexServlet</servlet-name>
+		<servlet-class>servlets.IndexServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>Test</servlet-name>
-		<url-pattern>/Test</url-pattern>
+		<servlet-name>IndexServlet</servlet-name>
+		<url-pattern>/IndexServlet</url-pattern>
 	</servlet-mapping>
 
 	<listener>
-		<listener-class>web.Init</listener-class>
+		<listener-class>servlets.Init</listener-class>
 	</listener>
 
 
