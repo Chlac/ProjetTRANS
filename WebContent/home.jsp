@@ -17,7 +17,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <script>
-            function handleClick() {
+            function updateResults() {
+            		alert("Hello! I am an alert box!!");
                 document.getElementById("attributes_form").submit();
             }
         </script>
@@ -377,7 +378,8 @@
                 <div id="attributes_panel">
                     <form id="attributes_form" 
                           action="${pageContext.request.contextPath}/index" 
-                          onchange="updateResults">
+                          method="post"
+                          onchange="updateResults()">
                         <h4>Culture</h4>
                         <input type="checkbox" name="culture1" value="animation"> Beaucoup d’animation
                         <br>
