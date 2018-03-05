@@ -2,29 +2,41 @@ package db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.mysql.jdbc.ResultSetMetaData;
 
 public class A {
-	String url = "jdbc:mysql://localhost:3306/test";
-	String user = "baya";
+	String url = "jdbc:mysql://localhost:3306/dummy";
+	String user = "admin";
 	String password = "root";
 
-	// Load the Connector/J driver
-	
-	// Establish connection to MySQL
-	
+	private Connection connection;
 	
 	public A() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			Connection conn = DriverManager.getConnection(url, user, password);
-			System.out.println("&");
+			connection = DriverManager.getConnection(url, user, password);
+			System.out.println("bd ok");
 		} catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
 			e.printStackTrace();
+			System.out.println("bd pas ok");
 		}
 	}
 	
-	public static void main(String[] args) {
-		A a = new A();
+	public ResultSet executeQuery(String query) {
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			
+			return resultSet;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
+	
 }

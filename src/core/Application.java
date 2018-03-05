@@ -1,8 +1,10 @@
 package core;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import request.A;
+import db.A;
+import request.Criteria;
 
 
 /**
@@ -36,19 +38,34 @@ public class Application {
 	 * Gets called by a servlet to pass the {@link RequestedCriterias} to {@link Inquisitor} 
 	 * 
 	 */
-	public static void passRequest(ArrayList<A> criterias) {
-		instance.inquisitors.add(new Inquisitor(criterias));
+	public static ResultSet passRequest(ArrayList<Criteria> criterias) {
+		return instance.passRequest2(criterias);
 	}
 	
+	/**
+	 * 
+	 * @param request
+	 * @return 
+	 */
+	public static ResultSet passQuery(String request) {
+		return instance.passQuery2(request);
+	}
 	// Dynamic ---------------------------------------------------------------------------------------------------------
 	
 	
 	
 	private ArrayList<Inquisitor> inquisitors = new ArrayList<>();
+	private A db = new A();
 	
-	public static void main(String[] args) {
-		init();
-		Application.passRequest(new ArrayList<A>());
+	// TODO RENAME + DOC
+	private synchronized ResultSet passRequest2(ArrayList<Criteria> criterias) {
+		Inquisitor i = new Inquisitor(criterias);
+		inquisitors.add(i);
+		return i.temp();
+	}
+	
+	public ResultSet passQuery2(String request) {
+		return db.executeQuery(request);
 	}
 	
 }
