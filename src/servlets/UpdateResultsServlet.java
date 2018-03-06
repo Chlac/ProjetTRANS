@@ -2,6 +2,8 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mysql.jdbc.ResultSetMetaData;
+
+import core.Application;
+import request.Criteria;
 
 /**
  * Servlet implementation class UpdateResultsServlet
@@ -33,7 +39,7 @@ public class UpdateResultsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
 	}
 
 	/**
@@ -44,25 +50,62 @@ public class UpdateResultsServlet extends HttpServlet {
 		//doGet(request, response);
 		
 		response.setContentType("text/html");
+		
+		response.setHeader("Cache-control", "no-cache, no-store");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Expires", "-1");
 
-        Gson gson = new Gson(); 
-        JsonObject myObj = new JsonObject();
-
-        Country countryInfo = getInfo(countryCode);
-        JsonElement countryObj = gson.toJsonTree(countryInfo);
-        if(countryInfo.getName() == null){
-            myObj.addProperty("success", false);
-        }
-        else {
-            myObj.addProperty("success", true);
-        }
-        myObj.add("countryInfo", countryObj);
-        out.println(myObj.toString());
-
-        out.close();
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "POST");
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+        response.setHeader("Access-Control-Max-Age", "86400");
 		
 		PrintWriter out = response.getWriter();
-		out.println("tchou");
+
+        Gson gson = new Gson(); 
+        JsonObject jsonObject = new JsonObject();
+
+        //BEAN					Country countryInfo = getInfo(countryCode);
+        //						JsonElement countryObj = gson.toJsonTree(countryInfo);
+        /*if(countryInfo.getName() == null){
+            jsonObject.addProperty("success", false);
+        }
+        else {
+            jsonObject.addProperty("success", true);
+        }*/
+        //ADD ENTIRE BEAN		jsonObject.add("countryInfo", countryObj);
+        
+        //jsonObject.addProperty("test", "TEST");
+        //out.println(jsonObject.toString());
+        
+        
+        System.out.println("POST");
+		//boolean chomage_checked = request.getParameter("culture1") != null;
+		//System.out.println(chomage_checked);
+		ArrayList<Criteria> criterias = new ArrayList<>();
+		
+		for (int i = 0; i < Criteria.as.length; i++) {
+			System.out.println(Criteria.as[i].ATTRIBUT_NAME);
+			if (request.getParameter(Criteria.as[i].ATTRIBUT_NAME) != null) criterias.add(Criteria.as[i]);
+		}
+		
+		if (criterias.size() != 0 ) {
+			ResultSet resultSet = Application.passRequest(criterias);
+			try {
+				ResultSetMetaData rsmd = (ResultSetMetaData) resultSet.getMetaData();
+				while (resultSet.next()) {
+					for (int i = 1; i <= rsmd.getColumnCount(); i++) {
+						out.print(resultSet.getString(i)+ "\t");
+					}
+					out.println("");
+				}	
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+		}
+		
+		out.close();
 		
 	}
 

@@ -78,6 +78,7 @@
                             </form> 
                         </div>
 
+						<script src="js/map.js"></script>
                         <div id="map">
                             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAn2v4PPOSg1vx7fb_bvB-LjuOLTAGTEb0&callback=initMap"
                                     async defer>
@@ -113,7 +114,7 @@
                 
                 
                 
-				<script src="/js/indexJS.js"></script>
+				<script src="js/indexJS.js"></script>
             </body>
         </html>
 
