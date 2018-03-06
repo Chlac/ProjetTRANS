@@ -75,29 +75,30 @@ public class UpdateResultsServlet extends HttpServlet {
         }*/
         //ADD ENTIRE BEAN		jsonObject.add("countryInfo", countryObj);
         
-        //jsonObject.addProperty("test", "TEST");
-        //out.println(jsonObject.toString());
+        jsonObject.addProperty("test", "TEST");
         
         
         System.out.println("POST");
 		//boolean chomage_checked = request.getParameter("culture1") != null;
 		//System.out.println(chomage_checked);
-		ArrayList<Criteria> criterias = new ArrayList<>();
+		
+        ArrayList<Criteria> criterias = new ArrayList<>();
 		
 		for (int i = 0; i < Criteria.as.length; i++) {
 			System.out.println(Criteria.as[i].ATTRIBUT_NAME);
 			if (request.getParameter(Criteria.as[i].ATTRIBUT_NAME) != null) criterias.add(Criteria.as[i]);
 		}
 		
+		String r = "";
 		if (criterias.size() != 0 ) {
 			ResultSet resultSet = Application.passRequest(criterias);
 			try {
 				ResultSetMetaData rsmd = (ResultSetMetaData) resultSet.getMetaData();
 				while (resultSet.next()) {
 					for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-						out.print(resultSet.getString(i)+ "\t");
+						r += (resultSet.getString(i)+ "\t");
 					}
-					out.println("");
+					r += ("");
 				}	
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -105,6 +106,9 @@ public class UpdateResultsServlet extends HttpServlet {
 			
 		}
 		
+		jsonObject.addProperty("result", r);
+		
+		out.println(jsonObject.toString());
 		out.close();
 		
 	}

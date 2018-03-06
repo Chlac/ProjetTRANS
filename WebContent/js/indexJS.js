@@ -53,13 +53,14 @@ $(document).ready(function(){
 
 function doPOST(url, cFunction, data) {
 
+	alert("POSTING");
 	$.post({
 		url: url,
 		data: data,
 		dataType: "json",
 		success: cFunction,
 		error: function(jqXHR, textStatus, errorThrown){
-            //alert("PROUT");
+            alert("PROUT");
 		}
 	});
 
