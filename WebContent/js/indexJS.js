@@ -57,7 +57,7 @@ function doPOST(url, cFunction, data) {
 		url: url,
 		data: data,
 		dataType: "json",
-		success: cFunction, //, dataType: dataType
+		success: cFunction,
 		error: function(jqXHR, textStatus, errorThrown){
             //alert("PROUT");
 		}
@@ -67,5 +67,5 @@ function doPOST(url, cFunction, data) {
 
 function updateResults(data) {
 	//update results...
-	alert("Updating ! : " + data.test);
+	alert("Updating ! : " + data);
 }
