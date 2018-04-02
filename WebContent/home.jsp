@@ -24,7 +24,7 @@
         <div id="header">
             <h2 id="logo" class="headerContent">ÇaDéménage!</h2>
             <div id="connectionButtons">
-            <form action="inscrire.jsp">
+            <form action="seConnecter.jsp">
                 <button id="signin" class="headerContent">Se connecter</button>
                 </form>
             <form action="inscrire.jsp">
