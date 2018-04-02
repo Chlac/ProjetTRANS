@@ -72,6 +72,13 @@ $(document).ready(function(){
         }, 700);
 		
 	});
+	
+	
+	
+	
+	
+
+	
 
 	$("#showmap").click(function () {
 		
