@@ -24,31 +24,25 @@
         <div id="header">
             <h2 id="logo" class="headerContent">ÇaDéménage!</h2>
             <div id="connectionButtons">
-<<<<<<< HEAD
-                <a href="#connection" id="signin" class="headerContent">Se connecter</a>
-                <a href="#inscription" id="signup" class="headerContent">S'inscrire</a>
-=======
-            <form action="inscrire.jsp">
                 <button id="signin" class="headerContent">Se connecter</button>
-                </form>
-            <form action="inscrire.jsp">
                 <button id="signup" class="headerContent">S'inscrire</button>
-                </form> 
-                
->>>>>>> 4c995c5c8ebac62d579d824773bef5d663f5183c
             </div>
         </div>
-        
-        
+
+
         <form id="connection" class="signInSignUpForm">
-        <input type="text" placeholder="Pseudo">
-        <input type="password" placeholder="Password">
+            <button class="close"></button>
+            <input type="text" placeholder="Pseudo" class="textInput">
+            <input type="password" placeholder="Password" class="textInput">
+            <input type="submit" value="" class="submitCo">
         </form>
-        
-        <form id="inscription" class="signInSignUpForm">
-        <input type="email" placeholder="E-mail">
-        <input type="text" placeholder="Pseudo">
-        <input type="password" placeholder="Password">
+
+        <form id="inscription" action="inscrire.jsp" class="signInSignUpForm">
+            <input type="email" placeholder="E-mail" class="textInput">
+            <input type="text" placeholder="Pseudo" class="textInput">
+            <input type="password" placeholder="Mot de passe" class="textInput">
+            <input type="verifPassword" placeholder="Confirmer mot de passe" class="textInput">
+            <input type="submit" value="" class="submitCo">
         </form>
 
         <div id="content">
@@ -186,7 +180,6 @@
                 </div>
 
             </div>
-
 
         </div>
 
