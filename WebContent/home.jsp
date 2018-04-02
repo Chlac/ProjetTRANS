@@ -24,8 +24,18 @@
         <div id="header">
             <h2 id="logo" class="headerContent">ÇaDéménage!</h2>
             <div id="connectionButtons">
+<<<<<<< HEAD
                 <a href="#connection" id="signin" class="headerContent">Se connecter</a>
                 <a href="#inscription" id="signup" class="headerContent">S'inscrire</a>
+=======
+            <form action="inscrire.jsp">
+                <button id="signin" class="headerContent">Se connecter</button>
+                </form>
+            <form action="inscrire.jsp">
+                <button id="signup" class="headerContent">S'inscrire</button>
+                </form> 
+                
+>>>>>>> 4c995c5c8ebac62d579d824773bef5d663f5183c
             </div>
         </div>
         
@@ -176,7 +186,6 @@
                 </div>
 
             </div>
-
 
 
         </div>
