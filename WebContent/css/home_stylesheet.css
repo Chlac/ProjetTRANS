@@ -2,71 +2,298 @@
     box-sizing: border-box;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
+
+
+#header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+
 }
 
+#header, #footer {
+    background-color:#032528;
+    z-index: 4;
+}
+
+.headerContent{
+    margin-bottom: auto;
+    margin-top: auto;
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+
+#connectionButtons a {
+    background: none;
+    border: none;
+    text-decoration:none;
+}
+
+.signInSignUpForm {
+    position: absolute;
+    background-color: #0a3b3f;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    z-index: 3;
+    right: 10px;
+
+}
+
+.signInSignUpForm input {
+    display: inline-block;
+    float: 
+
+}
+
+
 body {
-    font-family: 'Clear Sans', sans-serif;
-    font-size: 12.5px;
+    margin: 0;
+    padding: 0;
     height: 100vh;
+    font-family: 'Clear Sans', sans-serif;
 }
 
 #content {
-    height: calc(100% - (80px + 60px));
-    position: relative;
-
-}
-
-#workspace {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    height: calc(100% - 34px);
+    overflow: hidden;
 
 }
 
 #attributes_panel {
     position: absolute;
+    left: 0;
     overflow: scroll;
-    top: 8%;
-    width: 250px;
-    height: 92%;
+    direction:rtl;
+    width: 350px;
+    height: calc(100% - 34px);
     padding: 20px;
+    font-size: 12.5px;
+    z-index: 2;
+}
+
+#attributes_panel form {
+    direction: ltr;
+}
+
+#attributes_panel h4 {
+    color: white;
+}
+
+.before {
+    content: "";
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    width: 260px;
+    height: 22px;
+    border-radius: 0px 20px 20px 0px;
+    z-index: -1;
+}
+
+#cat1 span {
+    background-color: #880333;00560e
+}
+
+#cat2 span, #cat2 span {
+    background-color: #01383d;
+}
+
+#cat3 span {
+    background-color: #00560e;
+}
+
+#cat4 span, #cat4 span {
+    background-color: #00560e;
+}
+
+#cat5 span {
+    background-color: #00560e;
+}
+
+#attrPanelBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: auto;
+    width: 250px;
+    height: 100%;
     background-color: white;
+    box-shadow: 0px 0px 60px 0px;
     z-index: 1;
 }
 
 #map {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
+    top: 34px;
+    left: 250px;
+    right: 0;
+    height : calc(100% - 184px);
+    z-index: -1;
 }
 
 #result {
     position: absolute;
     right: 0;
-    top: calc(100% - (90px + 60px));
+    bottom: 0;
     height: 150px;
     width: calc(100% - 250px);
-    padding: 20px;
     background-color: white;
+    z-index: 0;
 
 }
 
-#buttons_section {
+.summedResult {
+    -webkit-animation-name: moveResultDown;  /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s;  /* Safari 4.0 - 8.0 */    
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-name: moveResultDown;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.detailedResult {
+    -webkit-animation-name: moveResultUp;  /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 1s;  /* Safari 4.0 - 8.0 */    
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-name: moveResultUp;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes moveResultUp {
+    to {height: calc(100% - 34px);}
+}
+
+@keyframes moveResultUp {
+    to {height: calc(100% - 34px);}
+}
+
+@-webkit-keyframes moveResultDown {
+        to {height: 150px;}
+    }
+
+    @keyframes moveResultDown {
+        to {height: 150px;}
+    }
+
+#buttonsSection {
     position: absolute;
+    top: -30px;
+    right: 12%;
     z-index: 2;
 }
 
-.btn {
-    background-color: DodgerBlue; /* Blue background */
+
+#buttonsSection button { 
+    background-color: #032528;
     border: none; /* Remove borders */
+    border-radius: 8px 8px 0px 0px;
     color: white; /* White text */
-    padding: 12px 16px; /* Some padding */
-    font-size: 16px; /* Set a font size */
+    margin: -8px;
+    padding: 10px 12px; /* Some padding */
+    font-size: 13px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
+}
+
+#showfilters, #showmap {
+    display: none;
+}
+
+#lessInfos {
+    display: none;
+    position: absolute;
+    top: -40px;
+    right: 12%;
+    color: white; /* White text */
+    margin: -8px;
+    padding: 10px 12px; /* Some padding */
+    font-size: 13px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    background-color: gray;
+    border-radius: 0px 0px 8px 8px;
+    border: none;
+    z-index: 2;
+}
+
+#cityPanelStaticStuff {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+#cityPromoPicture {
+    width: 40%;
+    height: 100%;
+    float: left;
+    background-color: aqua;
+    clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
+}
+
+#arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    padding: 10px;
+
+}
+
+.arrow {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+
+#score {
+    position: absolute;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 32px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    top: -10%;
+    z-index: 2;
+}
+
+#exposant {
+    font-size: 15px;
+}
+
+#cityPanelsSlideshow {
+    position: absolute;
+    width: 1000%;
+    height: 100%;
+    z-index: 0;
+    overflow: scroll;
+
+}
+
+#cityPanelsSlideshow h4 {
+    margin: 2px;
+}
+
+#cityPanelsSlideshow h5 {
+    color: darkgray;
+    margin: 3px;
+}
+
+.citySumPanel {
+    float: left;
+    text-align: right;
+    width: 10%;
+    height: 100%;
+
 }
 
 .distanceInput {
@@ -82,18 +309,6 @@ body {
     width: 60px;
 }
 
-#header, #footer {
-    background-color:#070817;
-    color: azure;
-    padding:15px;
-    text-align:left;
-    z-index: 0;
-}
-
-#header {
-    height: 80px;
-}
-
 #footer {
     height: 60px;
 }
@@ -101,30 +316,91 @@ body {
 @media only screen and (max-width:580px) {
     /* For mobile phones: */
 
-    #workspace {
-        height: 60%;
+    #content {
+
     }
 
     #attributes_panel {
-        overflow: scroll;
-        top: 0%;
+        left: 0;
+        right: 0;
+        height: calc(65% - 34px);
         width: 100%;
-        height: 100%;
+        padding: 10%;
+        z-index: 1;
     }
 
-    #buttons_section {
+    #attributes_panel form {
+        padding-left: 10%;
+    }
+
+    #attributes_panel h4 {
+        color: black;
+    }
+
+    #attrPanelBackground {
         position: absolute;
-        top: 0%;
-        z-index: 2;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 82%;
+        height: 100%;
+        background-color: white;
+        box-shadow: 0px 0px 100px 6px;
+        z-index: 0;
+    }
+
+    .before {
+        position: absolute;
+        left: 0;
+        width: 60px; /* SHOULD BE PERCENTS */
+        height: 22px;
+        border-radius: 0px 20px 20px 0px;
+        background-color: aqua;
+    }
+
+
+    .after {
+        content: "";
+        position: absolute;
+        right: 0;
+        display: inline-block;
+        width: 60px;
+        height: 22px;
+        border-radius: 20px 0px 0px 20px;
+        background-color: red;
+        z-index: -1;
+    }
+
+    #map {
+        left: 0;
+        width: 100%;
+        height: calc(65% - 34px);
+        z-index: -1;
     }
 
     #result {
-        height: 40%;
-        top: 60%;
+        height: 35%;
         width: 100%;
-        padding: 20px;
-        background-color: white;
+        overflow: visible !important;
+        box-shadow: 0px 0px 110px 0px rgba(0, 0, 0, 0.2);
+        z-index: 2;
 
     }
+
+
+    @-webkit-keyframes moveResultDown {
+        to {height: 35%;}
+    }
+
+    @keyframes moveResultDown {
+        to {height: 35%;}
+    }
+
+
+    #showfilters, #showmap {
+        display: inline;
+    }
+
+
 
 }

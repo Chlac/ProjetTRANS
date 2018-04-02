@@ -16,6 +16,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mysql.jdbc.ResultSetMetaData;
 
+import beans.City;
 import core.Application;
 import request.Criteria;
 
@@ -65,23 +66,27 @@ public class UpdateResultsServlet extends HttpServlet {
         Gson gson = new Gson(); 
         JsonObject jsonObject = new JsonObject();
 
-        //BEAN					Country countryInfo = getInfo(countryCode);
-        //						JsonElement countryObj = gson.toJsonTree(countryInfo);
-        /*if(countryInfo.getName() == null){
-            jsonObject.addProperty("success", false);
-        }
-        else {
-            jsonObject.addProperty("success", true);
-        }*/
-        //ADD ENTIRE BEAN		jsonObject.add("countryInfo", countryObj);
+        City city = new City("Paris");
+        City city1 = new City("Orléans");
         
-        jsonObject.addProperty("test", "TEST");
+        JsonElement cityObj = gson.toJsonTree(city);
+        if(city.getName() == null) jsonObject.addProperty("success", false);
+        else jsonObject.addProperty("success", true);
+
+        JsonElement cityObj1 = gson.toJsonTree(city1);
+        if(city1.getName() == null) jsonObject.addProperty("success", false);
+        else jsonObject.addProperty("success", true);
+        
+        jsonObject.add("1", cityObj);
+        jsonObject.add("2", cityObj1);
+        
+        //jsonObject.addProperty("test", "TEST");
         
         
         System.out.println("POST");
 		//boolean chomage_checked = request.getParameter("culture1") != null;
 		//System.out.println(chomage_checked);
-		
+		/*
         ArrayList<Criteria> criterias = new ArrayList<>();
 		
 		for (int i = 0; i < Criteria.as.length; i++) {
@@ -104,9 +109,9 @@ public class UpdateResultsServlet extends HttpServlet {
 				// TODO: handle exception
 			}
 			
-		}
+		}*/
 		
-		jsonObject.addProperty("result", r);
+		//jsonObject.addProperty("result", r);
 		
 		out.println(jsonObject.toString());
 		out.close();
