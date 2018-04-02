@@ -25,26 +25,66 @@
     cursor: pointer;
 }
 
-#connectionButtons a {
+#connectionButtons button {
     background: none;
     border: none;
-    text-decoration:none;
 }
 
 .signInSignUpForm {
     position: absolute;
     background-color: #0a3b3f;
+    width: 200px;
+    top: -70px;
     padding: 10px;
     border-radius: 0px 0px 10px 10px;
     z-index: 3;
     right: 10px;
+    text-align: center;
 
 }
 
-.signInSignUpForm input {
-    display: inline-block;
-    float: 
+.signInSignUpFormVisible {
+    -webkit-animation-name: slideDown;  /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 0.2s;  /* Safari 4.0 - 8.0 */    
+    -webkit-animation-fill-mode: forwards; /* Safari 4.0 - 8.0 */
+    animation-name: slideDown;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
 
+@-webkit-keyframes slideDown {
+    to {top: 34px;}
+}
+
+@keyframes slideDown {
+    to {top: 34px;}
+}
+
+.textInput {
+    margin: 6px;
+    padding: 5px;
+    width: 90%;
+    border-radius: 3px;
+
+}
+
+.submitCo {
+    position: relative;
+    top: 25px;
+    background-color: orange;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+}
+
+.close {
+    position: relative;
+    top: 25px;
+    background-color: orange;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
 }
 
 

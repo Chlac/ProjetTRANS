@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ page import = "java.io.*" %>
-
+        
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,15 +24,29 @@
         <div id="header">
             <h2 id="logo" class="headerContent">ÇaDéménage!</h2>
             <div id="connectionButtons">
+
             <form action="seConnecter.jsp">
+
                 <button id="signin" class="headerContent">Se connecter</button>
-                </form>
-            <form action="inscrire.jsp">
                 <button id="signup" class="headerContent">S'inscrire</button>
-                </form> 
-                
             </div>
         </div>
+
+
+        <form id="connection" class="signInSignUpForm">
+            <button class="close"></button>
+            <input type="text" placeholder="Pseudo" class="textInput">
+            <input type="password" placeholder="Password" class="textInput">
+            <input type="submit" value="" class="submitCo">
+        </form>
+
+        <form id="inscription" action="inscrire.jsp" class="signInSignUpForm">
+            <input type="email" placeholder="E-mail" class="textInput">
+            <input type="text" placeholder="Pseudo" class="textInput">
+            <input type="password" placeholder="Mot de passe" class="textInput">
+            <input type="verifPassword" placeholder="Confirmer mot de passe" class="textInput">
+            <input type="submit" value="" class="submitCo">
+        </form>
 
         <div id="content">
 
@@ -169,7 +183,6 @@
                 </div>
 
             </div>
-
 
         </div>
 
