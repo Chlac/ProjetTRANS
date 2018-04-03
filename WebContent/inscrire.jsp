@@ -16,9 +16,8 @@
 	<form>
 		Pseudo:<br> <input type="text" id="pseudo" name="pseudo"><br>
 		Mail:<br> <input type="text" id="mail" name="mail"><br>
-		Mot de Passe:<br> <input type="text" id="motdepasse"
-			name="motdepasse"><br> Confirmer Mot de Passe:<br>
-		<input type="text" id="motdepasse2" name="motdepasse2"><br>
+		Mot de Passe:<br> <input type="text" id="motdepasse"name="motdepasse"><br> 
+		Confirmer Mot de Passe:<br> <input type="text" id="motdepasse2" name="motdepasse2"><br>
 
 
 		<input type="submit" id="confirmer" value="Confirmer" onclick="truc()">
@@ -27,6 +26,7 @@
 	<script>
 		function truc() {
 			
+<<<<<<< HEAD
 			alert("test");
 
 			var pseudo = $("#pseudo").val();
@@ -54,6 +54,32 @@
 			var ciphertext = encryptedPseudo.ciphertext
 					.toString(CryptoJS.enc.Base64);
 
+=======
+			
+			
+
+			/*var pseudo = document.getElementById('pseudo').value;
+			var mail = document.getElementById('pseudo').value;
+			var mdp = document.getElementById('pseudo').value;
+			
+			var key = "dbrCUoc4z9EFJTLBSsZtQw==";*/
+			
+			
+
+			 var secret = "coucou";
+				
+				var key = "dbrCUoc4z9EFJTLBSsZtQw==";
+			 
+				// Entré : String Utf8
+				var test = CryptoJS.AES.encrypt(secret, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+			 
+				// Entré : String Base 64
+				var pass = CryptoJS.AES.decrypt(test, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+				console.log(pass.toString(CryptoJS.enc.Utf8) + "#");
+			
+			
+		
+>>>>>>> 63070abaff86f58cda0c43066dcf0623e943622f
 		}
 	</script>
 
