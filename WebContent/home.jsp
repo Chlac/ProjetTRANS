@@ -27,8 +27,12 @@
 
             <form action="seConnecter.jsp">
 
-                <button id="signin" class="headerContent">Se connecter</button>
-                <button id="signup" class="headerContent">S'inscrire</button>
+                <button id="signin" class="headerContent">Se connecter</button> </form>
+                
+                
+            <form action="inscrire.jsp">
+           		<button id="signup" class="headerContent">S'inscrire</button></form>
+                
             </div>
         </div>
 
