@@ -1,19 +1,11 @@
-:root {
-    --headerSize: 38px;
-}
-
 * {
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Clear Sans', sans-serif;
-}
+
 
 #header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 8px;
@@ -21,7 +13,6 @@ body {
 }
 
 #header, #footer {
-    position: relative;
     background-color:#032528;
     z-index: 4;
 }
@@ -32,12 +23,6 @@ body {
     font-size: 15px;
     color: white;
     cursor: pointer;
-}
-
-#content {
-    height: calc(100vh - var(--headerSize));
-    width: 100vw;
-    overflow: hidden;
 }
 
 #connectionButtons button {
@@ -72,11 +57,11 @@ body {
 }
 
 @-webkit-keyframes slideDown {
-    to {top: var(--headerSize);}
+    to {top: 34px;}
 }
 
 @keyframes slideDown {
-    to {top: var(--headerSize);}
+    to {top: 34px;}
 }
 
 .textInput {
@@ -110,18 +95,35 @@ body {
     height: 20px;
 }
 
+
+body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+    font-family: 'Clear Sans', sans-serif;
+}
+
+#c {
+    
+}
+
+#content {
+    height: calc(100% - 34px);
+    overflow: hidden;
+
+}
+
 #attributes_panel {
     position: absolute;
     left: 0;
     overflow: scroll;
     direction:rtl;
     width: 350px;
-    height: calc(100% - var(--headerSize));
+    height: calc(100% - 34px);
     padding-left: 15px;
     font-size: 12.5px;
-    z-index: 3;
+    z-index: 2;
 }
-
 
 #attributes_panel form {
     direction: ltr;
@@ -164,21 +166,23 @@ body {
 
 #attrPanelBackground {
     position: absolute;
+    top: 0;
     left: 0;
+    margin: auto;
     width: 250px;
     height: 100%;
     background-color: white;
     box-shadow: 0px 0px 60px 0px;
-    z-index: 2;
+    z-index: 1;
 }
 
 #map {
     position: absolute;
-    top: var(--headerSize);
+    top: 34px;
     left: 250px;
     right: 0;
     height : calc(100% - 184px);
-    z-index: 0;
+    z-index: -1;
 }
 
 #result {
@@ -188,7 +192,7 @@ body {
     height: 150px;
     width: calc(100% - 250px);
     background-color: white;
-    z-index: 1;
+    z-index: 0;
 
 }
 
@@ -212,21 +216,21 @@ body {
 
 @-webkit-keyframes moveResultUp {
     from {height: 150px;}
-    to {height: calc(100% - var(--headerSize));}
+    to {height: calc(100% - 34px);}
 }
 
 @keyframes moveResultUp {
     from {height: 150px;}
-    to {height: calc(100% - var(--headerSize));}
+    to {height: calc(100% - 34px);}
 }
 
 @-webkit-keyframes moveResultDown {
-    from {height: calc(100% - var(--headerSize));}
+    from {height: calc(100% - 34px);}
     to {height: 150px;}
 }
 
 @keyframes moveResultDown {
-    from {height: calc(100% - var(--headerSize));}
+    from {height: calc(100% - 34px);}
     to {height: 150px;}
 }
 
@@ -269,32 +273,64 @@ body {
     z-index: 2;
 }
 
-#cityPromoPicture {
+#cityPanelStaticStuff {
     position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+}
+
+#cityPromoPicture {
     width: 40%;
     height: 100%;
     float: left;
     background-color: aqua;
     clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
-    z-index: 1;
 }
 
+#arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    padding: 10px;
+
+}
+
+.arrow {
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+
+#score {
+    position: absolute;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 32px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    top: -10%;
+    z-index: 2;
+}
+
+#exposant {
+    font-size: 15px;
+}
 
 #cityPanelsSlideshow {
-    position: relative;
-    right: 0;
-    width: 100%;
+    position: absolute;
+    width: 1000%;
     height: 100%;
     z-index: 0;
-    overflow: hidden;
+    overflow: scroll;
 
-}
-
-#cityPanels {
-    position: relative;
-    height: 100%;
-    width: 1000%;
-    z-index: -1;
 }
 
 #cityPanelsSlideshow h4 {
@@ -331,46 +367,6 @@ body {
     height: 60px;
 }
 
-
-#arrows {
-    position: absolute;
-    display: flex;
-    right: 0;
-    justify-content: space-between;
-    width: 60%;
-    padding: 10px;
-
-}
-
-.arrow {
-    border: none;
-    background: transparent;
-    font-size: 20px;
-    cursor: pointer;
-
-}
-
-
-#score {
-    position: absolute;
-    background: black;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-size: 32px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 12px;
-    padding-right: 12px;
-    top: -24px;
-    left: 20%;
-    z-index: 2;
-}
-
-#exposant {
-    font-size: 15px;
-}
-
 @media only screen and (max-width:580px) {
     /* For mobile phones: */
 
@@ -381,10 +377,10 @@ body {
     #attributes_panel {
         left: 0;
         right: 0;
-        height: calc(65% - var(--headerSize));
+        height: calc(65% - 34px);
         width: 100%;
         padding: 10%;
-        z-index: 2;
+        z-index: 1;
     }
 
     #attributes_panel form {
@@ -404,7 +400,7 @@ body {
         height: 100%;
         background-color: white;
         box-shadow: 0px 0px 100px 6px;
-        z-index: 1;
+        z-index: 0;
     }
 
     .before {
@@ -432,35 +428,36 @@ body {
     #map {
         left: 0;
         width: 100%;
-        height: calc(65% - var(--headerSize));
-        z-index: 0;
+        height: calc(65% - 34px);
+        z-index: -1;
     }
 
     #result {
         height: 35%;
         width: 100%;
+        overflow: visible !important;
         box-shadow: 0px 0px 110px 0px rgba(0, 0, 0, 0.2);
-        z-index: 3;
+        z-index: 2;
 
     }
 
     @-webkit-keyframes moveResultUp {
         from {height: 35%;}
-        to {height: calc(100% - var(--headerSize));}
+        to {height: calc(100% - 34px);}
     }
 
     @keyframes moveResultUp {
         from {height: 35%;}
-        to {height: calc(100% - var(--headerSize));}
+        to {height: calc(100% - 34px);}
     }
 
     @-webkit-keyframes moveResultDown {
-        from {height: calc(100% - var(--headerSize));}
+        from {height: calc(100% - 34px);}
         to {height: 35%;}
     }
 
     @keyframes moveResultDown {
-        from {height: calc(100% - var(--headerSize));}
+        from {height: calc(100% - 34px);}
         to {height: 35%;}
     }
 

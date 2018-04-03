@@ -26,6 +26,7 @@
 
 	<script>
 		function truc() {
+			
 			alert("test");
 
 			var pseudo = $("#pseudo").val();
