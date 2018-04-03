@@ -86,7 +86,7 @@ public class UpdateResultsServlet extends HttpServlet {
         System.out.println("POST");
 		//boolean chomage_checked = request.getParameter("culture1") != null;
 		//System.out.println(chomage_checked);
-		/*
+		
         ArrayList<Criteria> criterias = new ArrayList<>();
 		
 		for (int i = 0; i < Criteria.as.length; i++) {
@@ -102,16 +102,18 @@ public class UpdateResultsServlet extends HttpServlet {
 				while (resultSet.next()) {
 					for (int i = 1; i <= rsmd.getColumnCount(); i++) {
 						r += (resultSet.getString(i)+ "\t");
+
+
 					}
-					r += ("");
+					r += ("\n");
+
 				}	
 			} catch (Exception e) {
 				// TODO: handle exception
-			}
-			
-		}*/
-		
-		//jsonObject.addProperty("result", r);
+			}	
+		}
+		System.out.println(r);
+		jsonObject.addProperty("result", r);
 		
 		out.println(jsonObject.toString());
 		out.close();

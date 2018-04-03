@@ -2,17 +2,23 @@ package core;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import com.mysql.jdbc.ResultSetMetaData;
 
 import request.Criteria;
+import sun.swing.text.CountingPrintable;
 
 /**
  * Manage the creation of SQL request from the requested criteria
  *
  */
 public class Inquisitor{
-
 	// Static
-	
+	static int n = 0;
 	
 	
 	// Dynamic
@@ -26,8 +32,74 @@ public class Inquisitor{
 	}
 
 	
+	void fuckSQL() {
+		
+		HashMap<String, ArrayList<Double>> merde = new HashMap<>();
+		int size = request.size();
+		for (int i = 0; i < size; i++) {
+			String query = "SELECT codGeo, score FROM "+ request.get(i).TABLE_NAME + " ORDER BY codGeo";
+			ResultSet rs = Application.passQuery(query);
+			try {
+				ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+				if (i == 0) {
+					while (rs.next()) {
+						ArrayList<Double> t = new ArrayList<>(size);
+						t.add(rs.getDouble(2));
+						merde.put(rs.getString(1),t);
+					}
+				}
+				else {
+					while (rs.next()) {
+						String s = rs.getString(1);
+						merde.get(rs.getString(1)).add(rs.getDouble(2));
+						//t.add(rs.getDouble(2));
+						//merde.put(rs.getString(1),t);
+						
+					}						
+				}
+			}
+			catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		
+		
+		ArrayList<Entry<String, ArrayList<Double>>> list = new ArrayList<>();
+		for (Entry<String, ArrayList<Double>> entry : merde.entrySet()) {
+			double temp = 0.0;
+			for (Double d : entry.getValue()) {
+				temp+=d;
+			}
+			temp /=size;
+			entry.getValue().add(0, temp);
+			list.add(entry);
+		}
+		merde = null;
+		list.sort(new Comparator<Entry<String, ArrayList<Double>>>() {
+			@Override
+			public int compare(Entry<String, ArrayList<Double>> o1, Entry<String, ArrayList<Double>> o2) {
+				if (o1.getValue().get(0) > o2.getValue().get(0)) {
+					return -1;
+				}
+				else if(o1.getValue().get(0) < o2.getValue().get(0)) {
+					return 1;
+				}
+				return 0;
+			}
+
+			
+		});
+		for (int j = 0; j < 10; j++) {
+			System.out.print(list.get(j).getKey()+"\t");
+			for (double d : list.get(j).getValue()) {
+				System.out.print(d+"\t");
+			}
+			System.out.println("");
+		}
+	}
 	
 	ResultSet temp() {
+		
 		String req = "SELECT "+ request.get(0).TABLE_NAME+".CODGEO,";
 		for (int i = 0; i < request.size(); i++) {
 			req+= " "+request.get(i).TABLE_NAME+".score, ";
@@ -44,6 +116,7 @@ public class Inquisitor{
 		}
 		req += " ORDER BY average DESC LIMIT 10";
 		System.out.println(req);
+		
 		return startQuery(req);
 	}
 	

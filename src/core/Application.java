@@ -61,7 +61,9 @@ public class Application {
 	private synchronized ResultSet passRequest2(ArrayList<Criteria> criterias) {
 		Inquisitor i = new Inquisitor(criterias);
 		inquisitors.add(i);
-		return i.temp();
+		//return i.temp();
+		i.fuckSQL();
+		return null;
 	}
 	
 	public ResultSet passQuery2(String request) {
