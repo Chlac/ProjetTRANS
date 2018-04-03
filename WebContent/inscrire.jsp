@@ -1,0 +1,61 @@
+<%@ page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>S'inscrire</title>
+</head>
+<body>
+
+
+
+
+	<form>
+		Pseudo:<br> <input type="text" id="pseudo" name="pseudo"><br>
+		Mail:<br> <input type="text" id="mail" name="mail"><br>
+		Mot de Passe:<br> <input type="text" id="motdepasse"name="motdepasse"><br> 
+		Confirmer Mot de Passe:<br> <input type="text" id="motdepasse2" name="motdepasse2"><br>
+
+
+		<input type="submit" id="confirmer" value="Confirmer" onclick="truc()">
+	</form>
+
+	<script>
+		function truc() {
+			
+			
+			
+
+			/*var pseudo = document.getElementById('pseudo').value;
+			var mail = document.getElementById('pseudo').value;
+			var mdp = document.getElementById('pseudo').value;
+			
+			var key = "dbrCUoc4z9EFJTLBSsZtQw==";*/
+			
+			
+
+			 var secret = "coucou";
+				
+				var key = "dbrCUoc4z9EFJTLBSsZtQw==";
+			 
+				// Entré : String Utf8
+				var test = CryptoJS.AES.encrypt(secret, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+			 
+				// Entré : String Base 64
+				var pass = CryptoJS.AES.decrypt(test, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+				console.log(pass.toString(CryptoJS.enc.Utf8) + "#");
+			
+			
+		
+		}
+	</script>
+
+
+
+
+
+</body>
+</html>
