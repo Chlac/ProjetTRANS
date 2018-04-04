@@ -11,8 +11,6 @@
 <body>
 
 
-
-
 	<form>
 		Pseudo:<br> <input type="text" id="pseudo" name="pseudo"><br>
 		Mail:<br> <input type="text" id="mail" name="mail"><br>
@@ -26,7 +24,6 @@
 	<script>
 		function truc() {
 			
-<<<<<<< HEAD
 			alert("test");
 
 			var pseudo = $("#pseudo").val();
@@ -53,9 +50,7 @@
 
 			var ciphertext = encryptedPseudo.ciphertext
 					.toString(CryptoJS.enc.Base64);
-
-=======
-			
+	
 			
 
 			/*var pseudo = document.getElementById('pseudo').value;
@@ -78,8 +73,6 @@
 				console.log(pass.toString(CryptoJS.enc.Utf8) + "#");
 			
 			
-		
->>>>>>> 63070abaff86f58cda0c43066dcf0623e943622f
 		}
 	</script>
 

@@ -1,18 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Se Connecter</title>
+<title>S'inscrire</title>
 </head>
 <body>
-	
 
+<%= request.getParameter("pseudo") %>
 
-		Pseudo:<br> <input type="text" id="pseudo" name="pseudo"><br>
-		Mot de Passe:<br> <input type="text" id="motdepasse" name="motdepasse"><br>
-		<input type="submit" id="confimer" value="Confirmer">
 
 </body>
 </html>

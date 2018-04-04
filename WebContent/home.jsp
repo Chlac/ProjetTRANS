@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.*"%>
 
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,30 +28,35 @@
                 <button id="signin" class="headerContent">Se connecter</button>
                 <button id="signup" class="headerContent">S'inscrire</button>
             </div>
+            
+            <%= request.getParameter("pseudo") %>
         </div>
 
 
         <div id="connection" class="formPanel">
+
             <button class="close"><i class="fas fa-times"></i></button>
 
-            <form class="signInSignUpForm">
+            <form id="signinForm" action="home.jsp" class="signInSignUpForm">
 
-                <input type="text" placeholder="Pseudo" class="textInput">
-                <input type="password" placeholder="Confirmer mot de passe" class="textInput">
-                <button type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
+                <input id="siPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
+                <input id="siPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
+                <button id="signinSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
+                
             </form>
         </div>
 
         <div id="inscription" class="formPanel">
+
             <button class="close"><i class="fas fa-times"></i></button>
 
-            <form action="inscrire.jsp" class="signInSignUpForm">
+            <form id="signupForm" action="home.jsp" class="signInSignUpForm">
 
-                <input type="email" placeholder="E-mail" class="textInput">
-                <input type="text" placeholder="Pseudo" class="textInput">
-                <input type="password" placeholder="Mot de passe" class="textInput">
-                <input type="verifPassword" placeholder="Confirmer mot de passe" class="textInput">
-                <button type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
+                <input id="suMail" name="mail" type="email" placeholder="E-mail" class="textInput">
+                <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
+                <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
+                <input id="suVPassword" name="password" type="verifPassword" placeholder="Confirmer mot de passe" class="textInput">
+                <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
             </form>
         </div>
 
@@ -116,72 +122,78 @@
                 </script>
             </div>
 
-            <div id="result">
 
-                <button id="lessInfos">- d'infos <i class="fa fa-caret-down" aria-hidden="true"></i></button>
+            <div id="resultSection">
 
                 <div id="buttonsSection">
+                    
                     <button id="showfilters"><i class="fa fa-filter" aria-hidden="true"></i></button>
                     <button id="showmap"><i class="fa fa-map" aria-hidden="true"></i></button>
                     <button id="moreInfos">+ d'infos <i class="fa fa-caret-up" aria-hidden="true"></i></button>
 
                 </div>
 
-                <div id="score">1<sup id="exposant">#</sup></div>
+                <div id="result">
 
-                <div id="cityPromoPicture">
-                    <img src="truc.jpg" alt="truc" />
-                </div>
+                    <button id="lessInfos">- d'infos <i class="fa fa-caret-down" aria-hidden="true"></i></button>
 
-                <div id="cityPanelsSlideshow">
+                    <div id="score">1<sup id="exposant">#</sup></div>
 
-                    <div id="arrows">
-                        <button id="arrowleft" class="arrow"><i class="fas fa-angle-left"></i></button>
-                        <button id="arrowright" class="arrow"><i class="fas fa-angle-right"></i></button>
+                    <div id="cityPromoPicture">
+                        <img src="truc.jpg" alt="truc" />
                     </div>
 
-                    <div id=cityPanels>
+                    <div id="cityPanelsSlideshow">
 
-                        <div id="1#" class="citySumPanel">
-                            <h4>C1</h4>
-                            <h5>Dep - More</h5>
+                        <div id="arrows">
+                            <button id="arrowleft" class="arrow"><i class="fas fa-angle-left"></i></button>
+                            <button id="arrowright" class="arrow"><i class="fas fa-angle-right"></i></button>
                         </div>
-                        <div id="2#" class="citySumPanel">
-                            <h4>C2</h4>
-                            <h5>Dep - More</h5>
+
+                        <div id=cityPanels>
+
+                            <div id="1#" class="citySumPanel">
+                                <h4>C1</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="2#" class="citySumPanel">
+                                <h4>C2</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="3#" class="citySumPanel">
+                                <h4>C3</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="4#" class="citySumPanel">
+                                <h4>C4</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="5#" class="citySumPanel">
+                                <h4>C5</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="6#" class="citySumPanel">
+                                <h4>C6</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="7#" class="citySumPanel">
+                                <h4>C7</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="8#" class="citySumPanel">
+                                <h4>C8</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="9#" class="citySumPanel">
+                                <h4>C9</h4>
+                                <h5>Dep - More</h5>
+                            </div>
+                            <div id="10#" class="citySumPanel">
+                                <h4>C10</h4>
+                                <h5>Dep - More</h5>
+                            </div>
                         </div>
-                        <div id="3#" class="citySumPanel">
-                            <h4>C3</h4>
-                            <h5>Dep - More</h5>
-                        </div>
-                        <div id="4#" class="citySumPanel">
-                            <h4>C4</h4>
-                            <h5>Dep - More</h5>
-                        </div>
-                        <div id="5#" class="citySumPanel">
-                            <h4>C5</h4>
-                            <h5>Dep - More</h5>
-                        </div>
-                        <div id="6#" class="citySumPanel">
-                            <h4>C6</h4>
-                            <h5>Dep - More</h5>
-                        </div>
-                        <div id="7#" class="citySumPanel">
-                            <h4>C7</h4>
-                            <h5>Dep - More</h5>
-                        </div>
-                        <div id="8#" class="citySumPanel">
-                            <h4>C8</h4>
-                            <h5>Dep - More</h5>
-                        </div>
-                        <div id="9#" class="citySumPanel">
-                            <h4>C9</h4>
-                            <h5>Dep - More</h5>
-                        </div>
-                        <div id="10#" class="citySumPanel">
-                            <h4>C10</h4>
-                            <h5>Dep - More</h5>
-                        </div>
+
                     </div>
 
                 </div>
