@@ -68,7 +68,7 @@
             <div id="attributes_panel">
                 <form id="attributes_form">
                     <h4 id="cat1"><span class="before"></span>Culture</h4>
-                    <input type="checkbox" name="animation" value="animation"> Beaucoup d’animation
+                    <input type="checkbox" name="animation" value="animation"> Animation / Évènementiel
                     <br>
                     <input type="checkbox" name="musee" value="temp"> - Musées / Salles d'expo -
                     <br>

@@ -198,7 +198,10 @@ function updateResults(data) {
 	//update results...
 
 	$.each(data, function (index, city) {
-		alert("Updating ! : " + city.name);
+        
+		alert("Updating ! : " + city.name + index);
+        $("#" + index + "#" + ".cityName").text(city.name)
+        
 	});
 
 }
