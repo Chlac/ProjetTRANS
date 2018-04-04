@@ -7,12 +7,37 @@ $(document).ready(function () {
 	var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
 	if ($(window).width() < 580) {
+		$("#attributes_panel").css("height", $("#content").outerHeight(true) - $("#result").outerHeight(true));
 		$("#cat2").children("span").attr("class", "after");
 		$("#cat4").children("span").attr("class", "after");
 	} else {
 		$("#cat2").children("span").attr("class", "before");
 		$("#cat4").children("span").attr("class", "before");
 	}
+
+	$("#signinForm").submit(function () {
+		alert("SignIn");
+
+		$("#siPseudo").val("Caca");
+		$("#sPassword").val("Caca");
+
+	});
+
+	$("#signupForm").submit(function () {
+
+		alert("SignUp");
+
+		var mail = $("#suMail").val();
+		var pseudo = $("#suPseudo").val();
+		var mdp = $("#suPassword").val();
+		var verifMdp = $("#suVPassword").val();
+
+		$("#suMail").val(encryptedMail);
+		$("#suPseudo").val(encryptedPseudo);
+		$("#suPassword").val(encryptedPassword);
+		$("#suVPassword").val(encryptedPasswordVerif); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
+
+	});
 
 	$("#attributes_form").change(function() {
 		doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
@@ -54,14 +79,13 @@ $(document).ready(function () {
 
 
 	$("#moreInfos").click(function () {
-		
 
-		$("#result").removeClass("summedResult").addClass("detailedResult").one(animationEnd, function() {
+		$("#resultSection").removeClass("summedResult").addClass("detailedResult").one(animationEnd, function() {
 
 			$( this ).off( animationEnd );
 			$("#lessInfos").css("display", "block");
 			$("#lessInfos").animate({
-				top : "0%"
+				top : "35px"
 			})
 		});
 
@@ -71,11 +95,11 @@ $(document).ready(function () {
 	$("#lessInfos").click(function () {
 
 		$(this).animate({
-			top : "-40px"
+			top : "0px"
 		}, {
 			complete: function() {
 				$(this).hide();
-				$("#result").addClass("summedResult").removeClass("detailedResult");
+				$("#resultSection").addClass("summedResult").removeClass("detailedResult");
 			}
 		});
 
@@ -130,8 +154,10 @@ $(document).ready(function () {
 $(window).on('resize', function() {
 
 	if($(window).width() < 580) {
-		if($("#result").height() !== $("#content").outerHeight(true)) {
-			$("#result").css("height", "35%");
+		
+		if($("#resultSection").outerHeight(true) < $("#content").outerHeight(true)) {
+			$("#attributes_panel").css("height", $("#content").outerHeight(true) - $("#result").outerHeight(true));
+			$("#resultSection").css("height", "35%");
 			$("#map").css('height', $("#content").outerHeight(true) - $("#result").outerHeight(true));
 		}
 
@@ -140,8 +166,8 @@ $(window).on('resize', function() {
 
 	}
 	else {
-		if($("#result").height() !== $("#content").outerHeight(true)) {
-			$("#result").css("height", "150px");
+		if($("#resultSection").height() != $("#content").outerHeight(true)) {
+			$("#resultSection").css("height", "190px");
 			$("#map").css('height', $("#content").outerHeight(true) - $("#result").outerHeight(true));
 		}
 
