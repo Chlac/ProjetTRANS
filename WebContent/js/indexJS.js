@@ -30,13 +30,8 @@ $(document).ready(function () {
         var pseudo = $("#suPseudo").val();
         var mdp = $("#suPassword").val();
         var verifMdp = $("#suVPassword").val();
-        
-        $("#suMail").val("Caca");
-        $("#suPseudo").val("Caca");
-        $("#suPassword").val("Caca");
-        $("#suVPassword").val("Caca");
 
-        /*
+        /* ANCIENNE VERSION
         
         var encryptedPseudo = Crypto.JS.AES.encrypt(pseudo, key, {
             iv : CryptoJS.enc.Hex.parse(iv)
@@ -63,10 +58,48 @@ $(document).ready(function () {
         // Entré : String Base 64
         var pass = CryptoJS.AES.decrypt(test, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
 
-        console.log(pass.toString(CryptoJS.enc.Utf8) + "#");*//*
+        console.log(pass.toString(CryptoJS.enc.Utf8) + "#");
 
         
         */
+        
+        
+        /* NOUVELLE VERSION
+          
+          	var date = new Date();
+			
+			var pseudo = document.getElementById('pseudo').value;
+			var mail = document.getElementById('mail').value;
+			var mdp = document.getElementById('motdepasse').value;
+			
+			mdp = mdp + date.toString();
+			
+			alert(mdp);
+			
+			var key = "dbrCUoc4z9EFJTLBSsZtQw==";
+
+
+
+			// PROCESS
+			var encrypted = CryptoJS.AES.encrypt(pseudo, key);
+			var encrypted = CryptoJS.AES.encrypt(mail, key);
+			var encrypted = CryptoJS.AES.encrypt(mdp, key);
+			
+			var decrypted = CryptoJS.AES.decrypt(encrypted, key);
+			
+			
+			console.log(pseudo);
+			console.log(encrypted);
+			console.log(decrypted);
+			console.log(decrypted.toString(CryptoJS.enc.Utf8));
+         */
+        
+        
+        $("#suMail").val(encryptedMail);
+        $("#suPseudo").val(encryptedPseudo);
+        $("#suPassword").val(encryptedPassword);
+        $("#suVPassword").val(encryptedPasswordVerif); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
+        
     });
     
     $("#attributes_form").change(function() {
@@ -98,91 +131,7 @@ $(document).ready(function () {
         }
 
     });
-/*
-    $("#signinSubmit").click(function () {
-        
-        alert("sdqsd");
-
-        var pseudo = $("#suPseudo").val();
-        var mdp = $("#suPassword").val();
-
-
-
-
-
-        var url = 'inscrire.jsp';
-        var form = $('<form action="' + url + '" method="post">' +
-                     '<input type="text" name="pseudo" value="' + encodeURIComponent(pseudo) + '" />' +
-                     '<input type="text" name="mdp" value="' + encodeURIComponent(mdp) + '" />' +
-                     '</form>');
-        $('body').append(form);
-        form.submit();
-        
-        return false;
-
-
-    });
-
-/*
-    $("#signupSubmit").click(function () {
-        
-        alert("sdqsd");
-
-        var mail = $("#siMail").val();
-        var pseudo = $("#siPseudo").val();
-        var mdp = $("#siPassword").val();
-        var verifMdp = $("#siVPassword").val();
-
-        /*
-        var encryptedPseudo = Crypto.JS.AES.encrypt(pseudo, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
-
-        var encryptedMail = Crypto.JS.AES.encrypt(mail, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
-
-        var encryptedMDP = Crypto.JS.AES.encrypt(mdp, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
-
-        var ciphertext = encryptedPseudo.ciphertext
-        .toString(CryptoJS.enc.Base64);
-
-        var secret = "coucou";
-
-        var key = "dbrCUoc4z9EFJTLBSsZtQw==";
-
-        // Entré : String Utf8
-        var test = CryptoJS.AES.encrypt(secret, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
-
-        // Entré : String Base 64
-        var pass = CryptoJS.AES.decrypt(test, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
-
-        console.log(pass.toString(CryptoJS.enc.Utf8) + "#");*//*
-
-        var data = 
-            'mail=' + encodeURIComponent(mail) +'&'+ 
-            'pseudo=' + encodeURIComponent(pseudo) +'&'+ 
-            'mdp=' + encodeURIComponent(mdp) +'&'+ 
-            'verifMdp=' + encodeURIComponent(verifMdp);
-
-        //window.location.replace('home.jsp?' + data);
-
-        var url = 'home.jsp';
-        var form = $('<form action="' + url + '" method="post">' +
-                     '<input type="text" name="mail" value="' + encodeURIComponent(mail) + '" />' +
-                     '<input type="text" name="pseudo" value="' + encodeURIComponent(pseudo) + '" />' +
-                     '<input type="text" name="mdp" value="' + encodeURIComponent(mdp) + '" />' +
-                     '<input type="text" name="verifMdp" value="' + encodeURIComponent(verifMdp) + '" />' +
-                     '</form>');
-        $('body').append(form);
-        form.submit();
-        
-
-    });
-
-*/
+    
     $(".close").click(function () {
 
         $(this).parent().animate({

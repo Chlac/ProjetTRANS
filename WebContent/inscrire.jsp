@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>S'inscrire</title>
 </head>
@@ -16,64 +17,46 @@
 		Mail:<br> <input type="text" id="mail" name="mail"><br>
 		Mot de Passe:<br> <input type="text" id="motdepasse"name="motdepasse"><br> 
 		Confirmer Mot de Passe:<br> <input type="text" id="motdepasse2" name="motdepasse2"><br>
+		
+		
 
 
 		<input type="submit" id="confirmer" value="Confirmer" onclick="truc()">
 	</form>
 
 	<script>
-		function truc() {
-			
-			alert("test");
-
-			var pseudo = $("#pseudo").val();
-			var mail = $("#mail").val();
-			var mdp = $("#motdepasse").val();
-
-			var encryptedPseudo = Crypto.JS.AES.encrypt(pseudo, key, {
-				iv : CryptoJS.enc.Hex.parse(iv)
-			}
-
-			);
-
-			var encryptedMail = Crypto.JS.AES.encrypt(mail, key, {
-				iv : CryptoJS.enc.Hex.parse(iv)
-			}
-
-			);
-
-			var encryptedMDP = Crypto.JS.AES.encrypt(mdp, key, {
-				iv : CryptoJS.enc.Hex.parse(iv)
-			}
-
-			);
-
-			var ciphertext = encryptedPseudo.ciphertext
-					.toString(CryptoJS.enc.Base64);
 	
-			
+		function truc() {
 
-			/*var pseudo = document.getElementById('pseudo').value;
-			var mail = document.getElementById('pseudo').value;
-			var mdp = document.getElementById('pseudo').value;
+			var date = new Date();
 			
-			var key = "dbrCUoc4z9EFJTLBSsZtQw==";*/
+			var pseudo = document.getElementById('pseudo').value;
+			var mail = document.getElementById('mail').value;
+			var mdp = document.getElementById('motdepasse').value;
 			
+			mdp = mdp + date.toString();
 			
+			alert(mdp);
+			
+			var key = "dbrCUoc4z9EFJTLBSsZtQw==";
 
-			 var secret = "coucou";
-				
-				var key = "dbrCUoc4z9EFJTLBSsZtQw==";
-			 
-				// Entré : String Utf8
-				var test = CryptoJS.AES.encrypt(secret, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
-			 
-				// Entré : String Base 64
-				var pass = CryptoJS.AES.decrypt(test, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
-				console.log(pass.toString(CryptoJS.enc.Utf8) + "#");
+
+
+			// PROCESS
+			var encrypted = CryptoJS.AES.encrypt(pseudo, key);
+			var encrypted = CryptoJS.AES.encrypt(mail, key);
+			var encrypted = CryptoJS.AES.encrypt(mdp, key);
+			
+			var decrypted = CryptoJS.AES.decrypt(encrypted, key);
 			
 			
-		}
+			console.log(pseudo);
+			console.log(encrypted);
+			console.log(decrypted);
+			console.log(decrypted.toString(CryptoJS.enc.Utf8));
+			
+			
+			
 	</script>
 
 
