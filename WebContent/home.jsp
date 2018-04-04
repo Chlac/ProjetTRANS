@@ -28,12 +28,15 @@
                 <button id="signin" class="headerContent">Se connecter</button>
                 <button id="signup" class="headerContent">S'inscrire</button>
             </div>
-            
-            <%= request.getParameter("pseudo") %>
+
         </div>
 
 
-        <div id="connection" class="formPanel">
+        
+
+        <div id="content">
+            
+            <div id="connection" class="formPanel">
 
             <button class="close"><i class="fas fa-times"></i></button>
 
@@ -42,7 +45,7 @@
                 <input id="siPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                 <input id="siPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
                 <button id="signinSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
-                
+
             </form>
         </div>
 
@@ -55,13 +58,13 @@
                 <input id="suMail" name="mail" type="email" placeholder="E-mail" class="textInput">
                 <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                 <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
-                <input id="suVPassword" name="password" type="verifPassword" placeholder="Confirmer mot de passe" class="textInput">
+                <input id="suVPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
                 <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
             </form>
         </div>
 
-        <div id="content">
-
+            
+            
             <div id="attributes_panel">
                 <form id="attributes_form">
                     <h4 id="cat1"><span class="before"></span>Culture</h4>
@@ -126,10 +129,12 @@
             <div id="resultSection">
 
                 <div id="buttonsSection">
-                    
-                    <button id="showfilters"><i class="fa fa-filter" aria-hidden="true"></i></button>
-                    <button id="showmap"><i class="fa fa-map" aria-hidden="true"></i></button>
-                    <button id="moreInfos">+ d'infos <i class="fa fa-caret-up" aria-hidden="true"></i></button>
+
+                    <div id="buttons">
+                        <button id="showfilters"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                        <button id="showmap"><i class="fa fa-map" aria-hidden="true"></i></button>
+                        <button id="moreInfos">+ d'infos <i class="fa fa-caret-up" aria-hidden="true"></i></button>
+                    </div>
 
                 </div>
 
@@ -202,9 +207,6 @@
 
         </div>
 
-        <div id="footer">
-            Application de merde par des élèves de merde. Donne les poiinnnts allez là !
-        </div>
 
 
         <script src="js/indexJS.js"></script>

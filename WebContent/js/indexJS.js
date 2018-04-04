@@ -4,263 +4,201 @@
 
 $(document).ready(function () {
 
-    var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+	var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 
-    if ($(window).width() < 580) {
-        $("#cat2").children("span").attr("class", "after");
-        $("#cat4").children("span").attr("class", "after");
-    } else {
-        $("#cat2").children("span").attr("class", "before");
-        $("#cat4").children("span").attr("class", "before");
-    }
-   
-    $("#signinForm").submit(function () {
-        alert("SignIn");
-        
-        $("#siPseudo").val("Caca");
-        $("#sPassword").val("Caca");
-        
-    });
-    
-    $("#signupForm").submit(function () {
-        
-        alert("SignUp");
-        
-        var mail = $("#suMail").val();
-        var pseudo = $("#suPseudo").val();
-        var mdp = $("#suPassword").val();
-        var verifMdp = $("#suVPassword").val();
+	if ($(window).width() < 580) {
+		$("#attributes_panel").css("height", $("#content").outerHeight(true) - $("#result").outerHeight(true));
+		$("#cat2").children("span").attr("class", "after");
+		$("#cat4").children("span").attr("class", "after");
+	} else {
+		$("#cat2").children("span").attr("class", "before");
+		$("#cat4").children("span").attr("class", "before");
+	}
 
-        /* ANCIENNE VERSION
-        
-        var encryptedPseudo = Crypto.JS.AES.encrypt(pseudo, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
+	$("#signinForm").submit(function () {
+		alert("SignIn");
 
-        var encryptedMail = Crypto.JS.AES.encrypt(mail, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
+		$("#siPseudo").val("Caca");
+		$("#sPassword").val("Caca");
 
-        var encryptedMDP = Crypto.JS.AES.encrypt(mdp, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
+	});
 
-        var ciphertext = encryptedPseudo.ciphertext
-        .toString(CryptoJS.enc.Base64);
+	$("#signupForm").submit(function () {
 
-        var secret = "coucou";
+		alert("SignUp");
 
-        var key = "dbrCUoc4z9EFJTLBSsZtQw==";
+		var mail = $("#suMail").val();
+		var pseudo = $("#suPseudo").val();
+		var mdp = $("#suPassword").val();
+		var verifMdp = $("#suVPassword").val();
 
-        // Entré : String Utf8
-        var test = CryptoJS.AES.encrypt(secret, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+		$("#suMail").val(encryptedMail);
+		$("#suPseudo").val(encryptedPseudo);
+		$("#suPassword").val(encryptedPassword);
+		$("#suVPassword").val(encryptedPasswordVerif); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
 
-        // Entré : String Base 64
-        var pass = CryptoJS.AES.decrypt(test, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
+	});
 
-        console.log(pass.toString(CryptoJS.enc.Utf8) + "#");
+	$("#attributes_form").change(function() {
+		doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
+	});
 
-        
-        */
-        
-        
-        /* NOUVELLE VERSION
-          
-          	var date = new Date();
-			
-			var pseudo = document.getElementById('pseudo').value;
-			var mail = document.getElementById('mail').value;
-			var mdp = document.getElementById('motdepasse').value;
-			
-			mdp = mdp + date.toString();
-			
-			alert(mdp);
-			
-			var key = "dbrCUoc4z9EFJTLBSsZtQw==";
+	$("#signin").click(function () {
 
+		if($("#connection").hasClass("formPanelVisible")) {
+			$("#connection").animate({
+				top : "-210px"
+			}, 100).removeClass("formPanelVisible");
+		} else {
+			$("#connection").addClass("formPanelVisible");
+			$("#inscription").removeClass("formPanelVisible");
+		}
+
+	});
+
+	$("#signup").click(function () {
+
+		if($("#inscription").hasClass("formPanelVisible")) {
+			$("#inscription").animate({
+				top : "-210px"
+			}, 100).removeClass("formPanelVisible");
+		} else {
+			$("#inscription").addClass("formPanelVisible");
+			$("#connection").removeClass("formPanelVisible");
+		}
+
+	});
+
+	$(".close").click(function () {
+
+		$(this).parent().animate({
+			top : "-210px"
+		}, 100).removeClass("formPanelVisible");
+
+	});
 
 
-			// PROCESS
-			var encrypted = CryptoJS.AES.encrypt(pseudo, key);
-			var encrypted = CryptoJS.AES.encrypt(mail, key);
-			var encrypted = CryptoJS.AES.encrypt(mdp, key);
-			
-			var decrypted = CryptoJS.AES.decrypt(encrypted, key);
-			
-			
-			console.log(pseudo);
-			console.log(encrypted);
-			console.log(decrypted);
-			console.log(decrypted.toString(CryptoJS.enc.Utf8));
-         */
-        
-        
-        $("#suMail").val(encryptedMail);
-        $("#suPseudo").val(encryptedPseudo);
-        $("#suPassword").val(encryptedPassword);
-        $("#suVPassword").val(encryptedPasswordVerif); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
-        
-    });
-    
-    $("#attributes_form").change(function() {
-        doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
-    });
+	$("#moreInfos").click(function () {
 
-    $("#signin").click(function () {
+		$("#resultSection").removeClass("summedResult").addClass("detailedResult").one(animationEnd, function() {
 
-        if($("#connection").hasClass("formPanelVisible")) {
-            $("#connection").animate({
-                top : "-210px"
-            }, 100).removeClass("formPanelVisible");
-        } else {
-            $("#connection").addClass("formPanelVisible");
-            $("#inscription").removeClass("formPanelVisible");
-        }
-
-    });
-
-    $("#signup").click(function () {
-
-        if($("#inscription").hasClass("formPanelVisible")) {
-            $("#inscription").animate({
-                top : "-210px"
-            }, 100).removeClass("formPanelVisible");
-        } else {
-            $("#inscription").addClass("formPanelVisible");
-            $("#connection").removeClass("formPanelVisible");
-        }
-
-    });
-    
-    $(".close").click(function () {
-
-        $(this).parent().animate({
-            top : "-210px"
-        }, 100).removeClass("formPanelVisible");
-
-    });
+			$( this ).off( animationEnd );
+			$("#lessInfos").css("display", "block");
+			$("#lessInfos").animate({
+				top : "35px"
+			})
+		});
 
 
-    $("#moreInfos").click(function () {
+	});
+
+	$("#lessInfos").click(function () {
+
+		$(this).animate({
+			top : "0px"
+		}, {
+			complete: function() {
+				$(this).hide();
+				$("#resultSection").addClass("summedResult").removeClass("detailedResult");
+			}
+		});
 
 
-        $("#result").removeClass("summedResult").addClass("detailedResult").one(animationEnd, function() {
-
-            $( this ).off( animationEnd );
-            $("#lessInfos").css("display", "block");
-            $("#lessInfos").animate({
-                top : "0%"
-            })
-        });
+	});
 
 
-    });
+	$("#showfilters").click(function () {
 
-    $("#lessInfos").click(function () {
+		$("#attributes_panel, #attrPanelBackground").removeClass('animated bounceOutLeft').addClass('animated bounceInLeft');
 
-        $(this).animate({
-            top : "-40px"
-        }, {
-            complete: function() {
-                $(this).hide();
-                $("#result").addClass("summedResult").removeClass("detailedResult");
-            }
-        });
+		setTimeout(function () {
 
+			$(".before, .after").animate(
+					{
+						width : "60px"
+					}, 300);
 
-    });
+		}, 700);
 
+	});
 
-    $("#showfilters").click(function () {
+	$("#showmap").click(function () {
 
-        $("#attributes_panel, #attrPanelBackground").removeClass('animated bounceOutLeft').addClass('animated bounceInLeft');
-
-        setTimeout(function () {
-
-            $(".before, .after").animate(
-                {
-                    width : "60px"
-                }, 300);
-
-        }, 700);
-
-    });
-
-    $("#showmap").click(function () {
-
-        $(".before, .after").animate(
-            {
-                width : "0px"
-            }, 300, 
-            function() {
-                $("#attributes_panel, #attrPanelBackground").addClass('animated bounceOutLeft');
-            }
-        );
+		$(".before, .after").animate(
+				{
+					width : "0px"
+				}, 300, 
+				function() {
+					$("#attributes_panel, #attrPanelBackground").addClass('animated bounceOutLeft');
+				}
+		);
 
 
 
-    });
+	});
 
-    var leftVal = 0;
-    $("#arrowright").click(function () {
-        if(leftVal > -900) leftVal -= 100;
-        $('#cityPanels').css("left", parseInt(leftVal) + '%');
-    });
+	var leftVal = 0;
+	$("#arrowright").click(function () {
+		if(leftVal > -900) leftVal -= 100;
+		$('#cityPanels').css("left", parseInt(leftVal) + '%');
+	});
 
-    $("#arrowleft").click(function () {
-        if(leftVal < 0) leftVal += 100;
-        $('#cityPanels').css("left", parseInt(leftVal) + '%');
-    });
+	$("#arrowleft").click(function () {
+		if(leftVal < 0) leftVal += 100;
+		$('#cityPanels').css("left", parseInt(leftVal) + '%');
+	});
 
 
 });
 
 $(window).on('resize', function() {
 
-    if($(window).width() < 580) {
-        if($("#result").height() != $("#content").outerHeight(true)) {
-            $("#result").css("height", "35%");
-            $("#map").css('height', $("#content").outerHeight(true) - $("#result").outerHeight(true));
-        }
+	if($(window).width() < 580) {
+		
+		if($("#resultSection").outerHeight(true) < $("#content").outerHeight(true)) {
+			$("#attributes_panel").css("height", $("#content").outerHeight(true) - $("#result").outerHeight(true));
+			$("#resultSection").css("height", "35%");
+			$("#map").css('height', $("#content").outerHeight(true) - $("#result").outerHeight(true));
+		}
 
-        $("#cat2").children("span").attr("class", "after");
-        $("#cat4").children("span").attr("class", "after");
+		$("#cat2").children("span").attr("class", "after");
+		$("#cat4").children("span").attr("class", "after");
 
-    }
-    else {
-        if($("#result").height() != $("#content").outerHeight(true)) {
-            $("#result").css("height", "150px");
-            $("#map").css('height', $("#content").outerHeight(true) - $("#result").outerHeight(true));
-        }
+	}
+	else {
+		if($("#resultSection").height() != $("#content").outerHeight(true)) {
+			$("#resultSection").css("height", "190px");
+			$("#map").css('height', $("#content").outerHeight(true) - $("#result").outerHeight(true));
+		}
 
-        $("#attributes_panel, #attrPanelBackground").removeAttr('style').removeClass('animated bounceOutLeft');
-        $("#attributes_form").children("h4").children("span").removeAttr('style').addClass("before");
+		$("#attributes_panel, #attrPanelBackground").removeAttr('style').removeClass('animated bounceOutLeft');
+		$("#attributes_form").children("h4").children("span").removeAttr('style').addClass("before");
 
-    }
+	}
 
 });
 
 
 function doPOST(url, cFunction, data) {
 
-    alert("POSTING");
-    $.post({
-        url: url,
-        data: data,
-        dataType: "json",
-        success: cFunction,
-        error: function(jqXHR, textStatus, errorThrown){
-            alert("PROUT");
-        }
-    });
+	alert("POSTING");
+	$.post({
+		url: url,
+		data: data,
+		dataType: "json",
+		success: cFunction,
+		error: function(jqXHR, textStatus, errorThrown){
+			alert("PROUT");
+		}
+	});
 
 }
 
 function updateResults(data) {
-    //update results...
+	//update results...
 
-    $.each(data, function (index, city) {
-        alert("Updating ! : " + city.name);
-    });
+	$.each(data, function (index, city) {
+		alert("Updating ! : " + city.name);
+	});
 
 }
