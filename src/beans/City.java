@@ -1,15 +1,19 @@
 package beans;
 
+import java.util.ArrayList;
+
 public class City {
 	
 	private String name;
 	private String region;
 	private String departement;
-	private String distance_to;
+	private Double latitude;
+	private Double longitude;
+	private int population2014;
+	private ArrayList<Object> details;
 	
 	
-	public City(String name) {
-		this.name = name;
+	public City() {
 	}
 	
 	
@@ -31,11 +35,43 @@ public class City {
 	public void setDepartement(String departement) {
 		this.departement = departement;
 	}
-	public String getDistance_to() {
-		return distance_to;
+
+
+	public Double getLatitude() {
+		return latitude;
 	}
-	public void setDistance_to(String distance_to) {
-		this.distance_to = distance_to;
+
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public int getPopulation2014() {
+		return population2014;
+	}
+
+	public void setPopulation2014(int population2014) {
+		this.population2014 = population2014;
+	}
+
+
+	public ArrayList<Object> getDetails() {
+		return details;
+	}
+
+
+	public void setDetails(ArrayList<Object> details) {
+		this.details = details;
 	}
 	
 	
