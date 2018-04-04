@@ -64,7 +64,6 @@ public class City {
 		this.population2014 = population2014;
 	}
 
-
 	public ArrayList<Object> getDetails() {
 		return details;
 	}
