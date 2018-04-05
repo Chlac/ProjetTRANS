@@ -15,6 +15,7 @@ import com.mysql.jdbc.ResultSetMetaData;
 import beans.City;
 import db.dao.CommuneDAO;
 import request.Criteria;
+import request.Request;
 import sun.swing.text.CountingPrintable;
 
 /**
@@ -27,9 +28,9 @@ public class Inquisitor {
 
 	// Dynamic
 
-	private ArrayList<Criteria> request;
+	private Request request;
 
-	public Inquisitor(ArrayList<Criteria> request) {
+	public Inquisitor(Request request) {
 		this.request = request;
 		// start();
 	}
@@ -37,9 +38,14 @@ public class Inquisitor {
 	JsonObject fuckSQL() {
 
 		HashMap<String, ArrayList<Double>> merde = new HashMap<>();
-		int size = request.size();
+		int size = request.criterias.size();
+		
+		//for (int i = 0; i < request.criteribs.size(); i++) {
+		//	String query = ""
+		//}
+		
 		for (int i = 0; i < size; i++) {
-			String query = "SELECT codGeo, score FROM " + request.get(i).TABLE_NAME + " ORDER BY codGeo";
+			String query = "SELECT codGeo, score FROM " + request.criterias.get(i).TABLE_NAME + " ORDER BY codGeo";
 			ResultSet rs = Application.passQuery(query);
 			try {
 				ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
@@ -99,25 +105,7 @@ public class Inquisitor {
 		return fuckSQLDetails(res);
 	}
 
-	ResultSet temp() {
-		String req = "SELECT " + request.get(0).TABLE_NAME + ".CODGEO,";
-		for (int i = 0; i < request.size(); i++) {
-			req += " " + request.get(i).TABLE_NAME + ".score, ";
-		}
-		req += "((" + request.get(0).TABLE_NAME + ".score ";
-
-		for (int i = 1; i < request.size(); i++) {
-			req += "+ " + request.get(i).TABLE_NAME + ".score";
-		}
-		req += ")/" + request.size() + ") as average FROM " + request.get(0).TABLE_NAME;
-		for (int i = 1; i < request.size(); i++) {
-			req += " INNER JOIN " + request.get(i).TABLE_NAME + " ON (" + request.get(i - 1).TABLE_NAME + ".CODGEO = "
-					+ request.get(i).TABLE_NAME + ".CODGEO )";
-		}
-		req += " ORDER BY average DESC LIMIT 10";
-		System.out.println(req);
-		return startQuery(req);
-	}
+	
 
 	private double ecart_type(ArrayList<Double> l, int n) {
 		double a = 0.0;
@@ -142,7 +130,7 @@ public class Inquisitor {
 		for (String codGeo : villes) {
 			
 			ArrayList<Object> details = new ArrayList<>();
-			for (Criteria criteria : request) {
+			for (Criteria criteria : request.criterias) {
 				details.add(criteria.redirectToDAO(codGeo));
 			}
 			City city = CommuneDAO.f(codGeo, details);
