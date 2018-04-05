@@ -1,6 +1,6 @@
 package db.dao;
 
-public class Santee extends DAO {
+public class VilleDAO extends DAO {
 
 	@Override
 	public Object f(String codGeo) {
