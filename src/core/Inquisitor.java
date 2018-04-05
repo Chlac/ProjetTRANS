@@ -40,7 +40,7 @@ public class Inquisitor {
 
 		HashMap<String, ArrayList<Double>> merde = new HashMap<>();
 		int size = request.criterias.size();
-		ArrayList<String> l = new ArrayList<>();
+		ArrayList<String> ville_accepter = new ArrayList<>();
 		for (int i = 0; i < request.criteribs.size(); i++) {
 			String query = "SELECT codGeo FROM"+ request.criteribs.get(i).TABLE_NAME + "ORDER BY codGeo";
 			ResultSet rs = Application.passQuery(query);
@@ -50,12 +50,12 @@ public class Inquisitor {
 					temp.add(rs.getString(1));
 				}
 				if (i != 0) {					
-					ArrayList<String> tempA = (ArrayList<String>) l.clone();
+					ArrayList<String> tempA = (ArrayList<String>) ville_accepter.clone();
 					tempA.removeAll(temp);
-					l.removeAll(tempA);
+					ville_accepter.removeAll(tempA);
 				}
 				else {
-					l.addAll(temp);
+					ville_accepter.addAll(temp);
 				}
 			}catch (Exception e) {
 				// TODO: handle exception
@@ -99,6 +99,9 @@ public class Inquisitor {
 			list.add(entry);
 		}
 		merde = null;
+		
+		//ville
+		
 		list.sort(new Comparator<Entry<String, ArrayList<Double>>>() {
 			@Override
 			public int compare(Entry<String, ArrayList<Double>> o1, Entry<String, ArrayList<Double>> o2) {
@@ -109,7 +112,6 @@ public class Inquisitor {
 				}
 				return 0;
 			}
-
 		});
 		ArrayList<String> res = new ArrayList<>();
 		for (int j = 0; j < 10; j++) {
