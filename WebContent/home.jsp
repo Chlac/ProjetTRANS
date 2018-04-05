@@ -58,6 +58,7 @@
                     <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                     <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
                     <input id="suVPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
+                    <input id="suDate" name="date" type="text">
                     <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
                 </form>
             </div>
@@ -113,6 +114,8 @@
                     <input type="checkbox" name="ville200000" value="Bike"> Grande ville (+200 000 habitants)
                     <br>
                     <input type="checkbox" name="distance" value="Bike"> À moins de _____km de _____
+                    <br>
+                    <input type="text" name="cityName" id="cityName">
                 </form> 
 
 
