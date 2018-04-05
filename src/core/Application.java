@@ -8,7 +8,6 @@ import com.google.gson.JsonObject;
 
 import db.A;
 import request.Criteria;
-import request.Request;
 
 
 /**
@@ -42,8 +41,8 @@ public class Application {
 	 * Gets called by a servlet to pass the {@link RequestedCriterias} to {@link Inquisitor} 
 	 * 
 	 */
-	public static JsonObject passRequest(Request request) {
-		return instance.passRequest2(request);
+	public static JsonObject passRequest(ArrayList<Criteria> criterias) {
+		return instance.passRequest2(criterias);
 	}
 	
 	/**
@@ -62,7 +61,7 @@ public class Application {
 	private A db = new A();
 	
 	// TODO RENAME + DOC
-	private synchronized JsonObject passRequest2(Request criterias) {
+	private synchronized JsonObject passRequest2(ArrayList<Criteria> criterias) {
 		Inquisitor i = new Inquisitor(criterias);
 		inquisitors.add(i);
 		//return i.temp();

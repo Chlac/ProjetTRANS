@@ -20,7 +20,6 @@ import beans.Chomage;
 import beans.City;
 import core.Application;
 import request.Criteria;
-import request.Request;
 
 /**
  * Servlet implementation class UpdateResultsServlet
@@ -95,16 +94,18 @@ public class UpdateResultsServlet extends HttpServlet {
 		//boolean chomage_checked = request.getParameter("culture1") != null;
 		//System.out.println(chomage_checked);
 		
+        ArrayList<Criteria> criterias = new ArrayList<>();
 		
-        Request r = new Request(request);
+		for (int i = 0; i < Criteria.as.length; i++) {
+			if (request.getParameter(Criteria.as[i].ATTRIBUT_NAME) != null) criterias.add(Criteria.as[i]);
+		}
 		
-		
-		
-		
-		JsonObject jO = Application.passRequest(r);
-		out.println(jO.toString());
+		String r = "";
+		if (criterias.size() != 0 ) {
+			JsonObject jO = Application.passRequest(criterias);
+			out.println(jO.toString());
 			//out.println("test");
-		
+		}
 		//System.out.println(r);
 		//jsonObject.addProperty("result", r);
 		

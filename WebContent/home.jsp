@@ -1,47 +1,24 @@
-<%@page import="javax.annotation.Generated"%>
-<%@page import="javax.crypto.Cipher"%>
-<%@page import="javax.crypto.spec.IvParameterSpec"%>
-<%@page import="javax.crypto.spec.SecretKeySpec"%>
-<%@page import="javax.crypto.SecretKeyFactory"%>
-<%@page import="java.nio.charset.StandardCharsets"%>
-<%@page import="sun.nio.ch.Secrets"%>
-<%@page import="java.security.MessageDigest"%>
-<%@page import="java.util.Arrays"%>
-<%@page import="java.util.Base64"%>
-<%@page import="crypto.AES"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.*"%>
 
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/home_stylesheet.css">
 
-<link rel="stylesheet" type="text/css" href="css/home_stylesheet.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/clear-sans.css">
 
-<link rel="stylesheet" type="text/css" media="screen"
-	href="css/clear-sans.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/solid.js" integrity="sha384-P4tSluxIpPk9wNy8WSD8wJDvA8YZIkC6AQ+BfAFLXcUZIPQGu4Ifv4Kqq+i2XzrM" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/fontawesome.js" integrity="sha384-2IUdwouOFWauLdwTuAyHeMMRFfeyy4vqYNjodih+28v2ReC+8j+sLF9cK339k5hY" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script defer
-	src="https://use.fontawesome.com/releases/v5.0.9/js/solid.js"
-	integrity="sha384-P4tSluxIpPk9wNy8WSD8wJDvA8YZIkC6AQ+BfAFLXcUZIPQGu4Ifv4Kqq+i2XzrM"
-	crossorigin="anonymous"></script>
-<script defer
-	src="https://use.fontawesome.com/releases/v5.0.9/js/fontawesome.js"
-	integrity="sha384-2IUdwouOFWauLdwTuAyHeMMRFfeyy4vqYNjodih+28v2ReC+8j+sLF9cK339k5hY"
-	crossorigin="anonymous"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-
-</head>
+    </head>
 
     <body>
 
@@ -81,7 +58,6 @@
                     <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                     <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
                     <input id="suVPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
-                    <input id="suDate" name="date" type="text">
                     <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
                 </form>
             </div>
@@ -243,5 +219,4 @@
 
         <script src="js/indexJS.js"></script>
     </body>
-
 </html>

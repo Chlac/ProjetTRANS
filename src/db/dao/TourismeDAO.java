@@ -11,7 +11,7 @@ public class TourismeDAO extends DAO {
 
 	@Override
 	public Object f(String codGeo) {
-		//String query = "SELECT ETAZ10 FROM agriculture WHERE codGeo="+ codGeo+ " limit 1";
+		String query = "SELECT ETAZ10 FROM agriculture WHERE codGeo="+ codGeo+ " limit 1";
 		//ResultSet rs = Application.passQuery(query);
 		//rs.next();
 		Tourisme tourisme = new Tourisme();
