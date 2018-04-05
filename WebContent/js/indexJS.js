@@ -42,6 +42,9 @@ $(document).ready(function () {
 	$("#attributes_form").change(function() {
 		doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
 	});
+    
+    
+    
 
 	$("#signin").click(function () {
 
@@ -138,14 +141,19 @@ $(document).ready(function () {
 	});
 
 	var leftVal = 0;
+    var currentCityPanel = $("#1");
 	$("#arrowright").click(function () {
 		if(leftVal > -900) leftVal -= 100;
 		$('#cityPanels').css("left", parseInt(leftVal) + '%');
+        currentCityPanel = currentCityPanel.next();
+        $("#scoreNum").text(currentCityPanel.attr('id'));
 	});
 
 	$("#arrowleft").click(function () {
 		if(leftVal < 0) leftVal += 100;
 		$('#cityPanels').css("left", parseInt(leftVal) + '%');
+        currentCityPanel = currentCityPanel.prev();
+        $("#scoreNum").text(currentCityPanel.attr('id'));
 	});
 
 
@@ -181,7 +189,7 @@ $(window).on('resize', function() {
 
 function doPOST(url, cFunction, data) {
 
-	alert("POSTING");
+	//alert("POSTING");
 	$.post({
 		url: url,
 		data: data,
@@ -195,12 +203,13 @@ function doPOST(url, cFunction, data) {
 }
 
 function updateResults(data) {
-	//update results...
-
+	//update results... 
+	
 	$.each(data, function (index, city) {
         
-		alert("Updating ! : " + city.name + index);
-        $("#" + index + "#" + ".cityName").text(city.name)
+        $("#" + index + " > .cityName").text(city.name);
+        $("#" + index + " > .cityWhereInfos").text(city.region + " - " + city.departement + ($("#attributes_form > [name='distance']").prop("checked") ? " - " + city.details[0].taux_chomage : ""));
+        
         
 	});
 
