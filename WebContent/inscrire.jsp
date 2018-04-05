@@ -1,5 +1,4 @@
 <%@ page import="java.util.Date"%>
-<%@page import="crypto.AES"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -18,19 +17,6 @@
 		Mail:<br> <input type="text" id="mail" name="mail"><br>
 		Mot de Passe:<br> <input type="text" id="motdepasse"name="motdepasse"><br> 
 		Confirmer Mot de Passe:<br> <input type="text" id="motdepasse2" name="motdepasse2"><br>
-		
-		
-		<%
-		
-		String pseudo = String.valueOf(request.getParameter("pseudo"));
-		
-
-		
-		
-		
-		
-		
-		%>
 		
 		
 

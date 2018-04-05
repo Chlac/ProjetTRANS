@@ -363,23 +363,39 @@ body {
 
 #score {
     position: absolute;
+    display: flex;
     background: black;
     color: white;
     border: none;
     border-radius: 50px;
-    font-size: 32px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 12px;
-    padding-right: 12px;
-    top: 8px;
-    left: 20%;
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+    top: 0px;
+    left: 5%;
     z-index: 2;
+    
 }
 
-#exposant {
-    font-size: 15px;
+#score div {
+    margin: auto;
 }
+
+#score h1 {
+    float: left;
+    line-height: 90%;
+    font-size: 180%;
+    margin: 0;
+    padding: 0;
+}
+
+#score sup {
+    float: left;
+    vertical-align:text-top;
+    font-size: 70%;
+}
+
+
 
 @media only screen and (max-width:580px) {
     /* For mobile phones: */

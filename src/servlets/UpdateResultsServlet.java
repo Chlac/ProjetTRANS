@@ -16,10 +16,10 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mysql.jdbc.ResultSetMetaData;
 
+import beans.Chomage;
 import beans.City;
 import core.Application;
 import request.Criteria;
-import request.Request;
 
 /**
  * Servlet implementation class UpdateResultsServlet
@@ -63,44 +63,55 @@ public class UpdateResultsServlet extends HttpServlet {
         response.setHeader("Access-Control-Max-Age", "86400");
 		
 		PrintWriter out = response.getWriter();
-/*
-        Gson gson = new Gson(); 
+		
+		Gson gson = new Gson(); 
         JsonObject jsonObject = new JsonObject();
-
-        City city = new City("Paris");
-        City city1 = new City("Orléans");
+		
+		Chomage c = new Chomage(1.3);
+		ArrayList<Object> details = new ArrayList<>();
+		details.add(c);
+		
+				
+		City city = new City("Paris", "Troudufion", "LoliDep", 1.0, 2.0, 1000, details);
         
+
         JsonElement cityObj = gson.toJsonTree(city);
         if(city.getName() == null) jsonObject.addProperty("success", false);
         else jsonObject.addProperty("success", true);
-
-        JsonElement cityObj1 = gson.toJsonTree(city1);
-        if(city1.getName() == null) jsonObject.addProperty("success", false);
-        else jsonObject.addProperty("success", true);
         
         jsonObject.add("1", cityObj);
-        jsonObject.add("2", cityObj1);
-        */
-        //jsonObject.addProperty("test", "TEST");
         
+        City city2 = new City("Orléans", "Tamere", "LoliPute", 1.0, 2.0, 1000, details);
         
+
+        JsonElement cityObj2 = gson.toJsonTree(city2);
+        if(city2.getName() == null) jsonObject.addProperty("success", false);
+        else jsonObject.addProperty("success", true);
+        
+        jsonObject.add("2", cityObj2);
+        
+        /*
 		//boolean chomage_checked = request.getParameter("culture1") != null;
 		//System.out.println(chomage_checked);
 		
+        ArrayList<Criteria> criterias = new ArrayList<>();
 		
-        Request r = new Request(request);
+		for (int i = 0; i < Criteria.as.length; i++) {
+			if (request.getParameter(Criteria.as[i].ATTRIBUT_NAME) != null) criterias.add(Criteria.as[i]);
+		}
 		
-		
-		
-		
-		JsonObject jO = Application.passRequest(r);
-		out.println(jO.toString());
+		String r = "";
+		if (criterias.size() != 0 ) {
+			JsonObject jO = Application.passRequest(criterias);
+			out.println(jO.toString());
 			//out.println("test");
-		
+		}
 		//System.out.println(r);
 		//jsonObject.addProperty("result", r);
 		
-		
+		*/
+        
+        out.println(jsonObject.toString());
 		out.close();
 		
 	}
