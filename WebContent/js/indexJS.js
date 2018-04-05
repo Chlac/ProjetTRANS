@@ -31,74 +31,42 @@ $(document).ready(function () {
         var mdp = $("#suPassword").val();
         var verifMdp = $("#suVPassword").val();
 
-        /* ANCIENNE VERSION
-        
-        var encryptedPseudo = Crypto.JS.AES.encrypt(pseudo, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
-
-        var encryptedMail = Crypto.JS.AES.encrypt(mail, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
-
-        var encryptedMDP = Crypto.JS.AES.encrypt(mdp, key, {
-            iv : CryptoJS.enc.Hex.parse(iv)
-        });
-
-        var ciphertext = encryptedPseudo.ciphertext
-        .toString(CryptoJS.enc.Base64);
-
-        var secret = "coucou";
-
-        var key = "dbrCUoc4z9EFJTLBSsZtQw==";
-
-        // Entré : String Utf8
-        var test = CryptoJS.AES.encrypt(secret, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
-
-        // Entré : String Base 64
-        var pass = CryptoJS.AES.decrypt(test, key, { iv: key, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7 });
-
-        console.log(pass.toString(CryptoJS.enc.Utf8) + "#");
-
-        
-        */
         
         
-        /* NOUVELLE VERSION
+        
           
           	var date = new Date();
 			
-			var pseudo = document.getElementById('pseudo').value;
-			var mail = document.getElementById('mail').value;
-			var mdp = document.getElementById('motdepasse').value;
-			
 			mdp = mdp + date.toString();
 			
-			alert(mdp);
+			alert(date);
 			
 			var key = "dbrCUoc4z9EFJTLBSsZtQw==";
-
-
+			
 
 			// PROCESS
-			var encrypted = CryptoJS.AES.encrypt(pseudo, key);
-			var encrypted = CryptoJS.AES.encrypt(mail, key);
-			var encrypted = CryptoJS.AES.encrypt(mdp, key);
+			var encryptedPseudo = CryptoJS.AES.encrypt(pseudo, key);
+			var encryptedMail = CryptoJS.AES.encrypt(mail, key);
+			var encryptedMDP = CryptoJS.AES.encrypt(mdp, key);
+			var encryptedVerifMDP = CryptoJS.AES.encrypt(mdp, key);
+			var encryptedDate = CryptoJS.AES.encrypt(date,key);
 			
-			var decrypted = CryptoJS.AES.decrypt(encrypted, key);
+			var decrypted = CryptoJS.AES.decrypt(encryptedPseudo, key);
 			
-			
+			encryptedPseudo = encryptedPseudo.toString();
 			console.log(pseudo);
-			console.log(encrypted);
+			console.log(encryptedPseudo);
 			console.log(decrypted);
 			console.log(decrypted.toString(CryptoJS.enc.Utf8));
-         */
+         
         
         
         $("#suMail").val(encryptedMail);
         $("#suPseudo").val(encryptedPseudo);
-        $("#suPassword").val(encryptedPassword);
+        $("#suPassword").val(encryptedMDP);
+        $("#suDate").val(encryptedDate);
         $("#suVPassword").val(encryptedPasswordVerif); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
+
         
     });
     
@@ -260,7 +228,7 @@ function updateResults(data) {
     //update results...
 
     $.each(data, function (index, city) {
-        alert("Updating ! : " + city.name);
-    });
+		        alert("Updating ! : " + city.name);
+	});
 
 }
