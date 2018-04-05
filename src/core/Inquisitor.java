@@ -14,7 +14,6 @@ import com.mysql.jdbc.ResultSetMetaData;
 
 import beans.City;
 import db.dao.CommuneDAO;
-import javafx.collections.transformation.SortedList;
 import request.Criteria;
 import request.Request;
 import sun.swing.text.CountingPrintable;
@@ -40,27 +39,10 @@ public class Inquisitor {
 
 		HashMap<String, ArrayList<Double>> merde = new HashMap<>();
 		int size = request.criterias.size();
-		ArrayList<String> l = new ArrayList<>();
-		for (int i = 0; i < request.criteribs.size(); i++) {
-			String query = "SELECT codGeo FROM"+ request.criteribs.get(i).TABLE_NAME + "ORDER BY codGeo";
-			ResultSet rs = Application.passQuery(query);
-			ArrayList<String> temp = new ArrayList<>();
-			try {
-				while(rs.next()) {
-					temp.add(rs.getString(1));
-				}
-				if (i != 0) {					
-					ArrayList<String> tempA = (ArrayList<String>) l.clone();
-					tempA.removeAll(temp);
-					l.removeAll(tempA);
-				}
-				else {
-					l.addAll(temp);
-				}
-			}catch (Exception e) {
-				// TODO: handle exception
-			}
-		}
+		
+		//for (int i = 0; i < request.criteribs.size(); i++) {
+		//	String query = ""
+		//}
 		
 		for (int i = 0; i < size; i++) {
 			String query = "SELECT codGeo, score FROM " + request.criterias.get(i).TABLE_NAME + " ORDER BY codGeo";
