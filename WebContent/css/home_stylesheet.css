@@ -367,18 +367,31 @@ body {
     color: white;
     border: none;
     border-radius: 50px;
-    font-size: 32px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 12px;
-    padding-right: 12px;
-    top: 8px;
+    font-size: 22px;
+    width: 70px;
+    height: 70px;
+    top: 0px;
     left: 20%;
     z-index: 2;
+    display: flex;
+}
+
+#score div {
+    margin: auto;
+    text-align: center;
+}
+
+#scoreNum {
+    float: left;
+    font-size: 160%;
+    line-height: 100%;
+    margin: 0;
 }
 
 #exposant {
-    font-size: 15px;
+    float: left;
+    font-size: 60%;
+    line-height: 180%;
 }
 
 @media only screen and (max-width:580px) {
