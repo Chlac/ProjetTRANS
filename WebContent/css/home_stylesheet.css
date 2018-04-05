@@ -307,18 +307,17 @@ body {
     z-index: -1;
 }
 
-#cityPanelsSlideshow h4 {
+.cityName {
     margin: 2px;
 }
 
-#cityPanelsSlideshow h5 {
+.cityWhereInfos {
     color: darkgray;
     margin: 3px;
 }
 
 .citySumPanel {
     float: left;
-    text-align: right;
     width: 10%;
     height: 100%;
 
@@ -470,6 +469,15 @@ body {
 
     #result {
         box-shadow: 0px 0px 110px 0px rgba(0, 0, 0, 0.2);
+    }
+
+    .cityInf {
+        float: right;
+        padding: 2%;
+        padding-left: 8%;
+        padding-right: 8%;
+        width: 60%;
+        text-align: center;
     }
 
     @-webkit-keyframes moveResultUp {
