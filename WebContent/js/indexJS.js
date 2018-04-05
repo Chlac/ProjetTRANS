@@ -73,6 +73,24 @@ $(document).ready(function () {
     $("#attributes_form").change(function() {
         doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
     });
+    
+    
+    
+    
+    $("#cityName").change(function(){
+    	
+    	var city = $("#cityName").val();
+    	
+    	doPOST('CompletionServlet', displayResults , city);
+    	
+    
+    	
+    	
+    	
+    });
+    
+    
+    
 
     $("#signin").click(function () {
 
@@ -232,3 +250,41 @@ function updateResults(data) {
 	});
 
 }
+
+function chooseResult(result) {
+    
+    searchElement.value = previousValue = result.innerHTML;
+    results.style.display = 'none'; 
+    result.className = ''; 
+    selectedResult = -1;
+    searchElement.focus();
+
+}
+
+function displayResults(response) {
+    
+    results.style.display = response.length ? 'block' : 'none';
+
+    if (response.length) {
+    	for(var i ; response.lenght; i++ ){
+    		var responseLen = response.length;
+
+    		results.innerHTML = '';
+
+    		for (var i = 0, div ; i < responseLen ; i++) {
+
+    			div = results.appendChild(document.createElement('div'));
+    			div.innerHTML = response[i];
+            
+    			div.onclick = function() {
+    				chooseResult(this);
+            };
+        }
+
+        }
+
+    }
+
+}
+
+

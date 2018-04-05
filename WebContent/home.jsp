@@ -55,6 +55,8 @@
 		<%
 
 			String pseudo = String.valueOf(request.getParameter("pseudo"));
+		
+			out.println(pseudo);
 
 			String secret = "dbrCUoc4z9EFJTLBSsZtQw==";
 
@@ -154,6 +156,8 @@
 					name="vehicle1" value="Bike"> Grande ville (+200 000
 				habitants) <br> <input type="checkbox" name="vehicle1"
 					value="Bike"> À moins de _____km de _____ <br>
+					
+					<input id="cityName" name="cityName" type="text" >
 			</form>
 
 
