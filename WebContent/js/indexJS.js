@@ -25,7 +25,6 @@ $(document).ready(function () {
 
     $("#signupForm").submit(function () {
 
-        alert("SignUp");
 
         var mail = $("#suMail").val();
         var pseudo = $("#suPseudo").val();
@@ -34,10 +33,11 @@ $(document).ready(function () {
 
 
         var date = new Date();
+        
+        date = date.toString();
 
         mdp = mdp + date.toString();
 
-        alert(date);
 
         var key = "dbrCUoc4z9EFJTLBSsZtQw==";
 
@@ -63,7 +63,7 @@ $(document).ready(function () {
         $("#suPseudo").val(encryptedPseudo);
         $("#suPassword").val(encryptedMDP);
         $("#suDate").val(encryptedDate);
-        $("#suVPassword").val(encryptedPasswordVerif); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
+        $("#suVPassword").val(encryptedVerifMDP); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
 
 
     });

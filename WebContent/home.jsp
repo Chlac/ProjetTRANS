@@ -92,6 +92,7 @@
                 <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                 <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
                 <input id="suVPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
+                <input id="suDate" name="date" >
                 <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
             </form>
         </div>
