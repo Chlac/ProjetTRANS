@@ -3,6 +3,9 @@ package core;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import db.A;
 import request.Criteria;
 
@@ -38,7 +41,7 @@ public class Application {
 	 * Gets called by a servlet to pass the {@link RequestedCriterias} to {@link Inquisitor} 
 	 * 
 	 */
-	public static ResultSet passRequest(ArrayList<Criteria> criterias) {
+	public static JsonObject passRequest(ArrayList<Criteria> criterias) {
 		return instance.passRequest2(criterias);
 	}
 	
@@ -58,12 +61,11 @@ public class Application {
 	private A db = new A();
 	
 	// TODO RENAME + DOC
-	private synchronized ResultSet passRequest2(ArrayList<Criteria> criterias) {
+	private synchronized JsonObject passRequest2(ArrayList<Criteria> criterias) {
 		Inquisitor i = new Inquisitor(criterias);
 		inquisitors.add(i);
 		//return i.temp();
-		i.fuckSQL();
-		return null;
+		return i.fuckSQL();
 	}
 	
 	public ResultSet passQuery2(String request) {
