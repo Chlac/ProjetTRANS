@@ -75,8 +75,14 @@
         <div id="inscription" class="formPanel">
 
             <button class="close"><i class="fas fa-times"></i></button>
+<<<<<<< HEAD
 
             <form id="signupForm" action="home.jsp" class="signInSignUpForm">
+=======
+
+            <form id="signupForm" action="home.jsp" class="signInSignUpForm">
+
+>>>>>>> parent of 070a7d2... DébutAffichageResults
                 <input id="suMail" name="mail" type="email" placeholder="E-mail" class="textInput">
                 <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                 <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">

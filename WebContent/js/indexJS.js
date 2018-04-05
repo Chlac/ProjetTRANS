@@ -70,7 +70,6 @@ $(document).ready(function () {
 	$("#attributes_form").change(function() {
 		doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
 	});
-
 	$("#cityName").change(function(){
 
 		var city = $("#cityName").val();
@@ -187,6 +186,7 @@ $(document).ready(function () {
 		$('#cityPanels').css("left", parseInt(leftVal) + '%');
 		currentCityPanel = currentCityPanel.next();
 		$("#scoreNum").text(currentCityPanel.attr('id'));
+
 	});
 
 	$("#arrowleft").click(function () {
