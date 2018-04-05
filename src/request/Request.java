@@ -12,9 +12,9 @@ public class Request {
 		for (int i = 0; i < Criteria.as.length; i++) {
 			if (request.getParameter(Criteria.as[i].ATTRIBUT_NAME) != null) criterias.add(Criteria.as[i]);
 		}
-		for (int i = 0; i < Criterib.bs.length; i++) {
-			if (request.getParameter(Criterib.bs[i].ATTRIBUT_NAME) != null) criteribs.add(Criterib.bs[i]);
-		}
+		//for (int i = 0; i < Criterib.bs.length; i++) {
+		//	if (request.getParameter(Criterib.bs[i].ATTRIBUT_NAME) != null) criteribs.add(Criterib.bs[i]);
+		//}
 	}
 	
 	
