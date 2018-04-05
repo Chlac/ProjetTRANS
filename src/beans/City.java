@@ -16,7 +16,6 @@ public class City {
 	public City() {
 	}
 	
-	
 	public String getName() {
 		return name;
 	}
@@ -36,7 +35,6 @@ public class City {
 		this.departement = departement;
 	}
 
-
 	public Double getLatitude() {
 		return latitude;
 	}
@@ -46,11 +44,9 @@ public class City {
 		this.latitude = latitude;
 	}
 
-
 	public Double getLongitude() {
 		return longitude;
 	}
-
 
 	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
@@ -68,12 +64,8 @@ public class City {
 		return details;
 	}
 
-
 	public void setDetails(ArrayList<Object> details) {
 		this.details = details;
 	}
 	
-	
-	
-
 }
