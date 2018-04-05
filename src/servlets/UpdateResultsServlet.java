@@ -16,7 +16,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mysql.jdbc.ResultSetMetaData;
 
-import beans.Chomage;
 import beans.City;
 import core.Application;
 import request.Criteria;
@@ -64,34 +63,27 @@ public class UpdateResultsServlet extends HttpServlet {
         response.setHeader("Access-Control-Max-Age", "86400");
 		
 		PrintWriter out = response.getWriter();
-		
-		Gson gson = new Gson(); 
+/*
+        Gson gson = new Gson(); 
         JsonObject jsonObject = new JsonObject();
-		
-		Chomage c = new Chomage(1.3);
-		ArrayList<Object> details = new ArrayList<>();
-		details.add(c);
-		
-				
-		City city = new City("Paris", "Troudufion", "LoliDep", 1.0, 2.0, 1000, details);
-        
 
+        City city = new City("Paris");
+        City city1 = new City("Orléans");
+        
         JsonElement cityObj = gson.toJsonTree(city);
         if(city.getName() == null) jsonObject.addProperty("success", false);
         else jsonObject.addProperty("success", true);
-        
-        jsonObject.add("1", cityObj);
-        
-        City city2 = new City("Orléans", "Tamere", "LoliPute", 1.0, 2.0, 1000, details);
-        
 
-        JsonElement cityObj2 = gson.toJsonTree(city2);
-        if(city2.getName() == null) jsonObject.addProperty("success", false);
+        JsonElement cityObj1 = gson.toJsonTree(city1);
+        if(city1.getName() == null) jsonObject.addProperty("success", false);
         else jsonObject.addProperty("success", true);
         
-        jsonObject.add("2", cityObj2);
+        jsonObject.add("1", cityObj);
+        jsonObject.add("2", cityObj1);
+        */
+        //jsonObject.addProperty("test", "TEST");
         
-        /*
+        
 		//boolean chomage_checked = request.getParameter("culture1") != null;
 		//System.out.println(chomage_checked);
 		
@@ -108,9 +100,7 @@ public class UpdateResultsServlet extends HttpServlet {
 		//System.out.println(r);
 		//jsonObject.addProperty("result", r);
 		
-		*/
-        
-        out.println(jsonObject.toString());
+		
 		out.close();
 		
 	}
