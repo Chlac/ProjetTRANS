@@ -71,6 +71,7 @@ $(document).ready(function () {
 		doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
 	});
 
+
 	$("#cityName").change(function(){
 
 		var city = $("#cityName").val();
@@ -274,6 +275,7 @@ function chooseResult(result) {
 	
 }
 	
+
 
 	function updateResults(data) {
 		//update results... 
