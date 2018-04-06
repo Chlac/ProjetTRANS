@@ -40,10 +40,6 @@ $(document).ready(function () {
         var verifMdp = $("#suVPassword").val();
 
 
-        var date = new Date();
-
-        date = date.toString();
-
 
 
         var key = "dbrCUoc4z9EFJTLBSsZtQw==";
@@ -54,7 +50,6 @@ $(document).ready(function () {
         var encryptedMail = CryptoJS.AES.encrypt(mail, key);
         var encryptedMDP = CryptoJS.AES.encrypt(mdp, key);
         var encryptedVerifMDP = CryptoJS.AES.encrypt(mdp, key);
-        var encryptedDate = CryptoJS.AES.encrypt(date,key);
 
         var decrypted = CryptoJS.AES.decrypt(encryptedPseudo, key);
 
@@ -69,7 +64,6 @@ $(document).ready(function () {
         $("#suMail").val(encryptedMail);
         $("#suPseudo").val(encryptedPseudo);
         $("#suPassword").val(encryptedMDP);
-        $("#suDate").val(encryptedDate);
         $("#suVPassword").val(encryptedVerifMDP); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
 
 
