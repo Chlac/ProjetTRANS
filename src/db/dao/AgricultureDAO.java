@@ -10,13 +10,14 @@ import core.Application;
 public class AgricultureDAO extends DAO {
 
 	@Override
-	public Object f(String codGeo) {
+	public Object f(String codGeo, double score) {
 		try {
 			String query = "SELECT ETAZ10 FROM agriculture WHERE codGeo="+ codGeo+ " limit 1";
 			ResultSet rs = Application.passQuery(query);
 			rs.next();
 			Agriculture agriculture = new Agriculture();
 			agriculture.setNombre_entreprise_agriculture(rs.getInt(1));
+			agriculture.setScore(score);
 			return agriculture;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

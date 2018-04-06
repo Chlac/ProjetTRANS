@@ -10,7 +10,7 @@ import core.Application;
 public class SanteeDAO extends DAO {
 
 	@Override
-	public Object f(String codGeo) {
+	public Object f(String codGeo, double score) {
 		
 		try {
 			String query = "select nbOmnipaticiensBV, nbDentistesLiberrauxBV from commune2014 where codGeo="+codGeo+" limit 1";
@@ -19,6 +19,7 @@ public class SanteeDAO extends DAO {
 			Santee santee = new Santee();
 			santee.setMedecin_generaliste(rs.getInt(1));
 			santee.setMedecin_generaliste(rs.getInt(2));
+			santee.setScore(score);
 			return santee;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

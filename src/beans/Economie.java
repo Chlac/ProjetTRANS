@@ -1,6 +1,6 @@
 package beans;
 
-public class Population {
+public class Economie {
 	private double score;
 
 	public double getScore() {
@@ -10,4 +10,5 @@ public class Population {
 	public void setScore(double score) {
 		this.score = score;
 	}
+
 }

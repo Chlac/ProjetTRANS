@@ -8,13 +8,14 @@ import core.Application;
 
 public class ChomageDAO extends DAO {
 
-	public Object f(String codGeo) {
+	public Object f(String codGeo, double score) {
 		try {
 			String query = "SELECT chomage FROM chomage WHERE codGeo="+ codGeo+ " limit 1";
 			ResultSet rs = Application.passQuery(query);
 			rs.next();
 			Chomage chomage = new Chomage();
 			chomage.setTaux_chomage(rs.getDouble(1));
+			chomage.setScore(score);
 			return chomage;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

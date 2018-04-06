@@ -12,7 +12,7 @@ import core.Application;
 public class AnimationDAO extends DAO {
 
 	@Override
-	public Object f(String codGeo) {
+	public Object f(String codGeo, double score) {
 		try {
 			String query = "SELECT jourDebut, moisDebut, anneeDebut, themes, libelleOrg from evenement where codGeo="+ codGeo+" ORDER BY anneeDebut DESC, moisDebut DESC, jourDebut DESC limit 5";
 			ResultSet rs = Application.passQuery(query);
@@ -26,6 +26,7 @@ public class AnimationDAO extends DAO {
 				e.setNom_organisation(rs.getString(5));
 				events.add(e);
 			}
+			animation.setScore(score);
 			return animation;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

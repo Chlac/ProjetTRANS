@@ -12,7 +12,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.mysql.jdbc.ResultSetMetaData;
 
-import beans.City;
+import beans.*;
 import db.dao.CommuneDAO;
 import javafx.collections.transformation.SortedList;
 import request.Criteria;
@@ -98,7 +98,7 @@ public class Inquisitor {
 			entry.getValue().add(0, temp);
 			list.add(entry);
 		}
-		merde = null;
+		//merde = null;
 		list.sort(new Comparator<Entry<String, ArrayList<Double>>>() {
 			@Override
 			public int compare(Entry<String, ArrayList<Double>> o1, Entry<String, ArrayList<Double>> o2) {
@@ -111,16 +111,66 @@ public class Inquisitor {
 			}
 
 		});
-		ArrayList<String> res = new ArrayList<>();
+		ArrayList<String> villes = new ArrayList<>();
 		for (int j = 0; j < 10; j++) {
 			// System.out.print(list.get(j).getKey()+"\t");
 			// for (double d : list.get(j).getValue()) {
 			// System.out.print(d+"\t");
 			// }
 			// System.out.println("");
-			res.add(list.get(j).getKey());
+			villes.add(list.get(j).getKey());
 		}
-		return fuckSQLDetails(res);
+		//return fuckSQLDetails(res);
+		Gson gson = new Gson(); 
+        JsonObject jsonObject = new JsonObject();
+        int n = 1;
+		for (String codGeo : villes) {
+			double s_culture = 0.0,s_economie = 0.0, s_population = 0.0, s_service_publique = 0.0;
+			int n_culture = 1, n_economie = 1, n_population = 1, n_service_publique = 1;
+			ArrayList<Object> details = new ArrayList<>();
+			for (int i = 0; i < request.criterias.size(); i++) {
+				details.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+				switch (request.criterias.get(i).TYPE) {
+				case "culture":
+					s_culture+=merde.get(codGeo).get(i+1);
+					break;
+				case "economie":
+					s_economie+=merde.get(codGeo).get(i+1);
+					break;
+				case "population":
+					s_population+=merde.get(codGeo).get(i+1);
+					break;
+				case "service_publique":
+					s_service_publique+=merde.get(codGeo).get(i+1);
+					break;
+				default:
+					break;
+				}
+			}{
+				
+				Culture c = new Culture();
+				c.setScore(s_culture/n_culture);
+				Economie e = new Economie();
+				e.setScore(s_economie/n_economie);
+				Population p = new Population();
+				p.setScore(s_population/n_population);
+				ServicePublique s = new ServicePublique();
+				s.setScore(s_service_publique/n_service_publique);
+				details.add(c);
+				details.add(e);
+				details.add(p);
+				details.add(s);
+			}
+			
+			City city = CommuneDAO.f(codGeo, details);
+			JsonElement cityObj = gson.toJsonTree(city);
+	        if(city.getName() == null) jsonObject.addProperty("success", false);
+	        else {
+	        	jsonObject.addProperty("success", true);
+	        	jsonObject.add(String.valueOf(n++), cityObj);
+	        }
+		}
+		return jsonObject;
 	}
 
 	
@@ -140,7 +190,7 @@ public class Inquisitor {
 			return Application.passQuery(query);
 		}
 	}
-
+/*
 	private JsonObject fuckSQLDetails(ArrayList<String> villes){
 		Gson gson = new Gson(); 
         JsonObject jsonObject = new JsonObject();
@@ -160,7 +210,7 @@ public class Inquisitor {
 	        }
 		}
 		return jsonObject;
-	}
+	}*/
 
 	/*
 	 * SELECT table1.id, ((table1.score + table2.score + table3.score)/3) as average

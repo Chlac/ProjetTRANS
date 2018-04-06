@@ -60,9 +60,9 @@ public class Criteria {
 		CLASS = machin;
 	}
 
-	public Object redirectToDAO(String codGeo) {
+	public Object redirectToDAO(String codGeo, double score) {
 		try {
-			return ((DAO) CLASS.getConstructor(new Class[0]).newInstance(new Object[0])).f(codGeo);
+			return ((DAO) CLASS.getConstructor(new Class[0]).newInstance(new Object[0])).f(codGeo, score);
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			// TODO Auto-generated catch block

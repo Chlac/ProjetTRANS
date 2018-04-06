@@ -10,7 +10,7 @@ import core.Application;
 public class AgeDAO extends DAO {
 
 	@Override
-	public Object f(String codGeo) {
+	public Object f(String codGeo, double score) {
 		try {
 			String query = "SELECT enfants, jeunes, adultes, senior, (enfants+jeunes+adultes+senior) as total FROM ages WHERE codGeo="+ codGeo+ " and annee =2014 limit 1";
 			ResultSet rs = Application.passQuery(query);
@@ -20,6 +20,7 @@ public class AgeDAO extends DAO {
 			a.setJeunes((double)rs.getInt(2)/rs.getInt(5));
 			a.setAdultes((double)rs.getInt(3)/rs.getInt(5));
 			a.setSenior((double)rs.getInt(4)/rs.getInt(5));
+			a.setScore(score);
 			return a;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

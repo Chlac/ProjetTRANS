@@ -4,6 +4,13 @@ public class Evenement {
 	private String date;
 	private String theme;
 	private String nom_organisation;
+	private double score;
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
 	
 	public String getDate() {
 		return date;

@@ -3,6 +3,13 @@ package beans;
 public class Commerce {
 	private int nb_entreprise_commerce;
 	private int nb_entreprise_service;
+	private double score;
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
 	public int getNb_entreprise_commerce() {
 		return nb_entreprise_commerce;
 	}

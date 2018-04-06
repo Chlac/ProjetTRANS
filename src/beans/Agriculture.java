@@ -2,6 +2,13 @@ package beans;
 
 public class Agriculture {
 	private int nombre_entreprise_agriculture;
+	private double score;
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
 
 	public int getNombre_entreprise_agriculture() {
 		return nombre_entreprise_agriculture;

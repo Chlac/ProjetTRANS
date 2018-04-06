@@ -10,11 +10,12 @@ import core.Application;
 public class TourismeDAO extends DAO {
 
 	@Override
-	public Object f(String codGeo) {
+	public Object f(String codGeo, double score) {
 		//String query = "SELECT ETAZ10 FROM agriculture WHERE codGeo="+ codGeo+ " limit 1";
 		//ResultSet rs = Application.passQuery(query);
 		//rs.next();
 		Tourisme tourisme = new Tourisme();
+		tourisme.setScore(score);
 		//agriculture.setNombre_entreprise_agriculture(rs.getInt(1));
 		return tourisme;
 	}

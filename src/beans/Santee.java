@@ -3,6 +3,13 @@ package beans;
 public class Santee {
 	private int medecin_generaliste;
 	private int dentiste;
+	private double score;
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
 	public int getMedecin_generaliste() {
 		return medecin_generaliste;
 	}

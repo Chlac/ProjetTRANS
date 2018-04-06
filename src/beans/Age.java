@@ -5,6 +5,14 @@ public class Age {
 	private double jeunes;
 	private double adultes;
 	private double senior;
+	private double score;
+	public double getScore() {
+		return score;
+	}
+	public void setScore(double score) {
+		this.score = score;
+	}
+	
 	
 	public double getEnfants() {
 		return enfants;

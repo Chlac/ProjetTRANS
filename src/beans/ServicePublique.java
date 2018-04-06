@@ -1,6 +1,6 @@
 package beans;
 
-public class Population {
+public class ServicePublique {
 	private double score;
 
 	public double getScore() {
