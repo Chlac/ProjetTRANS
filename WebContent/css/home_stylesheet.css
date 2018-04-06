@@ -280,7 +280,7 @@ body {
     z-index: 2;
 }
 
-#cityPromoPicture {
+.cityPromoPictureSum {
     position: absolute;
     width: 40%;
     height: calc(100% - 35px);
@@ -289,8 +289,16 @@ body {
     z-index: 1;
 }
 
+.cityPromoPictureDetailed {
+    position: absolute;
+    width: 100%;
+    height: 22%;
+    background-color: aqua;
+    z-index: 1;
+}
 
-#cityPanelsSlideshow {
+
+.cityPanelsSlideshowSum {
     position: relative;
     right: 0;
     width: 100%;
@@ -300,11 +308,28 @@ body {
 
 }
 
-#cityPanels {
+.cityPanelsSlideshowDetailed {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: calc(100% - var(--headerHeight) - 22%);
+    z-index: 0;
+    overflow: hidden; 
+}
+
+.cityPanelsSum {
     position: relative;
     height: 100%;
     width: 1000%;
     z-index: -1;
+}
+
+.cityPanelsDetailed {
+    position: relative;
+    height: 100%;
+    width: 1000%;
+    z-index: 1;
 }
 
 .cityName {
@@ -322,6 +347,50 @@ body {
     height: 100%;
 
 }
+
+#Culture {
+    height: 100%;
+    width: 100%;
+    
+}
+
+
+.scoreSlider {
+    width: 100%;
+    height: 20px;
+    
+    
+}
+
+.scoreSliderColored {
+    display: inline-table;
+    margin: auto;
+    vertical-align: middle;
+    width: 60%;
+    height: 30%;
+    background-color: brown;
+}
+
+.scoreSlidercoloredCircle {
+    display: inline-table;
+    position: relative;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    background-color: brown;
+    
+}
+
+.scoreSliderGray {
+    display: inline-table;
+    vertical-align: middle;
+    width: 20%;
+    height: 30%;
+    background-color: gainsboro;
+}
+
+
 
 .distanceInput {
     border: none;
@@ -360,7 +429,7 @@ body {
 }
 
 
-#score {
+.scoreSum {
     position: absolute;
     background: black;
     color: white;
@@ -370,6 +439,21 @@ body {
     width: 70px;
     height: 70px;
     top: 0px;
+    left: 5%;
+    z-index: 2;
+    display: flex;
+}
+
+.scoreDetailed {
+    position: absolute;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 22px;
+    width: 70px;
+    height: 70px;
+    top: 22%;
     left: 5%;
     z-index: 2;
     display: flex;
@@ -471,13 +555,21 @@ body {
         box-shadow: 0px 0px 110px 0px rgba(0, 0, 0, 0.2);
     }
 
-    .cityInf {
+    .cityInfSum {
         float: right;
         padding: 2%;
         padding-left: 8%;
         padding-right: 8%;
         width: 60%;
         text-align: center;
+    }
+    
+    .cityInfDetailed {
+        padding: 2%;
+        padding-left: 8%;
+        padding-right: 8%;
+        width: 100%;
+        text-align: right;
     }
 
     @-webkit-keyframes moveResultUp {

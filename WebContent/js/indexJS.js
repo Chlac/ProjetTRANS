@@ -33,7 +33,7 @@ $(document).ready(function () {
 
 
         var date = new Date();
-        
+
         date = date.toString();
 
         mdp = mdp + date.toString();
@@ -179,17 +179,30 @@ $(document).ready(function () {
     var leftVal = 0;
     var currentCityPanel = $("#1");
     $("#arrowright").click(function () {
-        if(leftVal > -900) leftVal -= 100;
-        $('#cityPanels').css("left", parseInt(leftVal) + '%');
-        currentCityPanel = currentCityPanel.next();
-        $("#scoreNum").text(currentCityPanel.attr('id'));
+        if(leftVal > -900) {
+            leftVal -= 100;
+
+            $("#scoreContent").fadeOut(200).fadeIn(200, function() {
+                $('#cityPanels').css("left", parseInt(leftVal) + '%');
+                currentCityPanel = currentCityPanel.next();
+                $("#scoreNum").text(currentCityPanel.attr('id'));
+            }); 
+
+
+
+        }
     });
 
     $("#arrowleft").click(function () {
-        if(leftVal < 0) leftVal += 100;
-        $('#cityPanels').css("left", parseInt(leftVal) + '%');
-        currentCityPanel = currentCityPanel.prev();
-        $("#scoreNum").text(currentCityPanel.attr('id'));
+        if(leftVal < 0) {
+            leftVal += 100;
+
+            $("#scoreContent").fadeOut(200).fadeIn(200, function() {
+                $('#cityPanels').css("left", parseInt(leftVal) + '%');
+                currentCityPanel = currentCityPanel.prev();
+                $("#scoreNum").text(currentCityPanel.attr('id'));
+            });
+        }
     });
 
 
