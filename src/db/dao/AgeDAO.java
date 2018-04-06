@@ -12,7 +12,7 @@ public class AgeDAO extends DAO {
 	@Override
 	public Object f(String codGeo) {
 		try {
-			String query = "SELECT enfants, jeunes, adultes, senior, (enfants+jeunes+adultes+sernior) as total FROM ages WHERE codGeo="+ codGeo+ " and annee =2014 limit 1";
+			String query = "SELECT enfants, jeunes, adultes, senior, (enfants+jeunes+adultes+senior) as total FROM ages WHERE codGeo="+ codGeo+ " and annee =2014 limit 1";
 			ResultSet rs = Application.passQuery(query);
 			rs.next();
 			Age a = new Age();
