@@ -5,6 +5,7 @@
 $(document).ready(function () {
 
     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+    
 
     if ($(window).width() < 580) {
         $("#attributes_panel").css("height", $("#content").outerHeight(true) - $("#result").outerHeight(true));
@@ -40,6 +41,10 @@ $(document).ready(function () {
         var verifMdp = $("#suVPassword").val();
 
 
+        var date = new Date();
+
+        date = date.toString();
+
 
 
         var key = "dbrCUoc4z9EFJTLBSsZtQw==";
@@ -50,6 +55,7 @@ $(document).ready(function () {
         var encryptedMail = CryptoJS.AES.encrypt(mail, key);
         var encryptedMDP = CryptoJS.AES.encrypt(mdp, key);
         var encryptedVerifMDP = CryptoJS.AES.encrypt(mdp, key);
+        var encryptedDate = CryptoJS.AES.encrypt(date,key);
 
         var decrypted = CryptoJS.AES.decrypt(encryptedPseudo, key);
 
@@ -64,6 +70,7 @@ $(document).ready(function () {
         $("#suMail").val(encryptedMail);
         $("#suPseudo").val(encryptedPseudo);
         $("#suPassword").val(encryptedMDP);
+        $("#suDate").val(encryptedDate);
         $("#suVPassword").val(encryptedVerifMDP); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
 
 
@@ -129,6 +136,7 @@ $(document).ready(function () {
 
     $("#moreInfos").click(function () {
 
+        $("#score").attr("class", "scoreDetailed");
         $(this).addClass("activeButton").siblings(".activeButton").addClass("ex").removeClass("activeButton");
 
         $(".cityPromoPictureSum").fadeOut(300, function() {
@@ -137,7 +145,16 @@ $(document).ready(function () {
 
         $(".cityPanelsSlideshowSum").fadeOut(300, function() {
             $(this).attr("class", "cityPanelsSlideshowDetailed");
+
+            $(".cityInfSum").each(function() {
+                $(this).removeClass("cityInfSum").addClass("cityInfDetailed");
+
+            });
+
+            $("#arrows").css("width", "100%");
         }).fadeIn();
+
+
 
         $("#resultSection").removeClass("summedResult").addClass("detailedResult").one(animationEnd, function() {
 
@@ -161,7 +178,18 @@ $(document).ready(function () {
 
         $(".cityPanelsSlideshowDetailed").fadeOut(300, function() {
             $(this).attr("class", "cityPanelsSlideshowSum");
+
+            $(".cityInfDetailed").each(function() {
+                $(this).removeClass("cityInfDetailed").addClass("cityInfSum");
+            });
+
+            $("#arrows").css("width", "68%");
+
         }).fadeIn();
+        
+        $("#score").attr("class", "scoreSum");
+
+
 
         $(this).animate({
             top : "0px"
@@ -332,7 +360,12 @@ function updateResults(data) {
         $("#" + index + " > .cityInf").children(".cityName").text(city.name);
         $("#" + index + " > .cityInf").children(".cityWhereInfos").text(city.region + " - " + city.departement + ($("#attributes_form > [name='distance']").prop("checked") ? " - " + "25km de Paris" : ""));
 
-        $('#parent').append('<div>hello</div>'); 
+        //city.categories.forEach()
+        $("#" + index + " > .details").append("<div id='Culture'>" +
+                                              "<h5>Culture</h5>" +
+                                              "<div class='scoreSlider'>" +
+                                              "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div></div>" +
+                                              "</div>"); 
 
     });
 
