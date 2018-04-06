@@ -307,10 +307,11 @@ function displayResults(response) {
 
 function updateResults(data) {
     //update results... 
+    
 
     $.each(data, function (index, city) {
 
-        $("#" + index + " > .cityName").text(city.name);
+        $("#" + index + " > .cityInfDetailed").children(".cityName").text(city.name);
         $("#" + index + " > .cityWhereInfos").text(city.region + " - " + city.departement + ($("#attributes_form > [name='distance']").prop("checked") ? " - " + city.details[0].taux_chomage : ""));
 
 
