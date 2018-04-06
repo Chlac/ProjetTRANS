@@ -52,6 +52,7 @@
                 <button id="signin" class="headerContent">Se connecter</button>
                 <button id="signup" class="headerContent">S'inscrire</button>
 
+
                 <% String pseudo = request.getParameter("pseudo"); %>
             </div>
 
@@ -63,7 +64,7 @@
 
                 <button class="close"><i class="fas fa-times"></i></button>
 
-            <form id="signinForm" action="ConnectionUserServlet" class="signInSignUpForm">
+                <form id="signinForm" action="ConnectionUserServlet" class="signInSignUpForm">
 
                     <input id="siPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                     <input id="siPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
@@ -77,16 +78,17 @@
 
                 <button class="close"><i class="fas fa-times"></i></button>
 
-            
-            <form id="signupForm" action="CreatUserServlet" class="signInSignUpForm">
 
-                <input id="suMail" name="mail" type="email" placeholder="E-mail" class="textInput">
-                <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
-                <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
-                <input id="suVPassword" name="vpassword" type="password" placeholder="Confirmer mot de passe" class="textInput">
-                <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
-            </form>
-        </div>
+                <form id="signupForm" action="CreatUserServlet" class="signInSignUpForm">
+
+                    <input id="suMail" name="mail" type="email" placeholder="E-mail" class="textInput">
+                    <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
+                    <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
+                    <input id="suVPassword" name="vpassword" type="password" placeholder="Confirmer mot de passe" class="textInput">
+                    <input id="suDate" name="date" >
+                    <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
 
             <div id="attributes_panel">
 
@@ -161,9 +163,9 @@
                 <div id="buttonsSection">
 
                     <div id="buttons">
-                        <button id="showfilters"><i class="fa fa-filter" aria-hidden="true"></i></button>
-                        <button id="showmap"><i class="fa fa-map" aria-hidden="true"></i></button>
-                        <button id="moreInfos">+ d'infos <i class="fa fa-caret-up" aria-hidden="true"></i></button>
+                        <button id="showfilters" class="modeButton activeButton"><i class="fa fa-filter" aria-hidden="true"></i></button>
+                        <button id="showmap" class="modeButton"><i class="fa fa-map" aria-hidden="true"></i></button>
+                        <button id="moreInfos" class="modeButton">+ d'infos <i class="fa fa-caret-up" aria-hidden="true"></i></button>
                     </div>
 
                 </div>
@@ -172,40 +174,42 @@
 
                     <button id="lessInfos">- d'infos <i class="fa fa-caret-down" aria-hidden="true"></i></button>
 
-                    <div id="score" class="scoreDetailed">
+                    <div id="score" class="scoreSum">
                         <div id="scoreContent">
                             <h1 id="scoreNum">1</h1>
                             <sup>#</sup>
                         </div>
                     </div>
 
-                    <div class="cityPromoPictureDetailed">
+                    <div class="cityPromoPictureSum">
                         <img src="truc.jpg" alt="truc" />
                     </div>
 
-                    <div class="cityPanelsSlideshowDetailed">
+                    <div class="cityPanelsSlideshowSum">
 
                         <div id="arrows">
                             <button id="arrowleft" class="arrow"><i class="fas fa-angle-left"></i></button>
                             <button id="arrowright" class="arrow"><i class="fas fa-angle-right"></i></button>
                         </div>
 
-                        <div id=cityPanels class="cityPanelsDetailed">
+                        <div id=cityPanels class="cityPanelsSum">
 
                             <div id="1" class="citySumPanel">
-                                
-                                <div class="cityInf cityInfDetailed">
+
+                                <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C1</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
 
-                                <div id="Culture">
-                                    <h5>Culture</h5>
-                                    <div class="scoreSlider">
-                                    <div class="scoreSliderColored"></div><span class="scoreSlidercoloredCircle"></span><div class="scoreSliderGray"></div></div>
+                                <div id="details">
+                                    <div id="Culture">
+                                        <h5>Culture</h5>
+                                        <div class="scoreSlider">
+                                            <div class="scoreSliderColored"></div><span class="scoreSlidercoloredCircle"></span><div class="scoreSliderGray"></div></div>
 
+                                    </div>
                                 </div>
-                                
+
                             </div>
                             <div id="2" class="citySumPanel">
                                 <div class="cityInf cityInfDetailed">
