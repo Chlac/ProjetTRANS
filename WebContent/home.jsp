@@ -63,7 +63,7 @@
 
                 <button class="close"><i class="fas fa-times"></i></button>
 
-                <form id="signinForm" action="home.jsp" class="signInSignUpForm">
+            <form id="signinForm" action="ConnectionUserServlet" class="signInSignUpForm">
 
                     <input id="siPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                     <input id="siPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
@@ -77,17 +77,17 @@
 
                 <button class="close"><i class="fas fa-times"></i></button>
 
-                <form id="signupForm" action="home.jsp" class="signInSignUpForm">
+            
+            <form id="signupForm" action="CreatUserServlet" class="signInSignUpForm">
 
-                    <input id="suMail" name="mail" type="email" placeholder="E-mail" class="textInput">
-                    <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
-                    <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
-                    <input id="suVPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
-                    <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
-                </form>
-            </div>
-
-
+                <input id="suMail" name="mail" type="email" placeholder="E-mail" class="textInput">
+                <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
+                <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
+                <input id="suVPassword" name="vpassword" type="password" placeholder="Confirmer mot de passe" class="textInput">
+                <input id="suDate" name="date" >
+                <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
+            </form>
+        </div>
 
             <div id="attributes_panel">
 

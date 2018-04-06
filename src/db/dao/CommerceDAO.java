@@ -10,7 +10,7 @@ public class CommerceDAO extends DAO {
 	@Override
 	public Object f(String codGeo) {
 		try {
-			String query = "SELECT nbEntreprisesSecteurCommerce, nbEntreprisesSecteurService FROM commerce WHERE codGeo="+ codGeo+ " limit 1";
+			String query = "SELECT nbEntreprisesSecteurCommerce, nbEntreprisesSecteurServ FROM commerce WHERE codGeo="+ codGeo+ " limit 1";
 			ResultSet rs = Application.passQuery(query);
 			rs.next();
 			Commerce commerce = new Commerce();

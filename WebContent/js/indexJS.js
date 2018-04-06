@@ -18,8 +18,16 @@ $(document).ready(function () {
     $("#signinForm").submit(function () {
         alert("SignIn");
 
-        $("#siPseudo").val("Caca");
-        $("#sPassword").val("Caca");
+        var pseudo = $("#siPseudo").val();
+        var mdp = $("#sPassword").val();
+        
+        var key = "dbrCUoc4z9EFJTLBSsZtQw==";
+        
+        var encryptedPseudo = CryptoJS.AES.encrypt(pseudo, key);
+        var encryptedMDP = CryptoJS.AES.encrypt(mdp, key);
+        
+        $("#suPseudo").val(encryptedPseudo);
+        $("#suPassword").val(encryptedMDP);
 
     });
 
@@ -36,7 +44,6 @@ $(document).ready(function () {
 
         date = date.toString();
 
-        mdp = mdp + date.toString();
 
 
         var key = "dbrCUoc4z9EFJTLBSsZtQw==";
@@ -67,6 +74,15 @@ $(document).ready(function () {
 
 
     });
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     $("#attributes_form").change(function() {
         doPOST('UpdateResultsServlet', updateResults, $(this).serialize());

@@ -12,7 +12,7 @@ public class IndustrieDAO extends DAO {
 	@Override
 	public Object f(String codGeo) {
 		try {
-			String query = "SELECT nbEntreprisesSecteurIndustrie  FROM industrie WHERE codGeo="+ codGeo+ " limit 1";
+			String query = "SELECT nbEntreprisesSecteurIndust FROM industrie WHERE codGeo="+ codGeo+ " limit 1";
 			ResultSet rs = Application.passQuery(query);
 			rs.next();
 			Industrie industrie = new Industrie();
