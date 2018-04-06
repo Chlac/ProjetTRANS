@@ -20,12 +20,12 @@ $(document).ready(function () {
 
         var pseudo = $("#siPseudo").val();
         var mdp = $("#sPassword").val();
-        
+
         var key = "dbrCUoc4z9EFJTLBSsZtQw==";
-        
+
         var encryptedPseudo = CryptoJS.AES.encrypt(pseudo, key);
         var encryptedMDP = CryptoJS.AES.encrypt(mdp, key);
-        
+
         $("#suPseudo").val(encryptedPseudo);
         $("#suPassword").val(encryptedMDP);
 
@@ -40,10 +40,6 @@ $(document).ready(function () {
         var verifMdp = $("#suVPassword").val();
 
 
-        var date = new Date();
-
-        date = date.toString();
-
 
 
         var key = "dbrCUoc4z9EFJTLBSsZtQw==";
@@ -54,7 +50,6 @@ $(document).ready(function () {
         var encryptedMail = CryptoJS.AES.encrypt(mail, key);
         var encryptedMDP = CryptoJS.AES.encrypt(mdp, key);
         var encryptedVerifMDP = CryptoJS.AES.encrypt(mdp, key);
-        var encryptedDate = CryptoJS.AES.encrypt(date,key);
 
         var decrypted = CryptoJS.AES.decrypt(encryptedPseudo, key);
 
@@ -69,20 +64,19 @@ $(document).ready(function () {
         $("#suMail").val(encryptedMail);
         $("#suPseudo").val(encryptedPseudo);
         $("#suPassword").val(encryptedMDP);
-        $("#suDate").val(encryptedDate);
         $("#suVPassword").val(encryptedVerifMDP); // Ou "" si on check juste le password ici et qu'on met cette valeur à nulle
 
 
     });
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
 
     $("#attributes_form").change(function() {
         doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
@@ -135,6 +129,16 @@ $(document).ready(function () {
 
     $("#moreInfos").click(function () {
 
+        $(this).addClass("activeButton").siblings(".activeButton").addClass("ex").removeClass("activeButton");
+
+        $(".cityPromoPictureSum").fadeOut(300, function() {
+            $(this).attr("class", "cityPromoPictureDetailed");
+        }).fadeIn();
+
+        $(".cityPanelsSlideshowSum").fadeOut(300, function() {
+            $(this).attr("class", "cityPanelsSlideshowDetailed");
+        }).fadeIn();
+
         $("#resultSection").removeClass("summedResult").addClass("detailedResult").one(animationEnd, function() {
 
             $( this ).off( animationEnd );
@@ -148,6 +152,16 @@ $(document).ready(function () {
     });
 
     $("#lessInfos").click(function () {
+
+        $("button[class~='ex']").removeClass("ex").addClass("activeButton").siblings().removeClass("activeButton");
+
+        $(".cityPromoPictureDetailed").fadeOut(300, function() {
+            $(this).attr("class", "cityPromoPictureSum");
+        }).fadeIn();
+
+        $(".cityPanelsSlideshowDetailed").fadeOut(300, function() {
+            $(this).attr("class", "cityPanelsSlideshowSum");
+        }).fadeIn();
 
         $(this).animate({
             top : "0px"
@@ -164,6 +178,8 @@ $(document).ready(function () {
 
     $("#showfilters").click(function () {
 
+        $(this).addClass("activeButton").siblings().removeClass("activeButton");
+
         $("#attributes_panel, #attrPanelBackground").removeClass('animated bounceOutLeft').addClass('animated bounceInLeft');
 
         setTimeout(function () {
@@ -178,6 +194,8 @@ $(document).ready(function () {
     });
 
     $("#showmap").click(function () {
+
+        $(this).addClass("activeButton").siblings().removeClass("activeButton");
 
         $(".before, .after").animate(
             {
@@ -198,7 +216,7 @@ $(document).ready(function () {
         if(leftVal > -900) {
             leftVal -= 100;
 
-            $("#scoreContent").fadeOut(200).fadeIn(200, function() {
+            $("#scoreContent").fadeOut(100).fadeIn(100, function() {
                 $('#cityPanels').css("left", parseInt(leftVal) + '%');
                 currentCityPanel = currentCityPanel.next();
                 $("#scoreNum").text(currentCityPanel.attr('id'));
@@ -213,7 +231,7 @@ $(document).ready(function () {
         if(leftVal < 0) {
             leftVal += 100;
 
-            $("#scoreContent").fadeOut(200).fadeIn(200, function() {
+            $("#scoreContent").fadeOut(100).fadeIn(100, function() {
                 $('#cityPanels').css("left", parseInt(leftVal) + '%');
                 currentCityPanel = currentCityPanel.prev();
                 $("#scoreNum").text(currentCityPanel.attr('id'));
@@ -307,13 +325,14 @@ function displayResults(response) {
 
 function updateResults(data) {
     //update results... 
-    
+
 
     $.each(data, function (index, city) {
 
-        $("#" + index + " > .cityInfDetailed").children(".cityName").text(city.name);
-        $("#" + index + " > .cityWhereInfos").text(city.region + " - " + city.departement + ($("#attributes_form > [name='distance']").prop("checked") ? " - " + city.details[0].taux_chomage : ""));
+        $("#" + index + " > .cityInf").children(".cityName").text(city.name);
+        $("#" + index + " > .cityInf").children(".cityWhereInfos").text(city.region + " - " + city.departement + ($("#attributes_form > [name='distance']").prop("checked") ? " - " + "25km de Paris" : ""));
 
+        $('#parent').append('<div>hello</div>'); 
 
     });
 

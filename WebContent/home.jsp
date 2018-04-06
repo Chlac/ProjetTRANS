@@ -84,7 +84,6 @@
                 <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                 <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
                 <input id="suVPassword" name="vpassword" type="password" placeholder="Confirmer mot de passe" class="textInput">
-                <input id="suDate" name="date" >
                 <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
             </form>
         </div>
@@ -195,7 +194,7 @@
 
                             <div id="1" class="citySumPanel">
                                 
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C1</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
@@ -209,55 +208,55 @@
                                 
                             </div>
                             <div id="2" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C2</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
                             </div>
                             <div id="3" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C3</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
                             </div>
                             <div id="4" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C4</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
                             </div>
                             <div id="5" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C5</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
                             </div>
                             <div id="6" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C6</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
                             </div>
                             <div id="7" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C7</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
                             </div>
                             <div id="8" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C8</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
                             </div>
                             <div id="9" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C9</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
                             </div>
                             <div id="10" class="citySumPanel">
-                                <div class="cityInfDetailed">
+                                <div class="cityInf cityInfDetailed">
                                     <h4 class="cityName">C10</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
