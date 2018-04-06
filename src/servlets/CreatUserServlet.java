@@ -40,6 +40,7 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * Servlet implementation class UserServlet
  */
+@WebServlet("/CreatUserServlet")
 public class CreatUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

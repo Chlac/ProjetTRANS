@@ -4,8 +4,6 @@
 
 function initMap() {
 	// Styles a map in night mode.
-	 var myLatLng = {lat: 48.862725, lng: 2.287592000000018};
-	 var myLatLng = {lat: 47.58330, lng: 1.33333};
 	
 	var map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 47.589391, lng: 1.335350},
@@ -340,9 +338,9 @@ function initMap() {
 }
 
 var locations = [
-	['Paris', 48.862725, 2.287592000000018, 3],
-	['Blois', 47.58609209999999, 1.3359474999999748, 2],
-	['Dreux', 48.736134, 1.3708890000000338, 1]
+	['Paris', 48.862725, 2.287592000000018,'1', 3],
+	['Blois', 47.58609209999999, 1.3359474999999748,'2', 2],
+	['Dreux', 48.736134, 1.3708890000000338, '3',1]
 ];
 
 
@@ -355,13 +353,20 @@ function setMarkers(map) {
 	  // Origins, anchor positions and coordinates of the marker increase in the X
 	  // direction to the right and in the Y direction down.
 	  var image = {
-	    url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+	    //url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
 	    // This marker is 20 pixels wide by 32 pixels high.
-	    size: new google.maps.Size(20, 32),
+	    //size: new google.maps.Size(20, 32),
 	    // The origin for this image is (0, 0).
-	    origin: new google.maps.Point(0, 0),
+	    //origin: new google.maps.Point(0, 0),
 	    // The anchor for this image is the base of the flagpole at (0, 32).
-	    anchor: new google.maps.Point(0, 32)
+	    //anchor: new google.maps.Point(0, 32)
+			  
+		url: 'http://image.noelshack.com/fichiers/2018/14/2/1522779291-mapmarker-1.png',
+		scaledSize: new google.maps.Size(20,32),
+		origin: new google.maps.Point(0,0),
+		anchor: new google.maps.Point(10,30),
+		labelOrigin: new google.maps.Point(11,12),
+			  
 	  };
 	  // Shapes define the clickable region of the icon. The type defines an HTML
 	  // <area> element 'poly' which traces out a polygon as a series of X,Y points.
@@ -376,9 +381,14 @@ function setMarkers(map) {
 	      position: {lat: location[1], lng: location[2]},
 	      map: map,
 	      icon: image,
+	      label: {
+	    	  text: location[3],
+	    	  color: 'white',
+	    	  //fontWeight: 'bold',
+	      },
 	      shape: shape,
 	      title: location[0],
-	      zIndex: location[3]
+	      zIndex: location[4]
 	    });
 	  }
 	}
