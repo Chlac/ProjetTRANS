@@ -127,42 +127,48 @@ public class Inquisitor {
 		for (String codGeo : villes) {
 			double s_culture = 0.0,s_economie = 0.0, s_population = 0.0, s_service_publique = 0.0;
 			int n_culture = 1, n_economie = 1, n_population = 1, n_service_publique = 1;
-			ArrayList<Object> details = new ArrayList<>();
+			ArrayList<Object> culture = new ArrayList<>(), economie = new ArrayList<>(), population = new ArrayList<>(),
+					service_publique = new ArrayList<>();
+			//ArrayList<Object> details = new ArrayList<>();
 			for (int i = 0; i < request.criterias.size(); i++) {
-				details.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+				//details.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 				switch (request.criterias.get(i).TYPE) {
 				case "culture":
 					s_culture+=merde.get(codGeo).get(i+1);
+					culture.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 					break;
 				case "economie":
 					s_economie+=merde.get(codGeo).get(i+1);
+					economie.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 					break;
 				case "population":
 					s_population+=merde.get(codGeo).get(i+1);
+					population.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 					break;
 				case "service_publique":
 					s_service_publique+=merde.get(codGeo).get(i+1);
+					service_publique.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 					break;
 				default:
 					break;
 				}
-			}{
+			}
 				
 				Culture c = new Culture();
 				c.setScore(s_culture/n_culture);
+				c.setDetails(culture);
 				Economie e = new Economie();
 				e.setScore(s_economie/n_economie);
+				e.setDetails(economie);
 				Population p = new Population();
 				p.setScore(s_population/n_population);
+				p.setDetails(population);
 				ServicePublique s = new ServicePublique();
 				s.setScore(s_service_publique/n_service_publique);
-				details.add(c);
-				details.add(e);
-				details.add(p);
-				details.add(s);
-			}
+				s.setDetails(service_publique);
 			
-			City city = CommuneDAO.f(codGeo, details);
+			
+			City city = CommuneDAO.f(codGeo, c, e, p, s);
 			JsonElement cityObj = gson.toJsonTree(city);
 	        if(city.getName() == null) jsonObject.addProperty("success", false);
 	        else {

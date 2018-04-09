@@ -1,7 +1,18 @@
 package beans;
 
+import java.util.ArrayList;
+
 public class Culture {
 	private double score;
+	private ArrayList<Object> details;
+	public ArrayList<Object> getDetails() {
+		return details;
+	}
+
+	public void setDetails(ArrayList<Object> details) {
+		this.details = details;
+	}
+	
 
 	public double getScore() {
 		return score;
@@ -10,4 +21,5 @@ public class Culture {
 	public void setScore(double score) {
 		this.score = score;
 	}
+	
 }
