@@ -127,27 +127,27 @@ public class Inquisitor {
 		for (String codGeo : villes) {
 			double s_culture = 0.0,s_economie = 0.0, s_population = 0.0, s_service_publique = 0.0;
 			int n_culture = 1, n_economie = 1, n_population = 1, n_service_publique = 1;
-			ArrayList<Object> culture = new ArrayList<>(), economie = new ArrayList<>(), population = new ArrayList<>(),
-					service_publique = new ArrayList<>();
+			HashMap<String, Object> culture = new HashMap<>(), economie = new HashMap<>(), population = new HashMap<>(),
+					service_publique = new HashMap<>();
 			//ArrayList<Object> details = new ArrayList<>();
 			for (int i = 0; i < request.criterias.size(); i++) {
 				//details.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 				switch (request.criterias.get(i).TYPE) {
 				case "culture":
 					s_culture+=merde.get(codGeo).get(i+1);
-					culture.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+					culture.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 					break;
 				case "economie":
 					s_economie+=merde.get(codGeo).get(i+1);
-					economie.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+					economie.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 					break;
 				case "population":
 					s_population+=merde.get(codGeo).get(i+1);
-					population.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+					population.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 					break;
 				case "service_publique":
 					s_service_publique+=merde.get(codGeo).get(i+1);
-					service_publique.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+					service_publique.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 					break;
 				default:
 					break;

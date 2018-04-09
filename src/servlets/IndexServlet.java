@@ -36,7 +36,7 @@ public class IndexServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("OKOKOKOKOKOKOKOOK");
+		System.out.println("INIT SERVLET OK");
 		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward( request, response );
 	}
 
