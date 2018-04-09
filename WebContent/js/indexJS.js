@@ -5,7 +5,7 @@
 $(document).ready(function () {
 
     var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-    
+
 
     if ($(window).width() < 580) {
         $("#attributes_panel").css("height", $("#content").outerHeight(true) - $("#result").outerHeight(true));
@@ -186,7 +186,7 @@ $(document).ready(function () {
             $("#arrows").css("width", "68%");
 
         }).fadeIn();
-        
+
         $("#score").attr("class", "scoreSum");
 
 
@@ -354,18 +354,132 @@ function displayResults(response) {
 function updateResults(data) {
     //update results... 
 
+    alert(data);
+
 
     $.each(data, function (index, city) {
 
         $("#" + index + " > .cityInf").children(".cityName").text(city.name);
         $("#" + index + " > .cityInf").children(".cityWhereInfos").text(city.region + " - " + city.departement + ($("#attributes_form > [name='distance']").prop("checked") ? " - " + "25km de Paris" : ""));
 
-        //city.categories.forEach()
-        $("#" + index + " > .details").append("<div id='Culture'>" +
-                                              "<h5>Culture</h5>" +
-                                              "<div class='scoreSlider'>" +
-                                              "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div></div>" +
-                                              "</div>"); 
+        var details = $("#" + index + " > .details");
+
+        if(city.culture != null) {
+
+            details.append("<div class='Culture cat'>"
+                           "<h4>Culture</h4>" +
+                           "<div class='scoreSlider'>" +
+                           "<div class='scoreSliderColored' style='width:" + city.score + ";'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>");
+
+
+            if(city.culture.animation != null) {
+
+                details.append("<div id='Animation' class='crit'>" +
+                               "<h5>Animation / Évènementiel</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "</div>" +
+                               "</div>");
+
+            }
+
+
+            details.append("</div>");
+
+
+
+
+        }
+
+        if(city.economie != null) {
+
+            details.append("<div id='Economie' class='cat'>" +
+                           "<h4>Économie</h4>" +
+                           "<div class='scoreSlider'>" +
+                           "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>" +
+                           "</div>");
+            
+            if(city.details["Chomage"] != null) {
+                
+                details.append("<div id='Chomage' class='crit'>" +
+                                            "<h5>Chomâge faible</h5>" +
+                                            "<div class='scoreSlider'>" +
+                                                "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span>" +
+                                            "</div>" +
+                                        "</div>");
+                
+                
+            }
+            
+            
+            if(city.details["Tourisme"] != null) {
+                
+                details.append("<div id='Tourisme' class='crit'>" +
+                                            "<h5>Tourisme important</h5>" +
+                                            "<div class='scoreSlider'>" +
+                                                "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span>" +
+                                            "</div>" +
+                                        "</div>");
+                
+            }
+            
+            if(city.details["Industrie"] != null) {
+                
+                details.append("");
+                
+            }
+            
+            if(city.details["Agriculture"] != null) {
+                
+                details.append("");
+                
+            }
+            
+            
+            if(city.details["Commerces"] != null) {
+                
+                details.append("");
+                
+            }
+            
+            
+            details.append("</div>");
+
+
+        }
+
+        if(city.population != null) {
+            
+            if(city.details["Senior"] != null) {
+                
+                details.append("");
+                
+            }
+            
+            if(city.details["Jeune"] != null) {
+                
+                details.append("");
+                
+            }
+
+
+        }
+
+        if(city.services_publics != null) {
+
+            if(city.details["Sante"] != null) {
+                
+                details.append("");
+                
+            }
+
+        }
+
+
+
+
+
+
 
     });
 
