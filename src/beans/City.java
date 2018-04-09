@@ -10,7 +10,43 @@ public class City {
 	private Double latitude;
 	private Double longitude;
 	private int population2014;
-	private ArrayList<Object> details;
+	
+	private Culture culture;
+	private Economie economie;
+	private Population population;
+	private ServicePublique servicePublique;
+	
+	public Culture getCulture() {
+		return culture;
+	}
+
+	public void setCulture(Culture culture) {
+		this.culture = culture;
+	}
+
+	public Economie getEconomie() {
+		return economie;
+	}
+
+	public void setEconomie(Economie economie) {
+		this.economie = economie;
+	}
+
+	public Population getPopulation() {
+		return population;
+	}
+
+	public void setPopulation(Population population) {
+		this.population = population;
+	}
+
+	public ServicePublique getServicePublique() {
+		return servicePublique;
+	}
+
+	public void setServicePublique(ServicePublique servicePublique) {
+		this.servicePublique = servicePublique;
+	}
 	
 	
 	public City() {
@@ -59,13 +95,6 @@ public class City {
 	public void setPopulation2014(int population2014) {
 		this.population2014 = population2014;
 	}
-
-	public ArrayList<Object> getDetails() {
-		return details;
-	}
-
-	public void setDetails(ArrayList<Object> details) {
-		this.details = details;
-	}
+	
 	
 }

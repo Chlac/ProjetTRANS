@@ -6,12 +6,16 @@ import java.util.ArrayList;
 import com.mysql.jdbc.ResultSetMetaData;
 
 import beans.City;
+import beans.Culture;
+import beans.Economie;
+import beans.Population;
+import beans.ServicePublique;
 import core.Application;
 
 public class CommuneDAO {
 	
 	
-	public static City f(String codGeo, ArrayList<Object> details) {
+	public static City f(String codGeo, Culture culture, Economie e, Population p, ServicePublique s) {
 		try {
 			String query  = "SELECT libGeo, codGeoDep, longDeg, latDeg FROM commune WHERE codGeo ="+ codGeo+" limit 1";
 			ResultSet rs = Application.passQuery(query);
@@ -34,7 +38,10 @@ public class CommuneDAO {
 			rs = Application.passQuery(query);
 			rs.next(); // CANARD T'AS COMRPRIS ?!
 			c.setRegion(rs.getString(1));
-			c.setDetails(details);
+			c.setCulture(culture);
+			c.setEconomie(e);
+			c.setPopulation(p);
+			c.setServicePublique(s);
 			return c;
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
