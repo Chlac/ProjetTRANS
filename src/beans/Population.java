@@ -1,15 +1,16 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Population {
 	private double score;
-	private ArrayList<Object> details;
-	public ArrayList<Object> getDetails() {
+	private HashMap<String,Object> details;
+	public HashMap<String, Object> getDetails() {
 		return details;
 	}
 
-	public void setDetails(ArrayList<Object> details) {
+	public void setDetails(HashMap<String,Object> details) {
 		this.details = details;
 	}
 

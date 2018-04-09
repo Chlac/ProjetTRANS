@@ -43,8 +43,8 @@ public class CommuneDAO {
 			c.setPopulation(p);
 			c.setServicePublique(s);
 			return c;
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
+		} catch (Exception err) {
+			System.out.println(err.getMessage());
 			return null;
 		}
 	}
