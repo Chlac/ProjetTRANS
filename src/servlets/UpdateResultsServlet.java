@@ -96,7 +96,7 @@ public class UpdateResultsServlet extends HttpServlet {
 		
         JsonObject jO = Application.passRequest(r);
 		//System.out.println("lol?");
-		//System.out.println(jO.toString());
+		System.out.println(jO.toString());
 		out.println(jO.toString());
 		
 			//out.println("test");
