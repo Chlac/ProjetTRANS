@@ -56,8 +56,33 @@ public class CreatUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String pseudo = request.getParameter("pseudo");
+		String mail = request.getParameter("mail");
+		String mdp = request.getParameter("password");
+		
+		System.out.println(pseudo);
+		System.out.println(mail);
+		System.out.println(mdp);
+		
+		try {
+			pseudo = decrypt(pseudo);
+			mail = decrypt(mail);
+			mdp = decrypt(mdp);
+			
+		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		System.out.println("User: "+pseudo);
+		System.out.println("mail: "+mail);
+		System.out.println("MDP: " +mdp);
+		System.out.println("Creation user");
+		
+		
+		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward(request, response);
 	}
 
 	/**
