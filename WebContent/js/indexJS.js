@@ -68,7 +68,11 @@ $(document).ready(function () {
 
     });
 
-
+    $("#deconnexion").submit(function (){
+    	$("#siPseudo").val(null);
+    	$("#siPassword").val(null);
+    	
+    });
 
 
 

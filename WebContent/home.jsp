@@ -110,6 +110,14 @@
 	else{
 		
 		out.println(pseudo);
+		
+		%>
+		<form id="deconnexion" action="home.jsp" class="signInSignUpForm">
+			<div id= "connectionButtons">
+			<button id="deconnexion" class="headerContent">Déconnexion</button>
+			</div>
+		</form>
+		<%
 
 	}
 	
