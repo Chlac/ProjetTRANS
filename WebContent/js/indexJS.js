@@ -354,10 +354,9 @@ function displayResults(response) {
 function updateResults(data) {
     //update results... 
 
-    alert(data);
-
-
     $.each(data, function (index, city) {
+
+        //alert(city.culture.details.animation.score);
 
         $("#" + index + " > .cityInf").children(".cityName").text(city.name);
         $("#" + index + " > .cityInf").children(".cityWhereInfos").text(city.region + " - " + city.departement + ($("#attributes_form > [name='distance']").prop("checked") ? " - " + "25km de Paris" : ""));
@@ -366,20 +365,32 @@ function updateResults(data) {
 
         if(city.culture != null) {
 
-            details.append("<div class='Culture cat'>"
+            details.append("<div class='Culture cat'>" +
                            "<h4>Culture</h4>" +
                            "<div class='scoreSlider'>" +
-                           "<div class='scoreSliderColored' style='width:" + city.score + ";'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>");
+                           "<div class='scoreSliderColored' style='width : " + city.culture.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>");
 
 
-            if(city.culture.animation != null) {
+            if(city.culture.details.animation != null) {
 
                 details.append("<div id='Animation' class='crit'>" +
                                "<h5>Animation / Évènementiel</h5>" +
                                "<div class='scoreSlider'>" +
-                               "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "<div class='scoreSliderColored' style='width:" + city.culture.details.animation.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
                                "</div>" +
+                               "<div id='events'>" +
+                                        "<ul>" +
+                                            "<li>" + city.culture.details.animation.events[0] + "</li>" +
+                                            "<li>" + city.culture.details.animation.events[1] + "</li>" +
+                                            "<li>" + city.culture.details.animation.events[2] + "</li>" +
+                                            "<li>" + city.culture.details.animation.events[3] + "</li>" +
+                                            "<li>" + city.culture.details.animation.events[4] + "</li>" +
+                                        "</ul>" +
+                                    "</div>" +
                                "</div>");
+                
+                
+                
 
             }
 
@@ -396,82 +407,128 @@ function updateResults(data) {
             details.append("<div id='Economie' class='cat'>" +
                            "<h4>Économie</h4>" +
                            "<div class='scoreSlider'>" +
-                           "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>" +
+                           "<div class='scoreSliderColored' style='width:" + city.economie.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>" +
                            "</div>");
-            
-            if(city.details["Chomage"] != null) {
-                
+
+            if(city.economie.details.chomage != null) {
+
                 details.append("<div id='Chomage' class='crit'>" +
-                                            "<h5>Chomâge faible</h5>" +
-                                            "<div class='scoreSlider'>" +
-                                                "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span>" +
-                                            "</div>" +
-                                        "</div>");
-                
-                
+                               "<h5>Chomâge faible</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored' style='width:" + city.economie.details.chomage.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "</div>" +
+                               "</div>");
+
+
             }
-            
-            
-            if(city.details["Tourisme"] != null) {
-                
+
+
+            if(city.economie.details.tourisme != null) {
+
                 details.append("<div id='Tourisme' class='crit'>" +
-                                            "<h5>Tourisme important</h5>" +
-                                            "<div class='scoreSlider'>" +
-                                                "<div class='scoreSliderColored'></div><span class='scoreSlidercoloredCircle'></span>" +
-                                            "</div>" +
-                                        "</div>");
-                
+                               "<h5>Tourisme important</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored' style='width:" + city.economie.details.tourisme.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "</div>" +
+                               "</div>");
+
             }
-            
-            if(city.details["Industrie"] != null) {
-                
-                details.append("");
-                
+
+            if(city.economie.details.industrie != null) {
+
+                details.append("<div id='Industrie' class='crit'>" +
+                               "<h5>Industrie importante</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored' style='width:" + city.economie.details.industrie.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "</div>" +
+                               "</div>");
+
             }
-            
-            if(city.details["Agriculture"] != null) {
-                
-                details.append("");
-                
+
+            if(city.economie.details.agriculture != null) {
+
+                details.append("<div id='Agriculture' class='crit'>" +
+                               "<h5>Agriculture importante</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored' style='width:" + city.economie.details.agriculture.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "</div>" +
+                               "</div>");
+
             }
-            
-            
-            if(city.details["Commerces"] != null) {
-                
-                details.append("");
-                
+
+
+            if(city.economie.details.commerces != null) {
+
+                details.append("<div id='Commerces' class='crit'>" +
+                               "<h5>Variété de commerces</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored' style='width:" + city.economie.details.commerces.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "</div>" +
+                               "</div>");
+
             }
-            
-            
+
+
             details.append("</div>");
 
 
         }
 
         if(city.population != null) {
-            
-            if(city.details["Senior"] != null) {
-                
-                details.append("");
-                
+
+            details.append("<div id='Population' class='cat'>" +
+                           "<h4>Population</h4>" +
+                           "<div class='scoreSlider'>" +
+                           "<div class='scoreSliderColored' style='width:" + city.population.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>" +
+                           "</div>");
+
+            if(city.population.details.senior != null) {
+
+                details.append("<div id='Senior' class='crit'>" +
+                               "<h5>Senior</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored' style='width:" + city.population.details.senior.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "</div>" +
+                               "</div>");
+
             }
-            
-            if(city.details["Jeune"] != null) {
-                
-                details.append("");
-                
+
+            if(city.population.details.jeune != null) {
+
+                details.append("<div id='Jeune' class='crit'>" +
+                               "<h5>Jeune</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored' style='width:" + city.population.details.jeune.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               " </div>" +
+                               "</div>");
+
             }
+
+            details.append("</div>");
 
 
         }
 
         if(city.services_publics != null) {
 
-            if(city.details["Sante"] != null) {
-                
-                details.append("");
-                
+            details.append("<div id='ServicesPublics' class='cat'>" +
+                           "<h4>Services Publics</h4>" +
+                           "<div class='scoreSlider'>" +
+                           "<div class='scoreSliderColored' style='width:" + city.services_publics.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>" +
+                           "</div>");
+
+            if(city.services_publics.details.sante != null) {
+
+                details.append("<div id='Sante' class='crit'>" +
+                               "<h5>Hôpitaux / médecins</h5>" +
+                               "<div class='scoreSlider'>" +
+                               "<div class='scoreSliderColored' style='width:" + city.services_publics.details.sante.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
+                               "</div>" +
+                               "</div>");
+
             }
+
+            details.append("</div>");
 
         }
 
