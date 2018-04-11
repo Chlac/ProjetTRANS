@@ -1,4 +1,5 @@
 <%@page import="javax.annotation.Generated"%>
+<%@page import="sun.security.krb5.EncryptedData"%>
 <%@page import="javax.crypto.Cipher"%>
 <%@page import="javax.crypto.spec.IvParameterSpec"%>
 <%@page import="javax.crypto.spec.SecretKeySpec"%>
@@ -8,6 +9,7 @@
 <%@page import="java.security.MessageDigest"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.Base64"%>
+<%@page import="crypto.AES"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.*"%>
@@ -54,6 +56,9 @@
 	String pseudo;
 
 	pseudo = request.getParameter("siPseudo");
+	
+
+	
 
 	if(pseudo == null){
 	
@@ -108,6 +113,10 @@
             }
             
 	else{
+			AES aes = new AES();
+			
+			pseudo = aes.decrypt(pseudo);
+			
 		
 		out.println(pseudo);
 		
@@ -407,6 +416,14 @@
 
 
         <script src="js/indexJS.js"></script>
+        
+        <script>
+
+        
+        
+        
+        </script>
+        
     </body>
 
 </html>
