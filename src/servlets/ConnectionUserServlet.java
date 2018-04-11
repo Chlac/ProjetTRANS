@@ -45,8 +45,8 @@ public class ConnectionUserServlet extends HttpServlet {
 		
 		
 		
-		String pseudo = request.getParameter("pseudo");
-		String mdp = request.getParameter("password");
+		String pseudo = request.getParameter("siPseudo");
+		String mdp = request.getParameter("siPassword");
 		
 		try {
 			pseudo = decrypt(pseudo);

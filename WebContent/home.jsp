@@ -1,4 +1,5 @@
 <%@page import="javax.annotation.Generated"%>
+<%@page import="sun.security.krb5.EncryptedData"%>
 <%@page import="javax.crypto.Cipher"%>
 <%@page import="javax.crypto.spec.IvParameterSpec"%>
 <%@page import="javax.crypto.spec.SecretKeySpec"%>
@@ -8,6 +9,7 @@
 <%@page import="java.security.MessageDigest"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.Base64"%>
+<%@page import="crypto.AES"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.*"%>
@@ -48,6 +50,20 @@
 
             <h2 id="logo" class="headerContent">ÇaDéménage!</h2>
 
+
+<%
+
+	String pseudo;
+
+	pseudo = request.getParameter("siPseudo");
+	
+
+	
+
+	if(pseudo == null){
+	
+
+%>
             <div id="connectionButtons">
                 <button id="signin" class="headerContent">Se connecter</button>
                 <button id="signup" class="headerContent">S'inscrire</button>
@@ -55,10 +71,12 @@
 
                 
             </div>
-
             
+        
 
         </div>
+        
+
 
         <div id="content">
 
@@ -68,8 +86,8 @@
 
                 <form id="signinForm" action="ConnectionUserServlet" class="signInSignUpForm">
 
-                    <input id="siPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
-                    <input id="siPassword" name="password" type="password" placeholder="Confirmer mot de passe" class="textInput">
+                    <input id="siPseudo" name="siPseudo" type="text" placeholder="Pseudo" class="textInput">
+                    <input id="siPassword" name="siPassword" type="password" placeholder="Mot de passe" class="textInput">
                     <button id="signinSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
 
                 </form>
@@ -83,14 +101,40 @@
 
                 <form id="signupForm" action="CreatUserServlet" class="signInSignUpForm">
 
-                    <input id="suMail" name="mail" type="email" placeholder="E-mail" class="textInput">
-                    <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
-                    <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
-                    <input id="suVPassword" name="vpassword" type="password" placeholder="Confirmer mot de passe" class="textInput">
-                    <input id="suDate" name="date" style="display: none" >
+                    <input id="suMail" name="suMail" type="email" placeholder="E-mail" class="textInput">
+                    <input id="suPseudo" name="suPseudo" type="text" placeholder="Pseudo" class="textInput">
+                    <input id="suPassword" name="suPassword" type="password" placeholder="Mot de passe" class="textInput">
+                    <input id="suVPassword" name="suVpassword" type="password" placeholder="Confirmer mot de passe" class="textInput">
                     <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
                 </form>
+                
+                 <%
+            
+            }
+            
+	else{
+			AES aes = new AES();
+			
+			pseudo = aes.decrypt(pseudo);
+			
+		
+		out.println(pseudo);
+		
+		%>
+		<form id="deconnexion" action="home.jsp" class="signInSignUpForm">
+			<div id= "connectionButtons">
+			<button id="deconnexion" class="headerContent">Déconnexion</button>
+			</div>
+		</form>
+		<%
+
+	}
+	
+ %>
             </div>
+            
+
+
 
             <div id="attributes_panel">
 
@@ -372,6 +416,14 @@
 
 
         <script src="js/indexJS.js"></script>
+        
+        <script>
+
+        
+        
+        
+        </script>
+        
     </body>
 
 </html>
