@@ -57,9 +57,9 @@ public class CreatUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String pseudo = request.getParameter("pseudo");
-		String mail = request.getParameter("mail");
-		String mdp = request.getParameter("password");
+		String pseudo = request.getParameter("suPseudo");
+		String mail = request.getParameter("suMail");
+		String mdp = request.getParameter("suPassword");
 		
 		System.out.println(pseudo);
 		System.out.println(mail);
