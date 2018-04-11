@@ -1,6 +1,7 @@
 package core;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -41,6 +42,18 @@ public class Inquisitor {
 		HashMap<String, ArrayList<Double>> merde = new HashMap<>();
 		int size = request.criterias.size();
 		ArrayList<String> l = new ArrayList<>();
+		{
+		String query = "SELECT codGeo FROM commune ORDER BY codGeo";
+		ResultSet rs = Application.passQuery(query);
+		try {
+			while(rs.next()) {
+				merde.put(rs.getString(1), new ArrayList<>());
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 		for (int i = 0; i < request.criteribs.size(); i++) {
 			String query = "SELECT codGeo FROM"+ request.criteribs.get(i).TABLE_NAME + "ORDER BY codGeo";
 			ResultSet rs = Application.passQuery(query);
@@ -67,23 +80,19 @@ public class Inquisitor {
 			ResultSet rs = Application.passQuery(query);
 			try {
 				ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-				if (i == 0) {
-					while (rs.next()) {
-						ArrayList<Double> t = new ArrayList<>(size);
-						t.add(rs.getDouble(2));
-						merde.put(rs.getString(1), t);
-					}
-				} else {
+				
 					while (rs.next()) {
 						String s = rs.getString(1);
-						merde.get(rs.getString(1)).add(rs.getDouble(2));
+						System.out.println(merde.get(rs.getString(1)));
+						if (merde.get(rs.getString(1)) != null )merde.get(rs.getString(1)).add(rs.getDouble(2));
+						
 						// t.add(rs.getDouble(2));
 						// merde.put(rs.getString(1),t);
 
 					}
 				}
-			} catch (Exception e) {
-				// TODO: handle exception
+			 catch (Exception e) {
+				System.out.println(e);
 			}
 		}
 
@@ -130,7 +139,7 @@ public class Inquisitor {
 			HashMap<String, Object> culture = new HashMap<>(), economie = new HashMap<>(), population = new HashMap<>(),
 					service_publique = new HashMap<>();
 			//ArrayList<Object> details = new ArrayList<>();
-			for (int i = 0; i < request.criterias.size(); i++) {
+			for (int i = 0; i < merde.get(codGeo).size(); i++) {
 				//details.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
 				switch (request.criterias.get(i).TYPE) {
 				case "culture":
