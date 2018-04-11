@@ -87,6 +87,7 @@
                     <input id="suPseudo" name="pseudo" type="text" placeholder="Pseudo" class="textInput">
                     <input id="suPassword" name="password" type="password" placeholder="Mot de passe" class="textInput">
                     <input id="suVPassword" name="vpassword" type="password" placeholder="Confirmer mot de passe" class="textInput">
+                    <input id="suDate" name="date" style="display: none" >
                     <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
                 </form>
             </div>
@@ -96,53 +97,95 @@
                 <form id="attributes_form">
 
                     <h4 id="cat1"><span class="before"></span>Culture</h4>
-                    <input type="checkbox" name="animation" value="animation"> Animation / Évènementiel
+
+                    <label><input type="checkbox" name="animation" > Animation / Évènementiel</label>
                     <br>
-                    <input type="checkbox" name="musee" value="temp"> - Musées / Salles d'expo -
+                    <label class="unavailable"><input type="checkbox" name="musee"> Musées / Salles d'expo</label>
                     <br>
-                    <input type="checkbox" name="bibliotheque" value="temp"> - Bibliothèque / Mediathèques -
+                    <label class="unavailable"><input type="checkbox" name="bibliotheque"> Bibliothèques / Mediathèques</label>
                     <br>
-                    <input type="checkbox" name="patrimoine" value="temp"> - Patrimoine historique -
+                    <label class="unavailable"><input type="checkbox" name="patrimoine"> Patrimoine historique</label>
 
                     <h4 id="cat2"><span class="before"></span>Économie</h4>
-                    <input type="checkbox" name="chomage" value="chomage"> Faible taux de chômage
+
+                    <label><input type="checkbox" name="chomage"> Chômage faible</label>
                     <br>
-                    <input type="checkbox" name="vehicle1" value="Bike">  - Fort dynamisme économique -
+                    <label class="unavailable"><input type="checkbox" name="vehicle1"> Dynamisme économique</label>
                     <br>
-                    <input type="checkbox" name="tourisme" value="tourisme"> Tourisme important
+                    <label><input type="checkbox" name="tourisme"> Tourisme important</label>
                     <br>
-                    <input type="checkbox" name="industrie" value="industrie"> Industrie importante
+                    <label><input type="checkbox" name="industrie"> Industrie importante</label>
                     <br>
-                    <input type="checkbox" name="agriculture" value="agriculture"> Agriculture importante
+                    <label><input type="checkbox" name="agriculture"> Agriculture importante</label>
                     <br>
-                    <input type="checkbox" name="commerce" value="commerce"> Variété de commerces / magasins
+                    <label><input type="checkbox" name="commerce"> Variété de commerces / magasins</label>
                     <br>
+                    <label><input type="checkbox" name="impot"> Faible imposition des entreprises</label>
+                    <br>
+
                     <h4 id="cat3"><span class="before"></span>Population</h4>
-                    <input type="checkbox" name="impot" value="impot"> Faible imposition des entreprises
+
+                    <label><input type="checkbox" name="jeunes"> Jeune</label>
                     <br>
-                    <h4 id="cat3"><span class="before"></span>Population</h4>
+                    <label><input type="checkbox" name="senior"> Senior</label>
                     <br>
-                    <input type="checkbox" name="senior" value="Bike"> Retraitée
+                    <label><input type="checkbox" name="ville2000"> Village</label>
                     <br>
-                    <input type="checkbox" name="jeunes" value="Bike"> Étudiante
+                    <label class="unavailable"><input type="checkbox" name="ville2000_50000"> Petite ville</label>
                     <br>
+                    <label><input type="checkbox" name="ville50000_200000"> Moyenne ville</label>
+                    <br>
+                    <label><input type="checkbox" name="ville200000"> Grande ville</label>
+                    <br>
+
+                    <h4 id="cat4"><span class="before"></span>Coût de la vie</h4>
+
+                    <label class="unavailable"><input type="checkbox" name="cout_faible"> Faible</label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="cout_moyen"> Moyen</label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="cout_cher"> Cher</label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="cout_tres_cher"> Très cher</label>
+                    <br>
+
                     <h4 id="cat4"><span class="before"></span>Services publics</h4>
-                    <input type="checkbox" name="ecoles" value="Bike"> Écoles
+
+                    <label><input type="checkbox" name="creches"> Crèches</label>
                     <br>
-                    <input type="checkbox" name="universitee" value="Bike"> Universités
+                    <label><input type="checkbox" name="ecoles_prim"> Écoles primaires</label>
                     <br>
-                    <input type="checkbox" name="santee" value="Bike"> Hôpitaux / médecins
+                    <label><input type="checkbox" name="ecoles_sec"> Écoles du secondaire</label>
                     <br>
-                    <h4 id="cat5"><span class="before"></span>Taille et localisation</h4>
-                    <input type="checkbox" name="ville2000" value="Bike"> Village (-2000 habitants)
+                    <label><input type="checkbox" name="ecoles_sup"> Écoles du supérieur / Universités</label>
                     <br>
-                    <input type="checkbox" name="ville2000_50000" value="Bike"> Petite ville (2000 - 50 000 habitants)
+                    <label><input type="checkbox" name="hopitaux"> Hôpitaux / médecins</label>
                     <br>
-                    <input type="checkbox" name="ville50000_200000" value="Bike"> Moyenne ville ( 50 000-200 000 habitants)
+                    <label class="unavailable"><input type="checkbox" name="transports_en_commun"> Transports en commun locaux</label>
                     <br>
-                    <input type="checkbox" name="ville200000" value="Bike"> Grande ville (+200 000 habitants)
+                    <label class="unavailable"><input type="checkbox" name="gare"> Gare</label>
                     <br>
-                    <input type="checkbox" name="distance" value="Bike"> À moins de _____km de _____
+                    <label class="unavailable"><input type="checkbox" name="aeroport"> Aéroport</label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="réseau"> Qualité du réseau internet</label>
+                    <br>
+
+                    <h4 id="cat5"><span class="before"></span>Environnement</h4>
+
+                    <label class="unavailable"><input type="checkbox" name="ensoleille"> Ensoleillé</label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="calme"> Calme</label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="espaces_verts"> Espaces verts </label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="pollution"> Pollution faible</label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="bords_de_mer"> Bords de mer</label>
+                    <br>
+                    <label class="unavailable"><input type="checkbox" name="montagne"> Montagne</label>
+                    <br>
+                    <label><input type="checkbox" name="distance"> À moins de <input type="text" name="km">km de <input type="text" name="dist_city"></label>
+
                 </form> 
 
 
@@ -203,92 +246,119 @@
                                 </div>
 
                                 <div class="details">
-                                    
+
                                 </div>
 
                             </div>
+
                             <div id="2" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C2</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
-                                
+
                                 <div class="details">
-                                    
+
                                 </div>
+
                             </div>
+
                             <div id="3" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C3</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
-                                
+
                                 <div class="details">
-                                    
+
                                 </div>
+
                             </div>
+
                             <div id="4" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C4</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
-                                
+
                                 <div class="details">
-                                    
+
                                 </div>
+
                             </div>
+
                             <div id="5" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C5</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
+
+                                <div class="details">
+
+                                </div>
                             </div>
+
                             <div id="6" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C6</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
-                                
+
                                 <div class="details">
-                                    
+
                                 </div>
+
                             </div>
+
                             <div id="7" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C7</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
+
+                                <div class="details">
+
+                                </div>
                             </div>
+
                             <div id="8" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C8</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
-                                
+
                                 <div class="details">
-                                    
+
                                 </div>
+
                             </div>
                             <div id="9" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C9</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
-                                
+
                                 <div class="details">
-                                    
+
                                 </div>
+
                             </div>
                             <div id="10" class="citySumPanel">
                                 <div class="cityInf cityInfSum">
                                     <h4 class="cityName">C10</h4>
                                     <h5 class="cityWhereInfos">Dep - More</h5>
                                 </div>
-                                
+
                                 <div class="details">
-                                    
+
                                 </div>
+
                             </div>
+
+
+
+
+
                         </div>
 
                     </div>

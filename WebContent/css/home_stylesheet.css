@@ -352,6 +352,7 @@ body {
     float: left;
     width: 10%;
     height: 100%;
+    overflow: hidden;
 
 }
 
@@ -370,8 +371,7 @@ body {
     position: relative;
     left: -13%;
     width: 113%;
-    height: 20px;
-
+    height: 15px;
 
 }
 
@@ -382,39 +382,47 @@ body {
     height: 10px;
 }
 
-.crit .scoreSlidercoloredCircle {
-    width: 10px;
-    height: 10px;
-}
-
-
 
 .scoreSliderColored {
-    display: inline-table;
-    margin: auto;
-    vertical-align: middle;
-    width: 60%;
+    position: relative;
+    top: 35%;
+    float:left;
     height: 30%;
     background-color: brown;
+    
 }
 
 .scoreSlidercoloredCircle {
-    display: inline-table;
     position: relative;
-    vertical-align: middle;
+    top: calc(50% - 7.5px);
+    float: left;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: -7.5px;
+    margin-right: -7.5px;
     width: 15px;
     height: 15px;
     border-radius: 10px;
     background-color: brown;
+    
+}
 
+.crit .scoreSlidercoloredCircle {
+    top: calc(50% - 5px);
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    margin-right: -5px;
 }
 
 .scoreSliderGray {
-    display: inline-table;
-    vertical-align: middle;
-    width: 36%;
+    position: relative;
+    top: 35%;
+    width:auto;
     height: 30%;
+    overflow: hidden;
     background-color: gainsboro;
+    z-index: -1;
 }
 
 
@@ -511,6 +519,30 @@ body {
     float: left;
     font-size: 60%;
     line-height: 180%;
+}
+
+#events {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
+}
+
+#events ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow: scroll;
+}
+
+#events li {
+    padding: 3px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: gainsboro;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 @media only screen and (max-width:580px) {
