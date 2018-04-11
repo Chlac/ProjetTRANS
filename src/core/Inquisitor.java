@@ -153,33 +153,30 @@ public class Inquisitor {
 					break;
 				}
 			}
+				
+				Culture c = null;
+				Economie e = null;
+				Population p = null;
+				ServicePublique s = null;
 				if (culture.size() == 0) {
-				Culture c = new Culture();
+				c = new Culture();
 				c.setScore(s_culture/n_culture);
 				c.setDetails(culture);
-				}else {
-					Culture c = null;
 				}
 				if (economie.size() == 0) {
-				Economie e = new Economie();
+				e = new Economie();
 				e.setScore(s_economie/n_economie);
 				e.setDetails(economie);
-				}else {
-					Economie e = null;
 				}
 				if (population.size() == 0) {
-				Population p = new Population();
+				p = new Population();
 				p.setScore(s_population/n_population);
 				p.setDetails(population);
-				}else {
-					Population p = null;
 				}
 				if (service_publique.size() == 0) {
-				ServicePublique s = new ServicePublique();
+				s = new ServicePublique();
 				s.setScore(s_service_publique/n_service_publique);
 				s.setDetails(service_publique);
-				}else {
-					ServicePublique s = null;
 				}
 			
 			
