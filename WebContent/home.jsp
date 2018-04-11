@@ -53,8 +53,10 @@
                 <button id="signup" class="headerContent">S'inscrire</button>
 
 
-                <% String pseudo = request.getParameter("pseudo"); %>
+                
             </div>
+
+            
 
         </div>
 

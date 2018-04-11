@@ -17,7 +17,6 @@ $(document).ready(function () {
     }
 
     $("#signinForm").submit(function () {
-        alert("SignIn");
 
         var pseudo = $("#siPseudo").val();
         var mdp = $("#sPassword").val();

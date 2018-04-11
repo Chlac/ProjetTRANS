@@ -27,6 +27,7 @@ public class AnimationDAO extends DAO {
 				events.add(e);
 			}
 			animation.setScore(score);
+			animation.setEvenements(events.toArray(new Evenement[5]));
 			return animation;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

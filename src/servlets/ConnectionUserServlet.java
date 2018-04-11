@@ -42,7 +42,25 @@ public class ConnectionUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		
+		
+		String pseudo = request.getParameter("pseudo");
+		String mdp = request.getParameter("password");
+		
+		try {
+			pseudo = decrypt(pseudo);
+			mdp = decrypt(mdp);
+
+			
+		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Connection user");
+		
+		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward(request, response);
 	}
 
 	/**
