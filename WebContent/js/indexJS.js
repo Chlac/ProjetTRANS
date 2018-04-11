@@ -355,7 +355,6 @@ function updateResults(data) {
 
     $.each(data, function (index, city) {
 
-        //alert(city.culture.details.animation.score);
 
         $("#" + index + " > .cityInf").children(".cityName").text(city.name);
         $("#" + index + " > .cityInf").children(".cityWhereInfos").text(city.region + " - " + city.departement + ($("#attributes_form > [name='distance']").prop("checked") ? " - " + "25km de Paris" : ""));
@@ -372,24 +371,26 @@ function updateResults(data) {
 
             if(city.culture.details.animation != null) {
 
+
+
                 details.append("<div id='Animation' class='crit'>" +
                                "<h5>Animation / Évènementiel</h5>" +
                                "<div class='scoreSlider'>" +
                                "<div class='scoreSliderColored' style='width:" + city.culture.details.animation.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
                                "</div>" +
-                               "<div id='events'>" +
-                                        "<ul>" +
-                                            "<li>" + city.culture.details.animation.events[0] + "</li>" +
-                                            "<li>" + city.culture.details.animation.events[1] + "</li>" +
-                                            "<li>" + city.culture.details.animation.events[2] + "</li>" +
-                                            "<li>" + city.culture.details.animation.events[3] + "</li>" +
-                                            "<li>" + city.culture.details.animation.events[4] + "</li>" +
-                                        "</ul>" +
-                                    "</div>" +
                                "</div>");
                 
                 
-                
+                details.append("<div id='events'>" +
+                               "<ul>" +
+                               "<li>" + city.culture.details.animation.evenements[0].date + "|" + city.culture.details.animation.evenements[0].theme + "|" + city.culture.details.animation.evenements[0].nom_organisation + "</li>" +
+                               "<li>" + city.culture.details.animation.evenements[1].date + "|" + city.culture.details.animation.evenements[1].theme + "|" + city.culture.details.animation.evenements[1].nom_organisation + "</li>" +
+                               "<li>" + city.culture.details.animation.evenements[2].date + "|" + city.culture.details.animation.evenements[2].theme + "|" + city.culture.details.animation.evenements[2].nom_organisation + "</li>" +
+                               "<li>" + city.culture.details.animation.evenements[3].date + "|" + city.culture.details.animation.evenements[3].theme + "|" + city.culture.details.animation.evenements[3].nom_organisation + "</li>" +
+                               "<li>" + city.culture.details.animation.evenements[4].date + "|" + city.culture.details.animation.evenements[4].theme + "|" + city.culture.details.animation.evenements[4].nom_organisation + "</li>" +
+                               "</ul>" +
+                               "</div>");
+
 
             }
 

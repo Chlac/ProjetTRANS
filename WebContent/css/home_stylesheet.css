@@ -522,20 +522,27 @@ body {
 }
 
 #events {
+    margin-top: 25px;
+    margin-bottom: 20px;
     border-width: 2px;
     border-style: solid;
     border-color: black;
 }
 
 #events ul {
+    margin: 0;
     padding: 0;
     list-style-type: none;
+    overflow: scroll;
 }
 
 #events li {
-    border-width: 2px;
-    border-style: solid;
-    border-color: gainsboro;
+    padding: 3px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: gainsboro;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 @media only screen and (max-width:580px) {

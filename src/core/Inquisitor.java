@@ -158,22 +158,22 @@ public class Inquisitor {
 				Economie e = null;
 				Population p = null;
 				ServicePublique s = null;
-				if (culture.size() == 0) {
+				if (culture.size() != 0) {
 				c = new Culture();
 				c.setScore(s_culture/n_culture);
 				c.setDetails(culture);
 				}
-				if (economie.size() == 0) {
+				if (economie.size() != 0) {
 				e = new Economie();
 				e.setScore(s_economie/n_economie);
 				e.setDetails(economie);
 				}
-				if (population.size() == 0) {
+				if (population.size() != 0) {
 				p = new Population();
 				p.setScore(s_population/n_population);
 				p.setDetails(population);
 				}
-				if (service_publique.size() == 0) {
+				if (service_publique.size() != 0) {
 				s = new ServicePublique();
 				s.setScore(s_service_publique/n_service_publique);
 				s.setDetails(service_publique);
