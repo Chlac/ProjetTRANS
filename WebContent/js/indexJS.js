@@ -17,7 +17,6 @@ $(document).ready(function () {
     }
 
     $("#signinForm").submit(function () {
-        alert("SignIn");
 
         var pseudo = $("#siPseudo").val();
         var mdp = $("#sPassword").val();
@@ -366,7 +365,7 @@ function updateResults(data) {
 
         if(city.culture != null) {
 
-            details.append("<div class='Culture cat'>"
+            details.append("<div class='Culture cat'>"+
                            "<h4>Culture</h4>" +
                            "<div class='scoreSlider'>" +
                            "<div class='scoreSliderColored' style='width:" + city.score + ";'></div><span class='scoreSlidercoloredCircle'></span><div class='scoreSliderGray'></div>");
