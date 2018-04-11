@@ -291,7 +291,7 @@ body {
     position: absolute;
     width: 32%;
     height: calc(100% - 35px);
-    background-color: aqua;
+    background-color: darkslategray;
     clip-path: polygon(0 0, 100% 0, 60% 100%, 0 100%);
     z-index: 1;
 }
@@ -300,8 +300,22 @@ body {
     position: absolute;
     width: 100%;
     height: 22%;
-    background-color: aqua;
-    z-index: 1;
+    background-color: darkslategray;
+    z-index: 0;
+}
+
+#diapo {
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    white-space: nowrap;
+}
+
+#diapo img {
+    display: inline-table;
+    background-color: black;
+    height: 100%;
+    width: 450px;
 }
 
 
@@ -451,7 +465,9 @@ body {
     right: 0;
     justify-content: space-between;
     width: 68%;
-    padding: 10px;
+    margin-top: 2%;
+    padding-left: 5px;
+    padding-right: 5px;
 
 }
 
@@ -473,7 +489,7 @@ body {
     font-size: 22px;
     width: 70px;
     height: 70px;
-    top: 0px;
+    top: 0;
     left: 5%;
     z-index: 2;
     display: flex;
@@ -502,6 +518,9 @@ body {
         to {top: 22%;}
     }
 
+#score {
+    box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.3);
+}
 
 #score div {
     margin: auto;
@@ -543,6 +562,19 @@ body {
     border-bottom-color: gainsboro;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+#pdf {
+    position: absolute;
+    color: black;
+    font-size: 18px;
+    padding: 7px;
+    right: 40px;
+    top: calc(17% + var(--headerHeight));
+    cursor: pointer;
+    z-index: 1;
+    display: none;
+    
 }
 
 @media only screen and (max-width:580px) {
@@ -638,7 +670,6 @@ body {
     }
 
     .cityName {
-        margin: 2px;
     }
 
     .cityWhereInfos {
@@ -665,8 +696,8 @@ body {
     .cityInfDetailed {
         float: right;
         padding: 2%;
-        padding-left: 8%;
-        padding-right: 8%;
+        padding-left: 9%;
+        padding-right: 9%;
         width: 100%;
         text-align: right;
     }

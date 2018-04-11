@@ -161,7 +161,8 @@ $(document).ready(function () {
             $("#lessInfos").css("display", "block");
             $("#lessInfos").animate({
                 top : "35px"
-            })
+            });
+            $("#pdf").fadeIn();
         });
 
 
@@ -171,31 +172,36 @@ $(document).ready(function () {
 
         $("button[class~='ex']").removeClass("ex").addClass("activeButton").siblings().removeClass("activeButton");
 
-        $(".cityPromoPictureDetailed").fadeOut(300, function() {
-            $(this).attr("class", "cityPromoPictureSum");
-        }).fadeIn();
+        $(".cityPromoPictureDetailed").fadeOut(300);
 
-        $(".cityPanelsSlideshowDetailed").fadeOut(300, function() {
-            $(this).attr("class", "cityPanelsSlideshowSum");
+        $(".cityPanelsSlideshowDetailed").fadeOut(300);
 
-            $(".cityInfDetailed").each(function() {
-                $(this).removeClass("cityInfDetailed").addClass("cityInfSum");
-            });
-
-            $("#arrows").css("width", "68%");
-
-        }).fadeIn();
-
-        $("#score").attr("class", "scoreSum");
+        $("#score").fadeOut();
+        
+        $("#pdf").fadeOut();
 
 
 
         $(this).animate({
-            top : "0px"
+            top : "0"
         }, {
             complete: function() {
                 $(this).hide();
-                $("#resultSection").addClass("summedResult").removeClass("detailedResult");
+                $("#resultSection").addClass("summedResult").removeClass("detailedResult").one(animationEnd, function() {
+
+                    $(".cityPromoPictureDetailed").attr("class", "cityPromoPictureSum").fadeIn();
+
+                    $(".cityInfDetailed").each(function() {
+                        $(this).removeClass("cityInfDetailed").addClass("cityInfSum");
+                    });
+
+                    $("#arrows").css("width", "68%");
+
+                    $(".cityPanelsSlideshowDetailed").attr("class", "cityPanelsSlideshowSum").fadeIn();
+                    
+                    $("#score").attr("class", "scoreSum").fadeIn();
+
+                });
             }
         });
 
@@ -379,8 +385,8 @@ function updateResults(data) {
                                "<div class='scoreSliderColored' style='width:" + city.culture.details.animation.score * 100 + "%;'></div><span class='scoreSlidercoloredCircle'></span>" +
                                "</div>" +
                                "</div>");
-                
-                
+
+
                 details.append("<div id='events'>" +
                                "<ul>" +
                                "<li>" + city.culture.details.animation.evenements[0].date + "|" + city.culture.details.animation.evenements[0].theme + "|" + city.culture.details.animation.evenements[0].nom_organisation + "</li>" +

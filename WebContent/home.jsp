@@ -226,7 +226,7 @@
                     </div>
 
                     <div class="cityPromoPictureSum">
-                        <img src="truc.jpg" alt="truc" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Blois_Loire_Panorama_-_July_2011.jpg/1200px-Blois_Loire_Panorama_-_July_2011.jpg" alt="truc" width="100%" height="100%"/>
                     </div>
 
                     <div class="cityPanelsSlideshowSum">
