@@ -36,7 +36,15 @@ public class A {
 			e.printStackTrace();
 		}
 		return null;
-		
+	}
+	
+	public void insertValues(String query) {
+		try {
+			Statement statement = connection.createStatement();
+			statement.execute(query);
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 	
 }

@@ -72,5 +72,14 @@ public class Application {
 	public ResultSet passQuery2(String request) {
 		return db.executeQuery(request);
 	}
+
+	public static void passUpdate(String str) {
+		instance.passUpdate2(str);
+		
+	}
+	public void passUpdate2(String str) {
+		db.insertValues(str);
+		
+	}
 	
 }

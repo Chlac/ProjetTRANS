@@ -7,6 +7,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -21,6 +22,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import core.Application;
 
 import java.nio.charset.StandardCharsets;
 import java.security.DigestException;
@@ -69,9 +72,12 @@ public class CreatUserServlet extends HttpServlet {
 			pseudo = decrypt(pseudo);
 			mail = decrypt(mail);
 			mdp = decrypt(mdp);
-			
+			String str= "SELECT * from ne_pas_hacker_svp WHERE pseudo ="+pseudo +" OR mail="+mail;
+			if (!Application.passQuery(str).next()) {
+				Application.passUpdate(str);
+			}
 		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -100,9 +106,12 @@ public class CreatUserServlet extends HttpServlet {
 			mail = decrypt(mail);
 			mdp = decrypt(mdp);
 			date = decrypt(date);
-			
+			String str= "SELECT * from ne_pas_hacker_svp WHERE pseudo ="+pseudo +" OR mail="+mail;
+			if (!Application.passQuery(str).next()) {
+				Application.passUpdate(str);
+			}
 		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

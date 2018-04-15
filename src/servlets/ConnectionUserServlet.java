@@ -7,6 +7,7 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Base64;
 
@@ -21,6 +22,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import core.Application;
 
 /**
  * Servlet implementation class ConnectionUserServlet
@@ -51,14 +54,18 @@ public class ConnectionUserServlet extends HttpServlet {
 		try {
 			pseudo = decrypt(pseudo);
 			mdp = decrypt(mdp);
-
+			String str = "SELECT pseudo FROM ne_pas_hacker_svp WHERE pseudo ="+ pseudo +" and password="+ mdp;
+			if (Application.passQuery(str).next()) {
+				request.setAttribute("pseudo", pseudo);
+				
+			}
 			
 		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException | SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
-		System.out.println("Connection user");
+		//System.out.println("Connection user");
 		
 		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward(request, response);
 	}
@@ -74,16 +81,16 @@ public class ConnectionUserServlet extends HttpServlet {
 		try {
 			pseudo = decrypt(pseudo);
 			mdp = decrypt(mdp);
-
 			
 		} catch (InvalidKeyException | NoSuchAlgorithmException | NoSuchPaddingException
-				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException e) {
+				| InvalidAlgorithmParameterException | IllegalBlockSizeException | BadPaddingException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			response.sendRedirect("/home.jsp");
 		}
 		
 		
-		this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward(request, response);
+		//this.getServletContext().getRequestDispatcher( "/home.jsp" ).forward(request, response);
 		
 		
 		

@@ -55,7 +55,7 @@
 
 	String pseudo;
 
-	pseudo = request.getParameter("siPseudo");
+	pseudo = (String)request.getAttribute("pseudo");
 	
 
 	
@@ -115,7 +115,7 @@
 	else{
 			AES aes = new AES();
 			
-			pseudo = aes.decrypt(pseudo);
+			if (pseudo != null ) pseudo = aes.decrypt(pseudo);
 			
 		
 		out.println(pseudo);

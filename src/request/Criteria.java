@@ -30,8 +30,8 @@ public class Criteria {
 	public final static Criteria jeunes = new Criteria("jeunes", "jeunes","population", AgeDAO.class); // %
 	public final static Criteria santee = new Criteria("santee", "santee","service_publique", SanteeDAO.class); // les docteur s et companie
 	public final static Criterib ville2000 = new Criterib("ville2000", "ville2000","population", VilleDAO.class); // nb habitant
-	public final static Criterib ville2000_50000 = new Criterib("ville2000_50000","population", "ville2000_50000", VilleDAO.class); // nb habitant
-	public final static Criterib ville50000_200000 = new Criterib("ville50000_200000","population", "ville50000_200000", VilleDAO.class); // nb																									// habitant
+	public final static Criterib ville2000_50000 = new Criterib("ville2000_50000", "ville2000_50000","population", VilleDAO.class); // nb habitant
+	public final static Criterib ville50000_200000 = new Criterib("ville50000_200000", "ville50000_200000","population", VilleDAO.class); // nb																									// habitant
 	public final static Criterib ville200000 = new Criterib("ville200000", "ville200000","population", VilleDAO.class); // nb habitant 2000 - 2015 +
 																							// 2025
 	// distance ville de ref
