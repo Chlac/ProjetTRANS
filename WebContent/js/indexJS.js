@@ -1,6 +1,3 @@
-/**
- * 
- */
 
 $(document).ready(function () {
 
@@ -16,6 +13,11 @@ $(document).ready(function () {
         $("#cat4").children("span").attr("class", "before");
     }
 
+    
+    /* Interception du formulaire avant l'envoi a la servlet lors de l'action du bouton submit
+    Permet le cryptage des valeurs entrees par l'utilisateur
+    
+    */
     $("#signinForm").submit(function () {
 
         var pseudo = $("#siPseudo").val();
@@ -31,6 +33,10 @@ $(document).ready(function () {
 
     });
 
+    /* Interception du formulaire avant l'envoi a la servlet lors de l'action du bouton submit
+    Permet le cryptage des valeurs entrees par l'utilisateur
+    
+    */
     $("#signupForm").submit(function () {
 
 
@@ -38,7 +44,6 @@ $(document).ready(function () {
         var pseudo = $("#suPseudo").val();
         var mdp = $("#suPassword").val();
         var verifMdp = $("#suVPassword").val();
-
 
 
         var key = "dbrCUoc4z9EFJTLBSsZtQw==";
@@ -68,10 +73,11 @@ $(document).ready(function () {
 
     });
 
+    /*Vide les champs du formualaire de connection*/
     $("#deconnexion").submit(function (){
-    	$("#siPseudo").val(null);
-    	$("#siPassword").val(null);
-    	
+        $("#siPseudo").val(null);
+        $("#siPassword").val(null);
+
     });
 
 
@@ -81,6 +87,7 @@ $(document).ready(function () {
 
 
 
+    /* Pour tout critère coché ou décocher, envoyer une requête ajax à l'UpdateResultsServlet pour obtenir la mise à jour des résultats */
     $("#attributes_form").change(function() {
         doPOST('UpdateResultsServlet', updateResults, $(this).serialize());
     });
@@ -174,7 +181,7 @@ $(document).ready(function () {
         $(".cityPanelsSlideshowDetailed").fadeOut(300);
 
         $("#score").fadeOut();
-        
+
         $("#pdf").fadeOut();
 
 
@@ -195,7 +202,7 @@ $(document).ready(function () {
                     $("#arrows").css("width", "68%");
 
                     $(".cityPanelsSlideshowDetailed").attr("class", "cityPanelsSlideshowSum").fadeIn();
-                    
+
                     $("#score").attr("class", "scoreSum").fadeIn();
 
                 });
@@ -299,17 +306,17 @@ $(window).on('resize', function() {
 
 });
 
-
+/* Fonction de post asynchrone vers "url", les données sont récupérées par la fonction cFunction sous le format json. */
 function doPOST(url, cFunction, data) {
 
-    alert("POSTING");
+    //alert("POSTING");
     $.post({
         url: url,
         data: data,
         dataType: "json",
         success: cFunction,
         error: function(jqXHR, textStatus, errorThrown){
-            alert("PROUT");
+            alert("Error");
         }
     });
 
@@ -353,6 +360,7 @@ function displayResults(response) {
 }
 
 
+/* Lecture du classement de 10 villes et affichage */
 function updateResults(data) {
     //update results... 
 

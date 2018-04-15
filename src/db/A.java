@@ -9,7 +9,7 @@ import java.sql.Statement;
 import com.mysql.jdbc.ResultSetMetaData;
 
 public class A {
-	String url = "jdbc:mysql://192.168.1.86:3306/trans";
+	String url = "jdbc:mysql://192.168.43.177:3306/trans";
 	String user = "admin";
 	String password = "root";
 
