@@ -29,14 +29,8 @@
         <link rel="stylesheet" type="text/css" media="screen"
               href="css/clear-sans.css">
 
-        <script defer
-                src="https://use.fontawesome.com/releases/v5.0.9/js/solid.js"
-                integrity="sha384-P4tSluxIpPk9wNy8WSD8wJDvA8YZIkC6AQ+BfAFLXcUZIPQGu4Ifv4Kqq+i2XzrM"
-                crossorigin="anonymous"></script>
-        <script defer
-                src="https://use.fontawesome.com/releases/v5.0.9/js/fontawesome.js"
-                integrity="sha384-2IUdwouOFWauLdwTuAyHeMMRFfeyy4vqYNjodih+28v2ReC+8j+sLF9cK339k5hY"
-                crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+        
         <script
                 src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script
@@ -60,16 +54,13 @@
 
 	
 
-	if(pseudo == null){
+	if(pseudo == null) {
 	
 
 %>
             <div id="connectionButtons">
                 <button id="signin" class="headerContent">Se connecter</button>
                 <button id="signup" class="headerContent">S'inscrire</button>
-
-
-                
             </div>
             
         
@@ -108,11 +99,13 @@
                     <button id="signupSubmit" type="submit" value="" class="submitCo"><i class="fas fa-arrow-right"></i></button>
                 </form>
                 
+            </div>
+                
                  <%
             
             }
             
-	else{
+	else {
 			AES aes = new AES();
 			
 			pseudo = aes.decrypt(pseudo);
@@ -121,19 +114,21 @@
 		out.println(pseudo);
 		
 		%>
-		<form id="deconnexion" action="home.jsp" class="signInSignUpForm">
-			<div id= "connectionButtons">
-			<button id="deconnexion" class="headerContent">Déconnexion</button>
-			</div>
-		</form>
+			<form id="deconnexion" action="home.jsp">
+				<div id= "connectionButtons">
+				<button id="deconnexion" class="headerContent">Déconnexion</button>
+				</div>
+			</form>
+                     
+        </div>
+        
+         <div id="content">
+         
 		<%
 
 	}
 	
  %>
-            </div>
-            
-
 
 
             <div id="attributes_panel">
@@ -270,8 +265,16 @@
                     </div>
 
                     <div class="cityPromoPictureSum">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Blois_Loire_Panorama_-_July_2011.jpg/1200px-Blois_Loire_Panorama_-_July_2011.jpg" alt="truc" width="100%" height="100%"/>
+                        <div id="diapo">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Blois_Loire_Panorama_-_July_2011.jpg/1200px-Blois_Loire_Panorama_-_July_2011.jpg" alt="truc" width="20%" height="100%"/>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Blois_Loire_Panorama_-_July_2011.jpg/1200px-Blois_Loire_Panorama_-_July_2011.jpg" alt="truc"/>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Blois_Loire_Panorama_-_July_2011.jpg/1200px-Blois_Loire_Panorama_-_July_2011.jpg" alt="truc"/>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Blois_Loire_Panorama_-_July_2011.jpg/1200px-Blois_Loire_Panorama_-_July_2011.jpg" alt="truc"/>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Blois_Loire_Panorama_-_July_2011.jpg/1200px-Blois_Loire_Panorama_-_July_2011.jpg" alt="truc"/>
+                            </div>
                     </div>
+                    
+                    <button id="pdf"><i class="far fa-file"></i></button>
 
                     <div class="cityPanelsSlideshowSum">
 
@@ -416,13 +419,116 @@
 
 
         <script src="js/indexJS.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
         
-        <script>
-
-        
-        
-        
-        </script>
+        <script> 
+         
+    (function () {  
+        var  
+         div = $('#result'),  
+         cache_width = div.width(),  
+         a4 = [595.28, 841.89]; 
+  
+        $('#pdf').on('click', function () {  
+            $('#content').scrollTop(0);
+            $("#lessInfos").hide();
+             $('#pdf').hide();
+            createPDF(); 
+            $("#lessInfos").show(); 
+            $('#pdf').show();
+        });  
+        //create pdf  
+        function createPDF() {  
+            getCanvas().then(function (canvas) {  
+                var  
+                 img = canvas.toDataURL("image/png"),  
+                 doc = new jsPDF({  
+                     unit: 'px',  
+                     format: 'a4'  
+                 });  
+                 
+                doc.addImage(img, 'JPEG', 20, 20);  
+                doc.save('CaDemenage.pdf');  
+                div.width(cache_width);  
+            });  
+        }  
+  
+        // create canvas object  
+        function getCanvas() {  
+            div.width((a4[0] * 1.33333) - 80).css('max-width', 'none');  
+            return html2canvas(div, {  
+                imageTimeout: 2000,  
+                removeContainer: true  
+            });  
+        }  
+  
+    }());  
+</script>  
+<script>  
+    /* 
+ * jQuery helper plugin for examples and tests 
+ */  
+    (function ($) {  
+        $.fn.html2canvas = function (options) {  
+            var date = new Date(),  
+            $message = null,  
+            timeoutTimer = false,  
+            timer = date.getTime();  
+            html2canvas.logging = options && options.logging;  
+            html2canvas.Preload(this[0], $.extend({  
+                complete: function (images) {  
+                    var queue = html2canvas.Parse(this[0], images, options),  
+                    $canvas = $(html2canvas.Renderer(queue, options)),  
+                    finishTime = new Date();  
+  
+                    $canvas.css({ position: 'absolute', left: 0, top: 0 }).appendTo(document.body);  
+                    $canvas.siblings().toggle();  
+  
+                    $(window).click(function () {  
+                        if (!$canvas.is(':visible')) {  
+                            $canvas.toggle().siblings().toggle();  
+                            throwMessage("Canvas Render visible");  
+                        } else {  
+                            $canvas.siblings().toggle();  
+                            $canvas.toggle();  
+                            throwMessage("Canvas Render hidden");  
+                        }  
+                    });  
+                    throwMessage('Screenshot created in ' + ((finishTime.getTime() - timer) / 1000) + " seconds<br />", 4000);  
+                }  
+            }, options));  
+  
+            function throwMessage(msg, duration) {  
+                window.clearTimeout(timeoutTimer);  
+                timeoutTimer = window.setTimeout(function () {  
+                    $message.fadeOut(function () {  
+                        $message.remove();  
+                    });  
+                }, duration || 2000);  
+                if ($message)  
+                    $message.remove();  
+                $message = $('<div ></div>').html(msg).css({  
+                    margin: 0,  
+                    padding: 10,  
+                    background: "#000",  
+                    opacity: 0.7,  
+                    position: "fixed",  
+                    top: 10,  
+                    right: 10,  
+                    fontFamily: 'Tahoma',  
+                    color: '#fff',  
+                    fontSize: 12,  
+                    borderRadius: 12,  
+                    width: 'auto',  
+                    height: 'auto',  
+                    textAlign: 'center',  
+                    textDecoration: 'none'  
+                }).hide().fadeIn().appendTo('body');  
+            }
+        };  
+    })(jQuery);  
+  
+</script> 
         
     </body>
 

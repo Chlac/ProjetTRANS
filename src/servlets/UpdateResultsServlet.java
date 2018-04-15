@@ -63,46 +63,12 @@ public class UpdateResultsServlet extends HttpServlet {
         response.setHeader("Access-Control-Max-Age", "86400");
 		
 		PrintWriter out = response.getWriter();
-/*
-        Gson gson = new Gson(); 
-        JsonObject jsonObject = new JsonObject();
-
-        City city = new City("Paris");
-        City city1 = new City("Orléans");
-        
-        JsonElement cityObj = gson.toJsonTree(city);
-        if(city.getName() == null) jsonObject.addProperty("success", false);
-        else jsonObject.addProperty("success", true);
-
-        JsonElement cityObj1 = gson.toJsonTree(city1);
-        if(city1.getName() == null) jsonObject.addProperty("success", false);
-        else jsonObject.addProperty("success", true);
-        
-        jsonObject.add("1", cityObj);
-        jsonObject.add("2", cityObj1);
-        */
-        //jsonObject.addProperty("test", "TEST");
-        
-        
-		//boolean chomage_checked = request.getParameter("culture1") != null;
-		//System.out.println(chomage_checked);
-		
 		
         Request r = new Request(request);
 		
-		
-		
-		
-		
         JsonObject jO = Application.passRequest(r);
-		System.out.println("lol?");
 		System.out.println(jO.toString());
 		out.println(jO.toString());
-		
-			//out.println("test");
-		
-		//System.out.println(r);
-		//jsonObject.addProperty("result", r);
 		
 		
 		out.close();

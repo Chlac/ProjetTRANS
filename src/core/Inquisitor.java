@@ -43,16 +43,16 @@ public class Inquisitor {
 		int size = request.criterias.size();
 		ArrayList<String> l = new ArrayList<>();
 		{
-		String query = "SELECT codGeo FROM commune ORDER BY codGeo";
-		ResultSet rs = Application.passQuery(query);
-		try {
-			while(rs.next()) {
-				merde.put(rs.getString(1), new ArrayList<>());
+			String query = "SELECT codGeo FROM commune ORDER BY codGeo";
+			ResultSet rs = Application.passQuery(query);
+			try {
+				while(rs.next()) {
+					merde.put(rs.getString(1), new ArrayList<>());
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		}
 		for (int i = 0; i < request.criteribs.size(); i++) {
 			String query = "SELECT codGeo FROM"+ request.criteribs.get(i).TABLE_NAME + "ORDER BY codGeo";
@@ -74,24 +74,24 @@ public class Inquisitor {
 				// TODO: handle exception
 			}
 		}
-		
+
 		for (int i = 0; i < size; i++) {
 			String query = "SELECT codGeo, score FROM " + request.criterias.get(i).TABLE_NAME + " ORDER BY codGeo";
 			ResultSet rs = Application.passQuery(query);
 			try {
 				ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-				
-					while (rs.next()) {
-						String s = rs.getString(1);
-						System.out.println(merde.get(rs.getString(1)));
-						if (merde.get(rs.getString(1)) != null )merde.get(rs.getString(1)).add(rs.getDouble(2));
-						
-						// t.add(rs.getDouble(2));
-						// merde.put(rs.getString(1),t);
 
-					}
+				while (rs.next()) {
+					String s = rs.getString(1);
+					System.out.println(merde.get(rs.getString(1)));
+					if (merde.get(rs.getString(1)) != null )merde.get(rs.getString(1)).add(rs.getDouble(2));
+
+					// t.add(rs.getDouble(2));
+					// merde.put(rs.getString(1),t);
+
 				}
-			 catch (Exception e) {
+			}
+			catch (Exception e) {
 				System.out.println(e);
 			}
 		}
@@ -131,8 +131,8 @@ public class Inquisitor {
 		}
 		//return fuckSQLDetails(res);
 		Gson gson = new Gson(); 
-        JsonObject jsonObject = new JsonObject();
-        int n = 1;
+		JsonObject jsonObject = new JsonObject();
+		int n = 1;
 		for (String codGeo : villes) {
 			double s_culture = 0.0,s_economie = 0.0, s_population = 0.0, s_service_publique = 0.0;
 			int n_culture = 1, n_economie = 1, n_population = 1, n_service_publique = 1;
@@ -141,66 +141,67 @@ public class Inquisitor {
 			//ArrayList<Object> details = new ArrayList<>();
 			for (int i = 0; i < merde.get(codGeo).size(); i++) {
 				//details.add(request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
-				switch (request.criterias.get(i).TYPE) {
-				case "culture":
-					s_culture+=merde.get(codGeo).get(i+1);
-					culture.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
-					break;
-				case "economie":
-					s_economie+=merde.get(codGeo).get(i+1);
-					economie.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
-					break;
-				case "population":
-					s_population+=merde.get(codGeo).get(i+1);
-					population.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
-					break;
-				case "service_publique":
-					s_service_publique+=merde.get(codGeo).get(i+1);
-					service_publique.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
-					break;
-				default:
-					break;
-				}
+				if(request.criterias.size() > i) 
+					switch (request.criterias.get(i).TYPE) {
+					case "culture":
+						s_culture+=merde.get(codGeo).get(i+1);
+						culture.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+						break;
+					case "economie":
+						s_economie+=merde.get(codGeo).get(i+1);
+						economie.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+						break;
+					case "population":
+						s_population+=merde.get(codGeo).get(i+1);
+						population.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+						break;
+					case "service_publique":
+						s_service_publique+=merde.get(codGeo).get(i+1);
+						service_publique.put(request.criterias.get(i).ATTRIBUT_NAME,request.criterias.get(i).redirectToDAO(codGeo, merde.get(codGeo).get(i+1)));
+						break;
+					default:
+						break;
+					}
 			}
-				
-				Culture c = null;
-				Economie e = null;
-				Population p = null;
-				ServicePublique s = null;
-				if (culture.size() != 0) {
+
+			Culture c = null;
+			Economie e = null;
+			Population p = null;
+			ServicePublique s = null;
+			if (culture.size() != 0) {
 				c = new Culture();
 				c.setScore(s_culture/n_culture);
 				c.setDetails(culture);
-				}
-				if (economie.size() != 0) {
+			}
+			if (economie.size() != 0) {
 				e = new Economie();
 				e.setScore(s_economie/n_economie);
 				e.setDetails(economie);
-				}
-				if (population.size() != 0) {
+			}
+			if (population.size() != 0) {
 				p = new Population();
 				p.setScore(s_population/n_population);
 				p.setDetails(population);
-				}
-				if (service_publique.size() != 0) {
+			}
+			if (service_publique.size() != 0) {
 				s = new ServicePublique();
 				s.setScore(s_service_publique/n_service_publique);
 				s.setDetails(service_publique);
-				}
-			
-			
+			}
+
+
 			City city = CommuneDAO.f(codGeo, c, e, p, s);
 			JsonElement cityObj = gson.toJsonTree(city);
-	        if(city.getName() == null) jsonObject.addProperty("success", false);
-	        else {
-	        	jsonObject.addProperty("success", true);
-	        	jsonObject.add(String.valueOf(n++), cityObj);
-	        }
+			if(city.getName() == null) jsonObject.addProperty("success", false);
+			else {
+				jsonObject.addProperty("success", true);
+				jsonObject.add(String.valueOf(n++), cityObj);
+			}
 		}
 		return jsonObject;
 	}
 
-	
+
 
 	private double ecart_type(ArrayList<Double> l, int n) {
 		double a = 0.0;
@@ -217,13 +218,13 @@ public class Inquisitor {
 			return Application.passQuery(query);
 		}
 	}
-/*
+	/*
 	private JsonObject fuckSQLDetails(ArrayList<String> villes){
 		Gson gson = new Gson(); 
         JsonObject jsonObject = new JsonObject();
         int n = 1;
 		for (String codGeo : villes) {
-			
+
 			ArrayList<Object> details = new ArrayList<>();
 			for (Criteria criteria : request.criterias) {
 				details.add(criteria.redirectToDAO(codGeo));
